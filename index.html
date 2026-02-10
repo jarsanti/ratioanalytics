@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ratio Analytics - Transformamos datos en acciones. Dashboards ejecutivos, automatización de procesos y análisis de datos.">
+    <title>Ratio Analytics - Transformamos Datos en Acciones</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/components/navbar.css">
+    <link rel="stylesheet" href="assets/css/components/buttons.css">
+    <link rel="stylesheet" href="assets/css/components/cards.css">
+    <link rel="stylesheet" href="assets/css/components/forms.css">
+    <link rel="stylesheet" href="assets/css/components/footer.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo/ratio-analytics-logo.png" alt="Ratio Analytics Logo">
+            </a>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link active">Inicio</a></li>
+                <li class="nav-item"><a href="pages/soluciones.html" class="nav-link">Soluciones</a></li>
+                <li class="nav-item"><a href="pages/nosotros.html" class="nav-link">Nosotros</a></li>
+                <li class="nav-item"><a href="#contacto" class="nav-link">Contacto</a></li>
+            </ul>
+            
+            <div class="nav-cta">
+                <a href="#contacto" class="btn btn-primary">Solicitar Consulta</a>
+            </div>
+            
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text fade-in-up">
+                    <span class="hero-label">Análisis de Datos & Automatización</span>
+                    <h1 class="hero-title">
+                        Transformamos <span class="gradient-text">Datos</span> en <span class="gradient-text">Acciones</span>
+                    </h1>
+                    <p class="hero-description">
+                        Accionamos sobre los datos y procesos para la optimización y mejora de decisiones. 
+                        Reducción de costos, optimización de tiempos y aumento de calidad en cada proyecto.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#contacto" class="btn btn-primary btn-large">
+                            Comenzar Ahora
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="pages/soluciones.html" class="btn btn-secondary btn-large">
+                            Ver Soluciones
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hero-visual fade-in-right">
+                    <div class="data-visualization">
+                        <div class="chart-container floating">
+                            <div class="chart-bar" style="--height: 70%; --delay: 0s;"></div>
+                            <div class="chart-bar" style="--height: 85%; --delay: 0.1s;"></div>
+                            <div class="chart-bar" style="--height: 60%; --delay: 0.2s;"></div>
+                            <div class="chart-bar" style="--height: 90%; --delay: 0.3s;"></div>
+                            <div class="chart-bar" style="--height: 75%; --delay: 0.4s;"></div>
+                        </div>
+                        
+                        <div class="metrics-cards">
+                            <div class="metric-card pulse" style="--delay: 0.5s;">
+                                <i class="fas fa-chart-line"></i>
+                                <span>+40% Eficiencia</span>
+                            </div>
+                            <div class="metric-card pulse" style="--delay: 0.7s;">
+                                <i class="fas fa-clock"></i>
+                                <span>-60% Tiempo</span>
+                            </div>
+                            <div class="metric-card pulse" style="--delay: 0.9s;">
+                                <i class="fas fa-dollar-sign"></i>
+                                <span>-35% Costos</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="servicios">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <span class="section-label">Nuestros Servicios</span>
+                <h2 class="section-title">Soluciones que <span class="gradient-text">Impulsan Resultados</span></h2>
+                <p class="section-description">
+                    Combinamos análisis de datos avanzado con automatización inteligente para transformar tu negocio
+                </p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card fade-in-up" data-delay="0.1">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-pie"></i>
+                        <div class="icon-bg"></div>
+                    </div>
+                    <h3 class="service-title">Dashboards Ejecutivos</h3>
+                    <p class="service-description">
+                        Visualizaciones interactivas y KPIs en tiempo real para la toma de decisiones estratégicas. 
+                        Dashboards personalizados que integran múltiples fuentes de datos.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Visualización en tiempo real</li>
+                        <li><i class="fas fa-check"></i> KPIs personalizados</li>
+                        <li><i class="fas fa-check"></i> Integración multi-fuente</li>
+                    </ul>
+                    <a href="pages/soluciones.html" class="service-link">
+                        Más información <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="service-card fade-in-up" data-delay="0.2">
+                    <div class="service-icon">
+                        <i class="fas fa-gauge-high"></i>
+                        <div class="icon-bg"></div>
+                    </div>
+                    <h3 class="service-title">Dashboards Operativos</h3>
+                    <p class="service-description">
+                        Monitoreo continuo de operaciones diarias. Métricas y alertas que permiten 
+                        identificar y resolver problemas antes de que impacten el negocio.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Monitoreo 24/7</li>
+                        <li><i class="fas fa-check"></i> Alertas inteligentes</li>
+                        <li><i class="fas fa-check"></i> Análisis predictivo</li>
+                    </ul>
+                    <a href="pages/soluciones.html" class="service-link">
+                        Más información <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="service-card fade-in-up" data-delay="0.3">
+                    <div class="service-icon">
+                        <i class="fas fa-robot"></i>
+                        <div class="icon-bg"></div>
+                    </div>
+                    <h3 class="service-title">Automatización de Procesos</h3>
+                    <p class="service-description">
+                        Optimización y automatización de procesos relacionados a datos. Eliminamos tareas 
+                        repetitivas y liberamos tiempo para actividades de mayor valor.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Procesos automáticos</li>
+                        <li><i class="fas fa-check"></i> Reducción de errores</li>
+                        <li><i class="fas fa-check"></i> Ahorro de tiempo</li>
+                    </ul>
+                    <a href="pages/soluciones.html" class="service-link">
+                        Más información <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section class="cases" id="casos">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <span class="section-label">Casos de Éxito</span>
+                <h2 class="section-title">Resultados que <span class="gradient-text">Hablan por Sí Mismos</span></h2>
+                <p class="section-description">
+                    Descubre cómo hemos ayudado a empresas a transformar sus datos en ventajas competitivas
+                </p>
+            </div>
+            
+            <div class="cases-grid">
+                <div class="case-card fade-in-up" data-delay="0.1">
+                    <div class="case-image">
+                        <div class="case-overlay">
+                            <i class="fas fa-building"></i>
+                        </div>
+                    </div>
+                    <div class="case-content">
+                        <span class="case-category">Retail</span>
+                        <h3 class="case-title">Optimización de Inventario</h3>
+                        <p class="case-description">
+                            Implementación de dashboard predictivo que redujo costos de inventario en un 35% 
+                            y mejoró la disponibilidad de productos.
+                        </p>
+                        <div class="case-stats">
+                            <div class="stat">
+                                <span class="stat-value">-35%</span>
+                                <span class="stat-label">Costos</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">+28%</span>
+                                <span class="stat-label">Disponibilidad</span>
+                            </div>
+                        </div>
+                        <a href="#" class="case-link">
+                            Ver caso completo <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="case-card fade-in-up" data-delay="0.2">
+                    <div class="case-image">
+                        <div class="case-overlay">
+                            <i class="fas fa-industry"></i>
+                        </div>
+                    </div>
+                    <div class="case-content">
+                        <span class="case-category">Manufactura</span>
+                        <h3 class="case-title">Automatización de Reportes</h3>
+                        <p class="case-description">
+                            Automatización completa de procesos de reporting que eliminó 120 horas mensuales 
+                            de trabajo manual y redujo errores a casi cero.
+                        </p>
+                        <div class="case-stats">
+                            <div class="stat">
+                                <span class="stat-value">-120h</span>
+                                <span class="stat-label">Por mes</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">-98%</span>
+                                <span class="stat-label">Errores</span>
+                            </div>
+                        </div>
+                        <a href="#" class="case-link">
+                            Ver caso completo <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="case-card fade-in-up" data-delay="0.3">
+                    <div class="case-image">
+                        <div class="case-overlay">
+                            <i class="fas fa-laptop"></i>
+                        </div>
+                    </div>
+                    <div class="case-content">
+                        <span class="case-category">E-commerce</span>
+                        <h3 class="case-title">Dashboard de Ventas 360°</h3>
+                        <p class="case-description">
+                            Dashboard integrado que unificó datos de 5 plataformas diferentes, 
+                            mejorando la visibilidad y tiempo de respuesta.
+                        </p>
+                        <div class="case-stats">
+                            <div class="stat">
+                                <span class="stat-value">5x</span>
+                                <span class="stat-label">Más rápido</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">+45%</span>
+                                <span class="stat-label">Eficiencia</span>
+                            </div>
+                        </div>
+                        <a href="#" class="case-link">
+                            Ver caso completo <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="case-card fade-in-up" data-delay="0.4">
+                    <div class="case-image">
+                        <div class="case-overlay">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                    </div>
+                    <div class="case-content">
+                        <span class="case-category">Logística</span>
+                        <h3 class="case-title">Optimización de Rutas</h3>
+                        <p class="case-description">
+                            Sistema de análisis y optimización de rutas de distribución que redujo 
+                            tiempos de entrega y costos operativos significativamente.
+                        </p>
+                        <div class="case-stats">
+                            <div class="stat">
+                                <span class="stat-value">-42%</span>
+                                <span class="stat-label">Tiempo</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">-30%</span>
+                                <span class="stat-label">Costos</span>
+                            </div>
+                        </div>
+                        <a href="#" class="case-link">
+                            Ver caso completo <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contacto">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-info fade-in-left">
+                    <span class="section-label">Contáctanos</span>
+                    <h2 class="section-title">¿Listo para <span class="gradient-text">Transformar</span> tu Negocio?</h2>
+                    <p class="contact-text">
+                        Cuéntanos sobre tu proyecto y descubre cómo podemos ayudarte a alcanzar tus objetivos 
+                        a través del análisis de datos y la automatización.
+                    </p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-content">
+                                <span class="contact-label">Email</span>
+                                <a href="/cdn-cgi/l/email-protection#debdb1b0aabfbdaab19eacbfaab7b1bfb0bfb2a7aab7bdadf0bdb1b3"><span class="__cf_email__" data-cfemail="9bf8f4f5effaf8eff4dbe9faeff2f4faf5faf7e2eff2f8e8b5f8f4f6">[email&#160;protected]</span></a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-content">
+                                <span class="contact-label">Teléfono</span>
+                                <a href="tel:+1234567890">+1 (234) 567-890</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-content">
+                                <span class="contact-label">Horario</span>
+                                <p>Lun - Vie: 9:00 AM - 6:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <form class="contact-form fade-in-right" id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Nombre Completo *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="company">Empresa</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Teléfono</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="service">Servicio de Interés</label>
+                        <select id="service" name="service">
+                            <option value="">Selecciona una opción</option>
+                            <option value="dashboard-ejecutivo">Dashboard Ejecutivo</option>
+                            <option value="dashboard-operativo">Dashboard Operativo</option>
+                            <option value="automatizacion">Automatización de Procesos</option>
+                            <option value="consultoria">Consultoría General</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="message">Mensaje *</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-large btn-submit">
+                        Enviar Mensaje
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                    
+                    <div class="form-message" id="form-message"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <img src="assets/images/logo/ratio-analytics-logo.png" alt="Ratio Analytics" class="footer-logo">
+                    <p class="footer-description">
+                        Transformamos datos en acciones. Soluciones de análisis y automatización 
+                        que impulsan el crecimiento de tu negocio.
+                    </p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4 class="footer-title">Enlaces Rápidos</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="pages/soluciones.html">Soluciones</a></li>
+                        <li><a href="pages/nosotros.html">Nosotros</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4 class="footer-title">Servicios</h4>
+                    <ul class="footer-links">
+                        <li><a href="pages/soluciones.html#dashboards-ejecutivos">Dashboards Ejecutivos</a></li>
+                        <li><a href="pages/soluciones.html#dashboards-operativos">Dashboards Operativos</a></li>
+                        <li><a href="pages/soluciones.html#automatizacion">Automatización</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4 class="footer-title">Newsletter</h4>
+                    <p class="footer-newsletter-text">Recibe insights y novedades sobre análisis de datos</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Tu email" required>
+                        <button type="submit">
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Ratio Analytics. Todos los derechos reservados.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Política de Privacidad</a>
+                    <a href="#">Términos de Uso</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudfla
