@@ -1,0 +1,491 @@
+/* ===================================
+   Responsive Design
+   =================================== */
+
+/* ===================================
+   Large Desktops (1440px and up)
+   =================================== */
+@media (min-width: 1440px) {
+    .container {
+        max-width: 1400px;
+    }
+    
+    .hero-title {
+        font-size: 4.5rem;
+    }
+}
+
+/* ===================================
+   Desktops (1024px - 1439px)
+   =================================== */
+@media (max-width: 1439px) {
+    :root {
+        --text-6xl: 3.5rem;
+    }
+}
+
+/* ===================================
+   Tablets Landscape (769px - 1023px)
+   =================================== */
+@media (max-width: 1024px) {
+    :root {
+        --text-5xl: 2.5rem;
+        --text-6xl: 3rem;
+        --spacing-4xl: 5rem;
+    }
+    
+    /* Hero Section */
+    .hero {
+        min-height: auto;
+        padding-top: 120px;
+        padding-bottom: var(--spacing-3xl);
+    }
+    
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-2xl);
+    }
+    
+    .hero-visual {
+        height: 400px;
+        order: -1;
+    }
+    
+    .hero-text {
+        text-align: center;
+        max-width: 100%;
+    }
+    
+    .hero-buttons {
+        justify-content: center;
+    }
+    
+    /* Services Grid */
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-lg);
+    }
+    
+    /* Cases Grid */
+    .cases-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Contact */
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-2xl);
+    }
+    
+    .contact-info {
+        position: static;
+        text-align: center;
+    }
+    
+    .contact-details {
+        max-width: 600px;
+        margin: 0 auto var(--spacing-2xl);
+    }
+    
+    .contact-item {
+        justify-content: center;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+}
+
+/* ===================================
+   Tablets Portrait (481px - 768px)
+   =================================== */
+@media (max-width: 768px) {
+    :root {
+        --text-4xl: 1.875rem;
+        --text-5xl: 2rem;
+        --text-6xl: 2.5rem;
+        --spacing-3xl: 3rem;
+        --spacing-4xl: 4rem;
+    }
+    
+    /* Container */
+    .container {
+        padding: 0 var(--spacing-md);
+    }
+    
+    /* Sections */
+    section {
+        padding: var(--spacing-3xl) 0;
+    }
+    
+    .section-header {
+        margin-bottom: var(--spacing-2xl);
+    }
+    
+    .section-title {
+        font-size: var(--text-3xl);
+    }
+    
+    .section-description {
+        font-size: var(--text-base);
+    }
+    
+    /* Hero Section */
+    .hero {
+        padding-top: 100px;
+    }
+    
+    .hero-title {
+        font-size: var(--text-5xl);
+    }
+    
+    .hero-description {
+        font-size: var(--text-lg);
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .hero-buttons .btn {
+        width: 100%;
+    }
+    
+    .hero-visual {
+        height: 350px;
+    }
+    
+    .chart-container {
+        width: 250px;
+        height: 200px;
+    }
+    
+    .metrics-cards {
+        position: static;
+        margin-top: var(--spacing-xl);
+    }
+    
+    /* Services Grid */
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .service-card {
+        padding: var(--spacing-xl);
+    }
+    
+    /* Cases Grid */
+    .cases-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .case-card {
+        margin-bottom: var(--spacing-lg);
+    }
+    
+    /* Contact Form */
+    .contact-form {
+        padding: var(--spacing-xl);
+    }
+    
+    /* Footer */
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* ===================================
+   Mobile Devices (320px - 480px)
+   =================================== */
+@media (max-width: 480px) {
+    :root {
+        --text-3xl: 1.5rem;
+        --text-4xl: 1.75rem;
+        --text-5xl: 1.875rem;
+        --text-6xl: 2rem;
+        --spacing-2xl: 2rem;
+        --spacing-3xl: 2.5rem;
+        --spacing-4xl: 3rem;
+    }
+    
+    /* Container */
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+    
+    /* Hero */
+    .hero-title {
+        font-size: var(--text-4xl);
+        line-height: 1.2;
+    }
+    
+    .hero-label {
+        font-size: 0.7rem;
+    }
+    
+    .hero-visual {
+        height: 300px;
+    }
+    
+    .chart-container {
+        width: 200px;
+        height: 150px;
+        padding: var(--spacing-md);
+    }
+    
+    .metric-card {
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+    
+    .metric-card span {
+        font-size: 0.7rem;
+    }
+    
+    /* Cards */
+    .service-card,
+    .case-card {
+        padding: var(--spacing-lg);
+    }
+    
+    .service-icon,
+    .feature-icon {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .service-icon i,
+    .feature-icon i {
+        font-size: var(--text-xl);
+    }
+    
+    /* Contact */
+    .contact-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    /* Buttons */
+    .btn-large {
+        padding: var(--spacing-md) var(--spacing-xl);
+        font-size: var(--text-base);
+    }
+}
+
+/* ===================================
+   Small Mobile (max-width: 375px)
+   =================================== */
+@media (max-width: 375px) {
+    :root {
+        --text-6xl: 1.75rem;
+    }
+    
+    .hero-title {
+        font-size: var(--text-3xl);
+    }
+    
+    .hero-visual {
+        height: 250px;
+    }
+    
+    .chart-container {
+        width: 180px;
+    }
+}
+
+/* ===================================
+   Landscape Orientation (Mobile)
+   =================================== */
+@media (max-height: 600px) and (orientation: landscape) {
+    .hero {
+        min-height: auto;
+        padding-top: 100px;
+        padding-bottom: var(--spacing-2xl);
+    }
+    
+    .hero-visual {
+        display: none;
+    }
+    
+    .scroll-indicator {
+        display: none;
+    }
+}
+
+/* ===================================
+   Print Styles
+   =================================== */
+@media print {
+    .navbar,
+    .hero-buttons,
+    .contact-form,
+    .footer,
+    .back-to-top,
+    .scroll-indicator {
+        display: none !important;
+    }
+    
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .hero,
+    section {
+        padding: 1rem 0;
+    }
+    
+    .card,
+    .service-card,
+    .case-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+}
+
+/* ===================================
+   Touch Device Optimizations
+   =================================== */
+@media (hover: none) and (pointer: coarse) {
+    /* Increase touch target sizes */
+    .btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    .nav-link {
+        padding: var(--spacing-md);
+    }
+    
+    /* Remove hover effects on touch devices */
+    .service-card:hover,
+    .case-card:hover {
+        transform: none;
+    }
+    
+    /* Make interactive elements more obvious */
+    .btn-primary {
+        box-shadow: 0 4px 15px rgba(91, 126, 255, 0.4);
+    }
+}
+
+/* ===================================
+   High Resolution Displays
+   =================================== */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* Optimize images and graphics for retina displays */
+    .logo img {
+        image-rendering: -webkit-optimize-contrast;
+    }
+}
+
+/* ===================================
+   Reduced Motion
+   =================================== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .hero-visual,
+    .floating,
+    .pulse,
+    .shape {
+        animation: none !important;
+    }
+}
+
+/* ===================================
+   Dark Mode Support (si lo implementas)
+   =================================== */
+@media (prefers-color-scheme: dark) {
+    /* Estos estilos se pueden activar si decides implementar dark mode */
+    /*
+    :root {
+        --color-white: #0a0a0a;
+        --color-black: #ffffff;
+        --color-gray-50: #1f2937;
+        --color-gray-100: #111827;
+    }
+    */
+}
+
+/* ===================================
+   Utility Classes para Responsive
+   =================================== */
+
+/* Hide on Mobile */
+.hide-mobile {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .hide-mobile {
+        display: none !important;
+    }
+}
+
+/* Show only on Mobile */
+.show-mobile {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .show-mobile {
+        display: block !important;
+    }
+}
+
+/* Hide on Tablet */
+.hide-tablet {
+    display: block;
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .hide-tablet {
+        display: none !important;
+    }
+}
+
+/* Show only on Tablet */
+.show-tablet {
+    display: none;
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .show-tablet {
+        display: block !important;
+    }
+}
+
+/* Hide on Desktop */
+.hide-desktop {
+    display: block;
+}
+
+@media (min-width: 1025px) {
+    .hide-desktop {
+        display: none !important;
+    }
+}
+
+/* Text Alignment Responsive */
+.text-center-mobile {
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+    .text-center-mobile {
+        text-align: center !important;
+    }
+}
