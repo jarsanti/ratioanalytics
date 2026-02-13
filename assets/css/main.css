@@ -4,10 +4,10 @@
 :root {
     /* Colores principales basados en el logo */
     --color-primary: #5170FF;
-    --color-primary-dark: #002FFF;
-    --color-primary-light: #8A9FFF;
+    --color-primary-dark: #5170FF;
+    --color-primary-light: #5170FF;
     --color-secondary: #1a1a2e;
-    --color-accent: #00D9FF;
+    --color-accent: #5170FF;
 
     /* Grises */
     --color-white: #ffffff;
