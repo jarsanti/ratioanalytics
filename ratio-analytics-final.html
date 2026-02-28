@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ratio Analytics — Transformamos Datos en Acciones</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--violet:#6861f0;--violet-dark:#6861f0;--violet-light:#EEF1FF;--violet-mid:#C4CEFF;--ink:#111218;--ink-soft:#3D3F4E;--muted:#8C8FA8;--border:#E8E9F0;--bg:#FAFAFA;--white:#FFFFFF;--serif:'system-ui',sans-serif;--sans:'DM Sans',sans-serif}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--white);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;position:relative}
+body::before{content:'';position:fixed;top:-200px;left:-100px;width:600px;height:600px;background:radial-gradient(circle,rgba(255,0,110,0.15) 0%,transparent 70%);pointer-events:none;z-index:0}
+body::after{content:'';position:fixed;bottom:-150px;right:-150px;width:700px;height:700px;background:radial-gradient(circle,rgba(255,0,110,0.18) 0%,transparent 70%);pointer-events:none;z-index:0}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;height:72px;background:rgba(255,255,255,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);transition:box-shadow .3s,transform .3s}
+nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.06)}
+.nav-logo img{height:45px}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:.9rem;font-weight:500;color:var(--ink-soft);padding:.25rem 0;position:relative;transition:color .2s}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:2px;background:var(--violet);transition:width .3s}
+.nav-links a:hover{color:var(--violet)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:var(--violet);color:var(--white);padding:.6rem 1.4rem;border-radius:50px;font-size:.85rem;font-weight:700;letter-spacing:.02em;transition:all .2s}
+.nav-cta:hover{background:var(--violet-dark);transform:translateY(-1px);box-shadow:0 6px 20px rgba(104,97,240,.35)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px}
+.hamburger span{width:24px;height:2px;background:var(--ink);transition:all .3s}
+.mobile-menu{display:none;position:fixed;top:72px;left:0;right:0;background:var(--white);border-bottom:1px solid var(--border);padding:1.5rem 5vw 2rem;flex-direction:column;gap:1rem;z-index:99}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-size:1.1rem;font-weight:500;color:var(--ink-soft);padding:.5rem 0;border-bottom:1px solid var(--border)}
+.mobile-menu a:last-child{border:none}
+.mobile-menu .nav-cta{text-align:center;margin-top:.5rem}
+.hero{padding:160px 5vw 100px;background:var(--white);position:relative;overflow:hidden;z-index:1}
+.hero::before{content:'';position:absolute;top:-200px;right:-300px;width:700px;height:700px;background:radial-gradient(circle,rgba(104,97,240,.12) 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--violet);background:var(--violet-light);padding:.4rem 1rem;border-radius:50px;margin-bottom:1.5rem}
+.hero-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--violet);animation:blink 1.4s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.hero-title{font-family:var(--serif);font-size:clamp(2.8rem,4.5vw,4.2rem);line-height:1.1;color:var(--ink);margin-bottom:1.5rem}
+.hero-title em{font-style:italic;color:var(--violet)}
+.hero-desc{font-size:1.1rem;line-height:1.75;color:var(--ink-soft);margin-bottom:2.5rem;max-width:480px}
+.hero-cta-card{background:var(--violet-dark);background-image:repeating-linear-gradient(45deg,transparent,transparent 15px,rgba(255,255,255,.08) 15px,rgba(255,255,255,.08) 30px),linear-gradient(135deg,var(--violet) 0%,var(--violet-dark) 100%);padding:2rem 2.5rem;border-radius:20px;margin-bottom:2rem;box-shadow:0 20px 40px rgba(104,97,240,.4),inset 0 1px 0 rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.15);position:relative;overflow:hidden}
+.hero-cta-card::before{content:'';position:absolute;top:50%;right:-100px;width:300px;height:300px;background:var(--violet-light);border-radius:50%;transform:translateY(-50%);z-index:0;opacity:0.3}
+.hero-cta-card h3{color:var(--white);font-size:1.4rem;margin-bottom:1.25rem;font-family:var(--serif);text-shadow:0 2px 10px rgba(0,0,0,.1);position:relative;z-index:1}
+.hero-buttons{display:flex;gap:1rem;flex-wrap:wrap;position:relative;z-index:1}
+.btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:var(--violet);color:var(--white);padding:.9rem 2rem;border-radius:50px;font-size:.95rem;font-weight:700;transition:all .2s;box-shadow:0 4px 18px rgba(104,97,240,.3)}
+.btn-primary:hover{background:var(--violet-dark);transform:translateY(-2px);box-shadow:0 8px 28px rgba(104,97,240,.4)}
+.btn-ghost{display:inline-flex;align-items:center;gap:.5rem;color:var(--ink-soft);padding:.9rem 2rem;border-radius:50px;font-size:.95rem;font-weight:600;border:1.5px solid var(--border);transition:all .2s}
+.btn-ghost:hover{border-color:var(--violet);color:var(--violet);background:var(--violet-light)}
+.hero-cta-card .btn-primary{background:var(--white);color:var(--violet);box-shadow:0 6px 20px rgba(255,255,255,.3);padding:.75rem 1.5rem;font-size:.9rem}
+.hero-cta-card .btn-primary:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 10px 30px rgba(255,255,255,.5)}
+.hero-cta-card .btn-ghost{border-color:rgba(255,255,255,.4);color:var(--white);background:rgba(255,255,255,.1);backdrop-filter:blur(10px);padding:.75rem 1.5rem;font-size:.9rem}
+.hero-cta-card .btn-ghost:hover{background:rgba(255,255,255,.2);border-color:var(--white)}
+.hero-visual{position:relative}
+.hero-visual img{width:100%;height:auto;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.15)}
+.problemas{padding:100px 5vw;background:var(--bg);position:relative;z-index:1}
+.section-label{font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--violet);margin-bottom:.75rem}
+.section-heading{font-family:var(--serif);font-size:clamp(2rem,3.5vw,3rem);color:var(--ink);line-height:1.2;margin-bottom:1rem}
+.section-heading em{font-style:italic;color:var(--violet)}
+.section-sub{font-size:1.05rem;color:var(--muted);max-width:520px;line-height:1.7;margin-bottom:4rem}
+.problemas-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:3rem}
+.problema-item{display:flex;flex-direction:column;align-items:center;text-align:center;gap:1rem;padding:2rem 1.5rem;background:var(--white);border:1px solid var(--border);border-radius:20px;transition:all .3s}
+.problema-item:hover{transform:translateY(-5px);box-shadow:0 15px 35px rgba(0,0,0,.08);border-color:var(--violet-mid)}
+.problema-item i{font-size:2.5rem;color:var(--violet);flex-shrink:0;transition:transform .3s}
+.problema-item:hover i{transform:scale(1.1)}
+.problema-item h3{font-size:1.3rem;font-weight:700;color:var(--violet);margin:0}
+.problema-item p{font-size:.9rem;line-height:1.6;color:var(--ink-soft);margin:0}
+.proceso{padding:100px 5vw;background:var(--white);position:relative;z-index:1}
+.proceso-zigzag{position:relative;max-width:1200px;margin:0 auto;padding:3rem 0;display:flex;justify-content:space-between;align-items:center;gap:2rem}
+.proceso-step{display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;flex:1;max-width:250px}
+.proceso-step.step-1,.proceso-step.step-3{margin-top:0}
+.proceso-step.step-2,.proceso-step.step-4{margin-top:80px}
+.step-circle{width:100px;height:100px;background:var(--violet);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 8px 24px rgba(104,97,240,.3);position:relative;z-index:2;margin-bottom:1.5rem}
+.step-number{font-size:2.5rem;font-weight:900;color:var(--white);font-family:var(--serif)}
+.proceso-step:not(:last-child)::before{content:'';position:absolute;top:50px;left:calc(50% + 50px);width:calc(100% + 2rem);height:2px;background:var(--ink);z-index:1}
+.proceso-step.step-2::before{top:130px}
+.step-content{flex:1}
+.step-content h4{font-size:1.2rem;font-weight:700;color:var(--ink);margin-bottom:.75rem}
+.step-content p{font-size:.9rem;line-height:1.6;color:var(--ink-soft);margin:0}
+.services{padding:100px 5vw;background:var(--bg);position:relative;z-index:1}
+.services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;max-width:1100px;margin:0 auto}
+.service-card{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:2.5rem;transition:all .3s;position:relative;overflow:hidden;min-height:500px;display:flex;flex-direction:column;justify-content:flex-end}
+.service-bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:grayscale(100%);z-index:0;transition:filter .4s ease}
+.service-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.55);z-index:0}
+.service-card:hover .service-bg{filter:grayscale(0%)}
+.service-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,.08);border-color:var(--violet);border-width:2px}
+.service-icon{width:54px;height:54px;background:var(--violet-light);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;transition:all .3s;position:relative;z-index:1}
+.service-card:hover .service-icon{background:var(--violet)}
+.service-icon i{font-size:1.4rem;color:var(--violet);transition:color .3s}
+.service-card:hover .service-icon i{color:var(--white)}
+.service-card h3{font-size:1.3rem;font-weight:700;margin-bottom:.75rem;color:white;position:relative;z-index:1}
+.service-card p{font-size:.95rem;line-height:1.7;color:white;margin-bottom:1.5rem;position:relative;z-index:1}
+.service-pills{display:flex;flex-wrap:wrap;gap:.4rem;position:relative;z-index:1}
+.pill{font-size:.7rem;font-weight:700;letter-spacing:.05em;padding:.25rem .7rem;border-radius:50px;background:var(--violet-light);color:var(--violet)}
+.nosotros{padding:100px 5vw;background:var(--white);position:relative;z-index:1}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:3rem}
+.team-member{text-align:center}
+.team-member img{width:80%;aspect-ratio:1;object-fit:cover;border-radius:50%;margin:0 auto 1rem;border:2px solid var(--border);transition:all .3s}
+.team-member:hover img{transform:translateY(-5px);box-shadow:0 15px 35px rgba(0,0,0,.1);border-color:var(--violet)}
+.team-member h3{font-size:1.2rem;font-weight:700;margin-bottom:.5rem}
+.team-member .role{font-size:.85rem;color:var(--violet);font-weight:600;margin-bottom:.75rem}
+.team-member p{font-size:.9rem;color:var(--muted);line-height:1.6}
+.cases{padding:100px 5vw;background:var(--bg);position:relative;z-index:1}
+.cases-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:4rem;max-width:1100px;margin-left:auto;margin-right:auto}
+.case-card{border:1px solid var(--border);border-radius:20px;overflow:hidden;background:var(--white);transition:all .3s;display:flex;flex-direction:column}
+.case-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,.08);border-color:var(--violet-mid)}
+.case-img-placeholder{height:180px;background:linear-gradient(135deg,var(--violet) 0%,#8BA4FF 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.case-img-placeholder::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(255,255,255,.04) 0,rgba(255,255,255,.04) 1px,transparent 0,transparent 50%);background-size:20px 20px}
+.case-img-placeholder i{font-size:3rem;color:rgba(255,255,255,.5);position:relative;z-index:1}
+.case-body{padding:1.75rem;flex:1}
+.case-tag{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--violet);background:var(--violet-light);padding:.25rem .7rem;border-radius:50px;display:inline-block;margin-bottom:1rem}
+.case-body h3{font-size:1.2rem;font-weight:700;color:var(--ink);margin-bottom:.75rem}
+.case-body p{font-size:.9rem;line-height:1.65;color:var(--ink-soft);margin-bottom:1.5rem}
+.case-stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem;padding-top:1rem;border-top:1px solid var(--border)}
+.case-stat .num{display:block;font-size:2rem;font-weight:900;color:var(--violet);line-height:1}
+.case-stat .desc{font-size:.78rem;color:var(--muted);font-weight:500;margin-top:.2rem}
+.cta-band{margin:0 5vw;background:var(--violet);border-radius:24px;padding:70px 8%;display:flex;align-items:center;justify-content:space-between;gap:2rem;position:relative;overflow:hidden;z-index:1}
+.cta-band::before{content:'';position:absolute;right:-100px;top:-100px;width:400px;height:400px;background:rgba(255,255,255,.07);border-radius:50%}
+.cta-band-text{position:relative}
+.cta-band-text p{font-size:.85rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:.75rem}
+.cta-band-text h2{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.5rem);color:var(--white);line-height:1.2}
+.btn-white{flex-shrink:0;display:inline-flex;align-items:center;gap:.5rem;background:var(--white);color:var(--violet);padding:1rem 2.2rem;border-radius:50px;font-size:.9rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;transition:all .2s;white-space:nowrap;position:relative;box-shadow:0 6px 24px rgba(0,0,0,.15)}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,0,0,.2)}
+.contact{padding:100px 5vw;background:var(--white);position:relative;z-index:1}
+.contact-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1.4fr;gap:5rem;align-items:start}
+.contact-info .section-heading{margin-bottom:.75rem}
+.contact-info p{font-size:1rem;line-height:1.75;color:var(--ink-soft);margin-bottom:2.5rem}
+.contact-detail{display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem;color:var(--ink-soft)}
+.contact-detail-icon{width:42px;height:42px;background:var(--violet-light);border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.contact-detail-icon i{color:var(--violet);font-size:1rem}
+.contact-detail a{color:var(--ink-soft);font-weight:500;transition:color .2s}
+.contact-detail a:hover{color:var(--violet)}
+.contact-form{background:var(--bg);border:1px solid var(--border);border-radius:24px;padding:2.5rem}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.form-field{display:flex;flex-direction:column;gap:.4rem}
+.form-field.span-2{grid-column:span 2}
+.form-field label{font-size:.8rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.form-field input,.form-field select,.form-field textarea{padding:.85rem 1rem;border:1.5px solid var(--border);border-radius:10px;font-family:var(--sans);font-size:.95rem;color:var(--ink);background:var(--white);transition:all .2s;outline:none}
+.form-field input:focus,.form-field select:focus,.form-field textarea:focus{border-color:var(--violet);box-shadow:0 0 0 3px rgba(104,97,240,.12)}
+.form-field textarea{resize:vertical;min-height:110px}
+.form-field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%238C8FA8' d='M6 8L0 0h12z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center}
+.form-submit{grid-column:span 2;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.form-submit p{font-size:.8rem;color:var(--muted);flex:1}
+.btn-submit{display:inline-flex;align-items:center;gap:.6rem;background:var(--violet);color:var(--white);border:none;cursor:pointer;padding:1rem 2rem;border-radius:50px;font-family:var(--sans);font-size:.95rem;font-weight:700;transition:all .2s;box-shadow:0 4px 18px rgba(104,97,240,.3)}
+.btn-submit:hover{background:var(--violet-dark);transform:translateY(-2px);box-shadow:0 8px 28px rgba(104,97,240,.4)}
+.form-message{grid-column:span 2;padding:.9rem 1rem;border-radius:10px;font-size:.9rem;font-weight:500;display:none}
+.form-message.success{display:block;background:#dcfce7;color:#166534;border:1px solid #bbf7d0}
+.form-message.error{display:block;background:#fee2e2;color:#991b1b;border:1px solid #fecaca}
+.field-error{font-size:.75rem;color:#dc2626;font-weight:500}
+input.has-error,select.has-error,textarea.has-error{border-color:#dc2626;box-shadow:0 0 0 3px rgba(220,38,38,.1)}
+footer{background:var(--ink);color:rgba(255,255,255,.7);padding:60px 5vw 30px;position:relative;z-index:1}
+.footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:3rem;margin-bottom:3rem}
+.footer-brand img{height:36px;margin-bottom:1rem}
+.footer-brand p{font-size:.9rem;line-height:1.7;max-width:280px}
+.footer-col h4{font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--white);margin-bottom:1.25rem}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.7rem}
+.footer-col ul a{font-size:.9rem;color:rgba(255,255,255,.6);transition:color .2s}
+.footer-col ul a:hover{color:var(--white)}
+.footer-newsletter p{font-size:.9rem;line-height:1.6;margin-bottom:1rem}
+.newsletter-input{display:flex;gap:.5rem}
+.newsletter-input input{flex:1;padding:.7rem 1rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:8px;color:var(--white);font-family:var(--sans);font-size:.9rem;outline:none;transition:border .2s}
+.newsletter-input input::placeholder{color:rgba(255,255,255,.4)}
+.newsletter-input input:focus{border-color:var(--violet)}
+.newsletter-input button{padding:.7rem 1rem;background:var(--violet);color:var(--white);border:none;border-radius:8px;cursor:pointer;transition:background .2s}
+.newsletter-input button:hover{background:var(--violet-dark)}
+.footer-bottom{max-width:1100px;margin:0 auto;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:space-between;font-size:.85rem;gap:1rem;flex-wrap:wrap}
+.footer-socials{display:flex;gap:.75rem}
+.footer-socials a{width:36px;height:36px;background:rgba(255,255,255,.08);border-radius:8px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.7);transition:all .2s}
+.footer-socials a:hover{background:var(--violet);color:var(--white);transform:translateY(-2px)}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media (max-width:1024px){
+.hero-inner{grid-template-columns:1fr;gap:3rem}
+.hero-visual{max-width:460px}
+.contact-inner{grid-template-columns:1fr;gap:3rem}
+.cta-band{flex-direction:column;text-align:center}
+.team-grid{grid-template-columns:repeat(2,1fr)}
+.services-grid{grid-template-columns:1fr}
+.proceso-zigzag{flex-wrap:wrap;gap:3rem}
+.proceso-step{max-width:45%}
+.proceso-step.step-2,.proceso-step.step-4{margin-top:40px}
+.proceso-step:not(:last-child)::before{display:none}
+}
+@media (max-width:768px){
+nav{padding:0 4vw}
+.nav-links,.nav-cta{display:none}
+.hamburger{display:flex}
+.hero{padding:120px 4vw 60px}
+.hero-title{font-size:2.4rem}
+.services,.cases,.contact,.problemas,.nosotros,.proceso{padding:60px 4vw}
+.service-card{padding:1.6rem;min-height:420px}
+.form-grid{grid-template-columns:1fr}
+.form-field.span-2{grid-column:span 1}
+.form-submit{flex-direction:column}
+.form-submit p{display:none}
+.btn-submit{width:100%;justify-content:center}
+.cta-band{margin:0 4vw;padding:50px 6%}
+.footer-inner{grid-template-columns:1fr;gap:2rem}
+.footer-bottom{flex-direction:column;text-align:center}
+.team-grid{grid-template-columns:1fr}
+.proceso-zigzag{flex-direction:column;gap:2rem}
+.proceso-step{max-width:100%}
+.proceso-step.step-2,.proceso-step.step-4{margin-top:0}
+.step-circle{width:80px;height:80px}
+.step-number{font-size:2rem}
+}
+  </style>
+</head>
+<body>
+<nav id="nav">
+<a href="#" class="nav-logo"><img src="logo-ratio.svg" alt="Ratio Analytics"></a>
+<ul class="nav-links">
+<li><a href="#">Inicio</a></li>
+<li><a href="#problemas">Problemas</a></li>
+<li><a href="#proceso">Proceso</a></li>
+<li><a href="#servicios">Servicios</a></li>
+<li><a href="#nosotros">Nosotros</a></li>
+<li><a href="#casos">Casos</a></li>
+<li><a href="#contacto">Contacto</a></li>
+</ul>
+<a href="#contacto" class="nav-cta">Solicitar Consulta</a>
+<div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+<a href="#">Inicio</a>
+<a href="#problemas">Problemas</a>
+<a href="#proceso">Proceso</a>
+<a href="#servicios">Servicios</a>
+<a href="#nosotros">Nosotros</a>
+<a href="#casos">Casos</a>
+<a href="#contacto">Contacto</a>
+<a href="#contacto" class="nav-cta">Solicitar Consulta</a>
+</div>
+<section class="hero">
+<div class="hero-inner">
+<div class="hero-text">
+<div class="hero-eyebrow">Análisis de Datos & Automatización</div>
+<h1 class="hero-title">Transformamos <em>datos</em> en acciones</h1>
+<p class="hero-desc">Accionamos sobre los datos y procesos para la optimización y mejora de decisiones. Reducción de costos, optimización de tiempos y aumento de calidad.</p>
+<div class="hero-cta-card">
+<h3>¿Listo para transformar tu negocio?</h3>
+<div class="hero-buttons">
+<a href="#contacto" class="btn-primary">Solicitar diagnóstico<i class="fas fa-arrow-right"></i></a>
+<a href="#servicios" class="btn-ghost">¿Cómo trabajamos?</a>
+</div>
+</div>
+</div>
+<div class="hero-visual"><img src="dashboard operativo.jpg" alt="Análisis de datos" style="width:100%;height:500px;object-fit:cover;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.15);"></div>
+</div>
+</section>
+<section class="problemas reveal" id="problemas">
+<div style="max-width:1100px;margin:0 auto;">
+<div class="section-label">¿Qué problemas resolvemos?</div>
+<h2 class="section-heading">Transformamos tus <em>desafíos</em> en oportunidades</h2>
+<div class="problemas-grid">
+<div class="problema-item"><i class="fas fa-chart-line"></i><h3>Datos dispersos</h3><p>Información fragmentada en múltiples sistemas sin conexión que dificulta tener una visión integral del negocio</p></div>
+<div class="problema-item"><i class="fas fa-clock"></i><h3>Tiempo perdido</h3><p>Procesos manuales repetitivos que consumen horas valiosas que podrían dedicarse a tareas estratégicas</p></div>
+<div class="problema-item"><i class="fas fa-exclamation-triangle"></i><h3>Sin visibilidad</h3><p>Falta de acceso a información en tiempo real del negocio para tomar decisiones rápidas y efectivas</p></div>
+<div class="problema-item"><i class="fas fa-file-alt"></i><h3>Reportes obsoletos</h3><p>Información desactualizada que demora la toma de decisiones críticas y hace perder oportunidades</p></div>
+<div class="problema-item"><i class="fas fa-bug"></i><h3>Errores frecuentes</h3><p>Equivocaciones humanas en tareas repetitivas que afectan la calidad y generan retrabajo constante</p></div>
+<div class="problema-item"><i class="fas fa-question-circle"></i><h3>KPIs ocultos</h3><p>Dificultad para medir indicadores clave y resultados que impiden evaluar el rendimiento real</p></div>
+</div>
+</div>
+</section>
+<section class="proceso reveal" id="proceso">
+<div style="max-width:1200px;margin:0 auto;">
+<div class="section-label">Nuestro proceso</div>
+<h2 class="section-heading">Cómo <em>trabajamos</em></h2>
+<p style="color:var(--muted);max-width:600px;margin:1rem 0 4rem;">Trabajamos en 4 etapas claras para garantizar resultados medibles</p>
+<div class="proceso-zigzag">
+<div class="proceso-step step-1"><div class="step-circle"><span class="step-number">1</span></div><div class="step-content"><h4>Detección y Diagnóstico</h4><p>Analizamos tu situación actual, identificamos problemas y oportunidades de mejora.</p></div></div>
+<div class="proceso-step step-2"><div class="step-circle"><span class="step-number">2</span></div><div class="step-content"><h4>Propuesta y Evaluación</h4><p>Presentamos soluciones personalizadas con roadmap claro y objetivos medibles.</p></div></div>
+<div class="proceso-step step-3"><div class="step-circle"><span class="step-number">3</span></div><div class="step-content"><h4>Ejecución del Proyecto</h4><p>Implementamos la solución con seguimiento constante y comunicación fluida.</p></div></div>
+<div class="proceso-step step-4"><div class="step-circle"><span class="step-number">4</span></div><div class="step-content"><h4>Evaluación de Resultados</h4><p>Medimos el impacto, ajustamos lo necesario y aseguramos el éxito continuo.</p></div></div>
+</div>
+</div>
+</section>
+<section class="services reveal" id="servicios">
+<div style="max-width:1100px;margin:0 auto;">
+<div class="section-label">Nuestros Servicios</div>
+<h2 class="section-heading">Soluciones que <em>impulsan</em> resultados</h2>
+<p class="section-sub">Combinamos análisis avanzado con automatización inteligente para transformar la manera en que tu negocio toma decisiones.</p>
+<div class="services-grid">
+<div class="service-card reveal"><div class="service-bg" style="background-image:url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop');"></div><div class="service-icon"><i class="fas fa-chart-pie"></i></div><h3>Dashboards Ejecutivos</h3><p>Visualizaciones interactivas y KPIs en tiempo real. Dashboards que integran múltiples fuentes y dan visibilidad 360° del negocio.</p><div class="service-pills"><span class="pill">Tiempo real</span><span class="pill">KPIs</span><span class="pill">Multi-fuente</span></div></div>
+<div class="service-card reveal"><div class="service-bg" style="background-image:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop');"></div><div class="service-icon"><i class="fas fa-gauge-high"></i></div><h3>Dashboards Operativos</h3><p>Monitoreo continuo de operaciones. Alertas inteligentes para identificar y resolver problemas antes de que impacten el negocio.</p><div class="service-pills"><span class="pill">Monitoreo 24/7</span><span class="pill">Alertas</span><span class="pill">Predictivo</span></div></div>
+<div class="service-card reveal"><div class="service-bg" style="background-image:url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=600&fit=crop');"></div><div class="service-icon"><i class="fas fa-robot"></i></div><h3>Automatización de Procesos</h3><p>Eliminamos tareas repetitivas y liberamos tiempo. Automatización que aumenta la productividad y reduce errores humanos.</p><div class="service-pills"><span class="pill">Procesos auto</span><span class="pill">Sin errores</span><span class="pill">Ahorro tiempo</span></div></div>
+</div>
+</div>
+</section>
+<section class="nosotros reveal" id="nosotros">
+<div style="max-width:1100px;margin:0 auto;">
+<div class="section-label">Nuestro Equipo</div>
+<h2 class="section-heading">Quiénes <em>somos</em></h2>
+<p class="section-sub">Profesionales apasionados por transformar datos en resultados medibles.</p>
+<div class="team-grid">
+<div class="team-member"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop" alt="Equipo"><h3>Nombre Apellido</h3><p class="role">Co-fundador & CEO</p><p>Experto en análisis de datos con más de 10 años de experiencia ayudando a empresas a tomar mejores decisiones.</p></div>
+<div class="team-member"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop" alt="Equipo"><h3>Nombre Apellido</h3><p class="role">Co-fundador & CTO</p><p>Especialista en automatización y desarrollo de dashboards ejecutivos para optimización de procesos.</p></div>
+<div class="team-member" style="opacity:0;pointer-events:none;"></div>
+<div class="team-member" style="opacity:0;pointer-events:none;"></div>
+</div>
+</div>
+</section>
+<section class="cases reveal" id="casos">
+<div style="max-width:1100px;margin:0 auto;">
+<div class="section-label">Casos de Éxito</div>
+<h2 class="section-heading">Resultados que <em>hablan</em> por sí mismos</h2>
+<p class="section-sub">Empresas de distintas industrias ya transformaron sus datos en ventajas competitivas.</p>
+<div class="cases-grid">
+<div class="case-card reveal"><div class="case-img-placeholder" style="background:linear-gradient(135deg,#6861f0,#8BA4FF);"><i class="fas fa-store"></i></div><div class="case-body"><span class="case-tag">Retail</span><h3>Optimización de Inventario</h3><p>Dashboard predictivo que redujo costos de inventario y mejoró la disponibilidad de productos en una cadena de retail.</p><div class="case-stats"><div class="case-stat"><span class="num">-35%</span><span class="desc">Reducción de costos</span></div><div class="case-stat"><span class="num">+28%</span><span class="desc">Disponibilidad producto</span></div></div></div></div>
+<div class="case-card reveal"><div class="case-img-placeholder" style="background:linear-gradient(135deg,#3A5CE0,#6861f0);"><i class="fas fa-industry"></i></div><div class="case-body"><span class="case-tag">Manufactura</span><h3>Automatización de Reportes</h3><p>Automatización de procesos de reporting que eliminó 120 horas mensuales de trabajo manual y casi eliminó errores.</p><div class="case-stats"><div class="case-stat"><span class="num">-120h</span><span class="desc">Ahorro mensual</span></div><div class="case-stat"><span class="num">-98%</span><span class="desc">Reducción de errores</span></div></div></div></div>
+<div class="case-card reveal"><div class="case-img-placeholder" style="background:linear-gradient(135deg,#7B9AFF,#6861f0);"><i class="fas fa-laptop-code"></i></div><div class="case-body"><span class="case-tag">E-commerce</span><h3>Dashboard de Ventas 360°</h3><p>Unificación de datos de 5 plataformas en un único dashboard, mejorando la visibilidad y tiempo de respuesta.</p><div class="case-stats"><div class="case-stat"><span class="num">5x</span><span class="desc">Más rápido</span></div><div class="case-stat"><span class="num">+45%</span><span class="desc">Eficiencia operativa</span></div></div></div></div>
+<div class="case-card reveal"><div class="case-img-placeholder" style="background:linear-gradient(135deg,#4A6AE8,#7B9AFF);"><i class="fas fa-truck"></i></div><div class="case-body"><span class="case-tag">Logística</span><h3>Optimización de Rutas</h3><p>Sistema de análisis que optimizó rutas de distribución reduciendo tiempos de entrega y costos operativos significativamente.</p><div class="case-stats"><div class="case-stat"><span class="num">-42%</span><span class="desc">Tiempo de entrega</span></div><div class="case-stat"><span class="num">-30%</span><span class="desc">Costos operativos</span></div></div></div></div>
+</div>
+</div>
+</section>
+<div class="cta-band reveal">
+<div class="cta-band-text"><p>¿Listo para empezar?</p><h2>Transformá tu negocio con el poder de los datos</h2></div>
+<a href="#contacto" class="btn-white">Hablar con nosotros <i class="fas fa-arrow-right"></i></a>
+</div>
+<section class="contact reveal" id="contacto">
+<div class="contact-inner">
+<div class="contact-info">
+<div class="section-label">Contacto</div>
+<h2 class="section-heading">¿Tenés un <em>proyecto</em> en mente?</h2>
+<p>Contanos sobre tu negocio y descubrí cómo podemos ayudarte a alcanzar tus objetivos a través del análisis de datos y la automatización.</p>
+<div class="contact-detail">
+<div class="contact-detail-icon"><i class="fab fa-whatsapp"></i></div>
+<div><a href="https://wa.me/5491123456789?text=Hola%20Ratio%20Analytics" target="_blank">Contactar por WhatsApp</a></div>
+</div>
+</div>
+<form class="contact-form" id="contact-form" name="contacto" method="POST" data-netlify="true" novalidate>
+<input type="hidden" name="form-name" value="contacto">
+<div class="form-grid">
+<div class="form-field"><label for="name">Nombre *</label><input type="text" id="name" name="name" placeholder="Tu nombre completo"><span class="field-error" id="name-error"></span></div>
+<div class="form-field"><label for="email">Email *</label><input type="email" id="email" name="email" placeholder="tu@email.com"><span class="field-error" id="email-error"></span></div>
+<div class="form-field"><label for="company">Empresa</label><input type="text" id="company" name="company" placeholder="Nombre de tu empresa"></div>
+<div class="form-field"><label for="phone">Teléfono</label><input type="tel" id="phone" name="phone" placeholder="+54 9 ..."></div>
+<div class="form-field span-2"><label for="service">Servicio de interés</label><select id="service" name="service"><option value="">Seleccioná una opción</option><option value="dashboard-ejecutivo">Dashboard Ejecutivo</option><option value="dashboard-operativo">Dashboard Operativo</option><option value="automatizacion">Automatización de Procesos</option><option value="consultoria">Consultoría General</option></select></div>
+<div class="form-field span-2"><label for="message">Mensaje *</label><textarea id="message" name="message" placeholder="Contanos sobre tu proyecto..."></textarea><span class="field-error" id="message-error"></span></div>
+<div class="form-submit"><p>Te respondemos en menos de 24hs hábiles.</p><button type="submit" class="btn-submit">Enviar Mensaje <i class="fas fa-paper-plane"></i></button></div>
+<div class="form-message" id="form-message"></div>
+</div>
+</form>
+</div>
+</section>
+<footer>
+<div class="footer-inner">
+<div class="footer-brand"><img src="logo-ratio.svg" alt="Ratio Analytics"><p>Transformamos datos en acciones. Soluciones de análisis y automatización para impulsar el crecimiento de tu negocio.</p></div>
+<div class="footer-col"><h4>Sitio</h4><ul><li><a href="#">Inicio</a></li><li><a href="#problemas">Problemas</a></li><li><a href="#proceso">Proceso</a></li><li><a href="#servicios">Servicios</a></li><li><a href="#nosotros">Nosotros</a></li><li><a href="#casos">Casos</a></li><li><a href="#contacto">Contacto</a></li></ul></div>
+<div class="footer-col"><h4>Servicios</h4><ul><li><a href="#servicios">Dashboards Ejecutivos</a></li><li><a href="#servicios">Dashboards Operativos</a></li><li><a href="#servicios">Automatización</a></li></ul></div>
+<div class="footer-newsletter"><h4>Newsletter</h4><p>Insights y novedades sobre análisis de datos.</p><div class="newsletter-input"><input type="email" placeholder="tu@email.com"><button><i class="fas fa-arrow-right"></i></button></div></div>
+</div>
+<div class="footer-bottom"><span>© 2024 Ratio Analytics · Todos los derechos reservados</span><div class="footer-socials"><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-instagram"></i></a></div></div>
+</footer>
+<script>
+const nav=document.getElementById('nav');let lastScroll=0;window.addEventListener('scroll',()=>{const currentScroll=window.scrollY;if(currentScroll>30)nav.classList.add('scrolled');else nav.classList.remove('scrolled');if(currentScroll>lastScroll&&currentScroll>100)nav.style.transform='translateY(-100%)';else nav.style.transform='translateY(0)';lastScroll=currentScroll});
+const hamburger=document.getElementById('hamburger');const mobileMenu=document.getElementById('mobile-menu');hamburger.addEventListener('click',()=>{mobileMenu.classList.toggle('open');const spans=hamburger.querySelectorAll('span');spans[0].style.transform=mobileMenu.classList.contains('open')?'translateY(7px) rotate(45deg)':'';spans[1].style.opacity=mobileMenu.classList.contains('open')?'0':'1';spans[2].style.transform=mobileMenu.classList.contains('open')?'translateY(-7px) rotate(-45deg)':''});
+mobileMenu.querySelectorAll('a').forEach(a=>{a.addEventListener('click',()=>{mobileMenu.classList.remove('open');hamburger.querySelectorAll('span').forEach(s=>{s.style.transform='';s.style.opacity='1'})})});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const target=document.querySelector(a.getAttribute('href'));if(target){e.preventDefault();target.scrollIntoView({behavior:'smooth',block:'start'})}})});
+const reveals=document.querySelectorAll('.reveal');const revealObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revealObs.unobserve(e.target)}})},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});reveals.forEach(el=>revealObs.observe(el));
+document.querySelectorAll('.service-card, .case-card').forEach((el,i)=>{el.style.transitionDelay=(i%3)*0.12+'s'});
+const form=document.getElementById('contact-form');const msg=document.getElementById('form-message');
+if(form&&msg){function setErr(id,txt){const el=document.getElementById(id+'-error');const inp=document.getElementById(id);if(!el)return;el.textContent=txt;if(txt)inp.classList.add('has-error');else inp.classList.remove('has-error')}
+form.addEventListener('submit',async e=>{e.preventDefault();const name=form.name.value.trim();const email=form.email.value.trim();const message=form.message.value.trim();setErr('name',!name?'Este campo es requerido.':'');setErr('email',!email?'Este campo es requerido.':/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)?'':'Email inválido.');setErr('message',!message?'Este campo es requerido.':message.length<10?'Mínimo 10 caracteres.':'');if(!name||!email||!message||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)||message.length<10)return;const btn=form.querySelector('.btn-submit');btn.disabled=true;btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Enviando…';try{const response=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(form)).toString()});if(response.ok){msg.className='form-message success';msg.textContent='✓ ¡Mensaje enviado! Te respondemos en menos de 24hs hábiles.';form.reset()}else{throw new Error('Error en el envío')}}catch(error){msg.className='form-message error';msg.textContent='✗ Hubo un error. Por favor intentá nuevamente.'}finally{btn.disabled=false;btn.innerHTML='Enviar Mensaje <i class="fas fa-paper-plane"></i>';setTimeout(()=>msg.className='form-message',6000)}});
+['name','email','message'].forEach(id=>{document.getElementById(id)?.addEventListener('input',()=>setErr(id,''))})}
+</script>
+</body>
+</html>

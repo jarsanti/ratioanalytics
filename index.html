@@ -7,7 +7,7 @@
   <title>Ratio Analytics — Transformamos Datos en Acciones</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700;900&family=Sansation&display=swap"
-    rel="stylesheet">
+    rel="sty  lesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     /* =====================
@@ -193,7 +193,7 @@
    HERO
    ===================== */
     .hero {
-      padding: 160px 5vw 100px;
+      padding: 90px 5vw 100px;
       background: var(--white);
       position: relative;
       overflow: hidden;
@@ -215,8 +215,16 @@
       margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
+      gap: 1rem;
+      align-items: stretch;
+      /* ← CAMBIAR de center a stretch */
+    }
+
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      /* Este es el espacio entre tarjeta blanca y violeta */
     }
 
     .hero-eyebrow {
@@ -278,9 +286,9 @@
 
     .hero-cta-card {
       background: var(--violet-dark);
-      padding: 2rem 2.5rem;
+      padding: 3rem 2.5rem;
       border-radius: 20px;
-      margin-bottom: 2rem;
+      margin-bottom: 0rem;
       box-shadow:
         0 20px 40px rgba(91, 126, 255, .4),
         inset 0 1px 0 rgba(255, 255, 255, .2);
@@ -403,6 +411,16 @@
     /* Hero visual panel */
     .hero-visual {
       position: relative;
+      display: flex;
+      /* ← AGREGAR */
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, .15);
     }
 
     .hero-panel {
@@ -577,6 +595,495 @@
       color: var(--violet);
     }
 
+    /* =====================
+   PROBLEMAS
+   ===================== */
+    .problemas {
+      padding: 52px 0;
+      background: var(--bg);
+      position: relative;
+      z-index: 1;
+    }
+
+    .problemas-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      /* ← 5 columnas fijas */
+      gap: 1rem;
+      /* ← Gap más chico */
+      margin-top: 3rem;
+    }
+
+    .problema-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1rem;
+      padding: 2rem 1.5rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      transition: all .3s;
+    }
+
+    .problema-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, .08);
+      border-color: var(--violet-mid);
+      background: var(--white);
+    }
+
+    .problema-item i {
+      font-size: 2.5rem;
+      color: var(--violet);
+      flex-shrink: 0;
+      transition: transform .3s;
+    }
+
+    .problema-item:hover i {
+      transform: scale(1.1);
+    }
+
+    .problema-item h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 0;
+    }
+
+    .problema-item p {
+      font-size: .9rem;
+      line-height: 1.6;
+      color: var(--ink-soft);
+      margin: 0;
+    }
+
+    .problema-icon-circle {
+      width: 80px;
+      height: 80px;
+      min-width: 80px;
+      background: #3fb57a;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(10px);
+    }
+
+    .problema-icon-circle i {
+      font-size: 2.5rem;
+      color: white;
+    }
+
+    .problema-content {
+      flex: 1;
+    }
+
+    .problema-item-v1 {
+      position: relative;
+      margin: 20px;
+    }
+
+    /* Rectángulo gris de atrás */
+    .problema-item-v1::before {
+      content: '';
+      position: absolute;
+      top: -8px;
+      left: -8px;
+      right: 8px;
+      bottom: 8px;
+      background: #d1d5db;
+      border-radius: 20px;
+      z-index: 0;
+    }
+
+    /* Rectángulo violeta de adelante */
+    .problema-item-v1-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      padding: 2rem;
+      background: linear-gradient(135deg, #6861f0 0%, #8b7ff5 100%);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(104, 97, 240, .3);
+      transition: all .3s;
+    }
+
+    .problema-item-v1:hover .problema-item-v1-inner {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(104, 97, 240, .4);
+    }
+
+    .problema-item-v1:hover::before {
+      top: -10px;
+      left: -10px;
+    }
+
+    .problema-icon-circle-v1 {
+      width: 80px;
+      height: 80px;
+      min-width: 80px;
+      background: rgba(255, 255, 255, .2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(10px);
+    }
+
+    .problema-icon-circle-v1 i {
+      font-size: 2.5rem;
+      color: white;
+    }
+
+    .problema-content-v1 {
+      flex: 1;
+    }
+
+    .problema-item-v1 h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: white;
+      margin: 0 0 .75rem 0;
+    }
+
+    .problema-item-v1 p {
+      font-size: .95rem;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, .9);
+      margin: 0;
+    }
+
+
+    .problema-item-v2 {
+      position: relative;
+      margin: 20px;
+    }
+
+    /* Rectángulo violeta de atrás */
+    .problema-item-v2::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: 2px;
+      bottom: 2px;
+      background: var(--violet);
+      border-radius: 20px;
+      z-index: 0;
+    }
+
+    /* Rectángulo blanco de adelante */
+    .problema-item-v2::after {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      right: -8px;
+      bottom: -8px;
+      background: white;
+      border: 2px solid black;
+      border-radius: 20px;
+      z-index: 1;
+    }
+
+    /* Contenido */
+    .problema-item-v2-inner {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      /* ← Centrado vertical */
+      gap: 2rem;
+      /* ← Más espacio entre ícono y texto */
+      padding: 1.2rem 2.5rem;
+      /* ← Menos arriba/abajo, más a los lados */
+    }
+
+    .problema-icon-circle-v2 {
+      width: 70px;
+      height: 70px;
+      min-width: 70px;
+      background: #3fb57a;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .problema-icon-circle-v2 i {
+      font-size: 2rem;
+      color: white;
+    }
+
+    .problema-content-v2 {
+      flex: 1;
+      position: relative;
+      z-index: 1;
+      max-width: 250px;
+      /* ← Ancho fijo para el texto */
+    }
+
+    .problema-item-v2 h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 0 0 .5rem 0;
+    }
+
+    .problema-item-v2 p {
+      font-size: .9rem;
+      line-height: 1.6;
+      color: var(--ink-soft);
+      margin: 0;
+    }
+
+
+
+    .problema-item-v2:hover::after {
+      top: 10px;
+      left: 10px;
+    }
+
+
+    /* Contenedor del carrusel */
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      /* ← Ancho completo */
+      margin: 3rem 0 0;
+      padding: 0 2rem;
+      /* ← Padding a los lados para los botones */
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    /* Wrapper para ocultar desbordamiento */
+    .carousel-wrapper {
+      overflow: hidden;
+      flex: 1;
+      border-radius: 20px;
+    }
+
+    /* Carrusel con las tarjetas */
+    .problemas-carousel {
+      display: flex;
+      gap: 1.5rem;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .problemas-carousel .problema-item-v2 {
+      min-width: calc((100% - 3rem) / 3);
+      /* 3 tarjetas visibles */
+      flex-shrink: 0;
+    }
+
+    /* Botones de navegación */
+    .carousel-btn {
+      width: 50px;
+      height: 50px;
+      background: var(--violet);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      transition: all .3s;
+      box-shadow: 0 4px 15px rgba(104, 97, 240, .3);
+      flex-shrink: 0;
+    }
+
+    .carousel-btn:hover {
+      background: var(--violet-dark);
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(104, 97, 240, .5);
+    }
+
+    .carousel-btn:active {
+      transform: scale(0.95);
+    }
+
+    /* Dots de navegación */
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: .5rem;
+      margin-top: 2rem;
+    }
+
+    .carousel-dot {
+      width: 10px;
+      height: 10px;
+      background: var(--border);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all .3s;
+    }
+
+    .carousel-dot.active {
+      background: var(--violet);
+      width: 30px;
+      border-radius: 5px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .problemas-carousel .problema-item-v2 {
+        min-width: 100%;
+        /* 1 tarjeta en móvil */
+      }
+
+      .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+      }
+    }
+
+    /* =====================
+   PROCESO
+   ===================== */
+    .proceso {
+      padding: 100px 5vw;
+      background: var(--bg);
+    }
+
+    .proceso-zigzag {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .proceso-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      flex: 1;
+      max-width: 250px;
+    }
+
+    .proceso-step.step-1,
+    .proceso-step.step-3 {
+      margin-top: 0;
+    }
+
+    .proceso-step.step-2,
+    .proceso-step.step-4 {
+      margin-top: 80px;
+    }
+
+    .step-circle {
+      width: 100px;
+      height: 100px;
+      background: var(--violet);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 8px 24px rgba(91, 126, 255, .3);
+      position: relative;
+      z-index: 2;
+      margin-bottom: 1.5rem;
+    }
+
+    .step-number {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--white);
+      font-family: var(--serif);
+    }
+
+    /* Líneas conectoras horizontales */
+    .proceso-step:not(:last-child) .step-circle::after {
+      content: '';
+      position: absolute;
+      width: 100px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--violet) 0%, var(--violet-mid) 100%);
+      top: 50%;
+      left: 100%;
+      transform: translateY(-50%);
+      z-index: 1;
+    }
+
+    .step-content {
+      flex: 1;
+    }
+
+    .step-content h4 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: .75rem;
+    }
+
+    .step-content p {
+      font-size: .9rem;
+      line-height: 1.6;
+      color: var(--ink-soft);
+      margin: 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .proceso-zigzag {
+        flex-wrap: wrap;
+        gap: 3rem;
+      }
+
+      .proceso-step {
+        max-width: 45%;
+      }
+
+      .proceso-step.step-2,
+      .proceso-step.step-4 {
+        margin-top: 40px;
+      }
+
+      .proceso-step:not(:last-child) .step-circle::after {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .proceso-zigzag {
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .proceso-step {
+        max-width: 100%;
+      }
+
+      .proceso-step.step-2,
+      .proceso-step.step-4 {
+        margin-top: 0;
+      }
+
+      .step-circle {
+        width: 80px;
+        height: 80px;
+      }
+
+      .step-number {
+        font-size: 2rem;
+      }
+    }
 
     /* =====================
    SERVICES
@@ -739,7 +1246,7 @@
       width: 100%;
       aspect-ratio: 1;
       object-fit: cover;
-      border-radius: 20px;
+      border-radius: 50%;
       margin-bottom: 1rem;
     }
 
@@ -1331,10 +1838,6 @@
         gap: 3rem;
       }
 
-      .footer-inner {
-        grid-template-columns: 1fr 1fr;
-      }
-
       .cta-band {
         flex-direction: column;
         text-align: center;
@@ -1365,7 +1868,8 @@
 
       .services,
       .cases,
-      .contact {
+      .contact,
+      .problemas-proceso {
         padding: 60px 4vw;
       }
 
@@ -1374,42 +1878,41 @@
         min-height: 420px;
       }
 
-    }
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
 
-    .form-grid {
-      grid-template-columns: 1fr;
-    }
+      .form-field.span-2 {
+        grid-column: span 1;
+      }
 
-    .form-field.span-2 {
-      grid-column: span 1;
-    }
+      .form-submit {
+        flex-direction: column;
+      }
 
-    .form-submit {
-      flex-direction: column;
-    }
+      .form-submit p {
+        display: none;
+      }
 
-    .form-submit p {
-      display: none;
-    }
+      .btn-submit {
+        width: 100%;
+        justify-content: center;
+      }
 
-    .btn-submit {
-      width: 100%;
-      justify-content: center;
-    }
+      .cta-band {
+        margin: 0 4vw;
+        padding: 50px 6%;
+      }
 
-    .cta-band {
-      margin: 0 4vw;
-      padding: 50px 6%;
-    }
+      .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
 
-    .footer-inner {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-
-    .footer-bottom {
-      flex-direction: column;
-      text-align: center;
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
     }
   </style>
 </head>
@@ -1419,13 +1922,15 @@
   <!-- NAV -->
   <nav id="nav">
     <a href="#" class="nav-logo">
-      <img src="logo-ratio.svg" alt="Ratio Analytics" style="height: 60px; width: auto;">
+      <img src="logo-ratio.svg" alt="Ratio Analytics" style="height: 50px; width: auto;">
     </a>
     <ul class="nav-links">
       <li><a href="#">Inicio</a></li>
-      <li><a href="#servicios">Soluciones</a></li>
-      <li><a href="#casos">Nosotros</a></li>
+      <li><a href="#problemas">Problemas</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#proceso">Proceso</a></li>
       <li><a href="#contacto">Contacto</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
     </ul>
     <a href="#contacto" class="nav-cta">Solicitar Diagnóstico</a>
     <div class="hamburger" id="hamburger">
@@ -1436,9 +1941,11 @@
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobile-menu">
     <a href="#">Inicio</a>
-    <a href="#servicios">Soluciones</a>
-    <a href="#casos">Nosotros</a>
+    <a href="#problemas">Problemas</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#proceso">Proceso</a>
     <a href="#contacto">Contacto</a>
+    <a href="#nosotros">Nosotros</a>
     <a href="#contacto" class="nav-cta">Solicitar Consulta</a>
   </div>
 
@@ -1446,14 +1953,16 @@
   <section class="hero">
     <div class="hero-inner">
       <div class="hero-text">
-        <div class="hero-eyebrow">Análisis de Datos & Automatización</div>
-        <h1 class="hero-title">
-          Transformamos <em>datos</em> en acciones
-        </h1>
-        <p class="hero-desc">
-          Accionamos sobre los datos y procesos para la optimización y mejora de decisiones.
-          Reducción de costos, optimización de tiempos y aumento de calidad.
-        </p>
+        <div
+          style="background: #E3E1E1; padding: 4rem 4rem; border-radius: 20px; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,.08);">
+          <h1 class="hero-title" style="margin-bottom: 4rem;">
+            Transformamos <em>datos</em> en acciones
+          </h1>
+          <p class="hero-desc" style="margin-bottom: 0;">
+            Accionamos sobre los datos y procesos para la optimización y mejora de decisiones.
+            Reducción de costos, optimización de tiempos y aumento de calidad.
+          </p>
+        </div>
         <div class="hero-cta-card">
           <h3>¿Listo para transformar tu negocio?</h3>
           <div class="hero-buttons">
@@ -1464,15 +1973,111 @@
       </div>
 
       <div class="hero-visual">
-        <img src="dashboard operativo.jpg" alt="Análisis de datos"
-          style="width: 100%; height: 520px; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,.15);">
+        <img src="imagen-principal.jpeg" alt="Análisis de datos"
+          style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,.15);">
       </div>
     </div>
   </section>
 
+  <!-- PROBLEMAS -->
+  <section class="problemas reveal" id="problemas">
+    <!-- Contenedor para títulos con max-width -->
+    <div style="max-width:1100px;margin:0 auto;padding:0 5vw;">
+      <div class="section-label">¿Qué problemas resolvemos?</div>
+      <h2 class="section-heading">Transformamos tus <em>desafíos</em> en oportunidades</h2>
+    </div>
 
+    <!-- Carrusel SIN max-width, ocupa todo el ancho -->
+    <div class="carousel-container">
+      <button class="carousel-btn prev" onclick="moveCarousel(-1)">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+
+      <div class="carousel-wrapper">
+        <div class="problemas-carousel">
+          <div class="problema-item-v2">
+            <div class="problema-item-v2-inner">
+              <div class="problema-icon-circle-v2">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <div class="problema-content-v2">
+                <h3>Datos dispersos</h3>
+                <p>Falta de visión global del negocio y estado de las operaciones</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="problema-item-v2">
+            <div class="problema-item-v2-inner">
+              <div class="problema-icon-circle-v2">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="problema-content-v2">
+                <h3>Tiempo perdido</h3>
+                <p>Procesos manuales repetitivos de bajo valor agregado</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="problema-item-v2">
+            <div class="problema-item-v2-inner">
+              <div class="problema-icon-circle-v2">
+                <i class="fas fa-exclamation-triangle"></i>
+              </div>
+              <div class="problema-content-v2">
+                <h3>Sin visibilidad</h3>
+                <p>Falta de acceso a información en tiempo real del negocio para tomar decisiones rápidas</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="problema-item-v2">
+            <div class="problema-item-v2-inner">
+              <div class="problema-icon-circle-v2">
+                <i class="fas fa-file-alt"></i>
+              </div>
+              <div class="problema-content-v2">
+                <h3>Reportes obsoletos</h3>
+                <p>Información desactualizada que demora la toma de decisiones críticas</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="problema-item-v2">
+            <div class="problema-item-v2-inner">
+              <div class="problema-icon-circle-v2">
+                <i class="fas fa-bug"></i>
+              </div>
+              <div class="problema-content-v2">
+                <h3>Errores frecuentes</h3>
+                <p>Errores que afectan la calidad y generan retrabajo</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="problema-item-v2">
+            <div class="problema-item-v2-inner">
+              <div class="problema-icon-circle-v2">
+                <i class="fas fa-question-circle"></i>
+              </div>
+              <div class="problema-content-v2">
+                <h3>KPIs ocultos</h3>
+                <p>Falta indicadores clave que impiden evaluar el rendimiento y las mejoras</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="carousel-btn next" onclick="moveCarousel(1)">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+
+    <div class="carousel-dots" id="carousel-dots"></div>
+  </section>
   <!-- SERVICES -->
-  <section class="services reveal" id="servicios">
+  <section class="services reveal" id="servicios" style="background:var(--white);">
     <div style="max-width:1100px;margin:0 auto;">
       <div class="section-label">Nuestros Servicios</div>
       <h2 class="section-heading">Soluciones que <em>impulsan</em> resultados</h2>
@@ -1524,112 +2129,61 @@
     </div>
   </section>
 
-  <!-- NOSOTROS -->
-  <section class="nosotros" id="nosotros">
-    <div style="max-width:1100px;margin:0 auto;">
-      <div class="section-label">Nuestro Equipo</div>
-      <h2 class="section-heading">Quiénes <em>somos</em></h2>
+  <!-- PROCESO -->
+  <section class="proceso reveal" id="proceso" style="background:var(--bg);">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div class="section-label">Nuestro proceso</div>
+      <h2 class="section-heading">Cómo <em>trabajamos</em></h2>
+      <p style="color:var(--muted);max-width:600px;margin:1rem 0 4rem;">
+        Trabajamos en 4 etapas claras para garantizar resultados medibles
+      </p>
 
-      <div class="team-grid">
-        <div class="team-member">
-          <img src="foto-jardiel.jpg" alt="Jardiel Santi">
-          <h3>Nombre Apellido</h3>
-          <p class="role">Co-fundador & CEO</p>
-          <p>Breve descripción de la persona y su rol en la empresa.</p>
-        </div>
-
-        <div class="team-member">
-          <img src="foto-julian.jpg" alt="Julian Troscé">
-          <h3>Nombre Apellido</h3>
-          <p class="role">Co-fundador & CTO</p>
-          <p>Breve descripción de la persona y su rol en la empresa.</p>
-        </div>
-
-        <!-- Duplicá estos dos si querés llenar las 4 columnas -->
-        <div class="team-member"></div>
-        <div class="team-member"></div>
-      </div>
-    </div>
-  </section>
-  <!-- CASES -->
-  <section style="padding:100px 5vw;background:var(--white);" id="casos">
-    <div class="cases">
-      <div class="section-label">Casos de Éxito</div>
-      <h2 class="section-heading">Resultados que <em>hablan</em> por sí mismos</h2>
-      <p class="section-sub">Empresas de distintas industrias ya transformaron sus datos en ventajas competitivas.</p>
-
-      <div class="cases-grid">
-        <div class="case-card reveal">
-          <div class="case-img-placeholder" style="background:linear-gradient(135deg,#5B7EFF,#8BA4FF);">
-            <i class="fas fa-store"></i>
+      <div class="proceso-zigzag">
+        <div class="proceso-step step-1">
+          <div class="step-circle">
+            <span class="step-number">1</span>
           </div>
-          <div class="case-body">
-            <span class="case-tag">Retail</span>
-            <h3>Optimización de Inventario</h3>
-            <p>Dashboard predictivo que redujo costos de inventario y mejoró la disponibilidad de productos en una
-              cadena de retail.</p>
-            <div class="case-stats">
-              <div class="case-stat"><span class="num">-35%</span><span class="desc">Reducción de costos</span></div>
-              <div class="case-stat"><span class="num">+28%</span><span class="desc">Disponibilidad producto</span>
-              </div>
-            </div>
+          <div class="step-content">
+            <h4>Detección y Diagnóstico</h4>
+            <p>Analizamos tu situación actual, identificamos problemas y oportunidades de mejora.</p>
           </div>
         </div>
 
-        <div class="case-card reveal">
-          <div class="case-img-placeholder" style="background:linear-gradient(135deg,#3A5CE0,#5B7EFF);">
-            <i class="fas fa-industry"></i>
+        <div class="proceso-step step-2">
+          <div class="step-circle">
+            <span class="step-number">2</span>
           </div>
-          <div class="case-body">
-            <span class="case-tag">Manufactura</span>
-            <h3>Automatización de Reportes</h3>
-            <p>Automatización de procesos de reporting que eliminó 120 horas mensuales de trabajo manual y casi eliminó
-              errores.</p>
-            <div class="case-stats">
-              <div class="case-stat"><span class="num">-120h</span><span class="desc">Ahorro mensual</span></div>
-              <div class="case-stat"><span class="num">-98%</span><span class="desc">Reducción de errores</span></div>
-            </div>
+          <div class="step-content">
+            <h4>Propuesta y Evaluación</h4>
+            <p>Presentamos soluciones personalizadas con roadmap claro y objetivos medibles.</p>
           </div>
         </div>
 
-        <div class="case-card reveal">
-          <div class="case-img-placeholder" style="background:linear-gradient(135deg,#7B9AFF,#5B7EFF);">
-            <i class="fas fa-laptop-code"></i>
+        <div class="proceso-step step-3">
+          <div class="step-circle">
+            <span class="step-number">3</span>
           </div>
-          <div class="case-body">
-            <span class="case-tag">E-commerce</span>
-            <h3>Dashboard de Ventas 360°</h3>
-            <p>Unificación de datos de 5 plataformas en un único dashboard, mejorando la visibilidad y tiempo de
-              respuesta.</p>
-            <div class="case-stats">
-              <div class="case-stat"><span class="num">5x</span><span class="desc">Más rápido</span></div>
-              <div class="case-stat"><span class="num">+45%</span><span class="desc">Eficiencia operativa</span></div>
-            </div>
+          <div class="step-content">
+            <h4>Ejecución del Proyecto</h4>
+            <p>Implementamos la solución con seguimiento constante y comunicación fluida.</p>
           </div>
         </div>
 
-        <div class="case-card reveal">
-          <div class="case-img-placeholder" style="background:linear-gradient(135deg,#4A6AE8,#7B9AFF);">
-            <i class="fas fa-truck"></i>
+        <div class="proceso-step step-4">
+          <div class="step-circle">
+            <span class="step-number">4</span>
           </div>
-          <div class="case-body">
-            <span class="case-tag">Logística</span>
-            <h3>Optimización de Rutas</h3>
-            <p>Sistema de análisis que optimizó rutas de distribución reduciendo tiempos de entrega y costos operativos
-              significativamente.</p>
-            <div class="case-stats">
-              <div class="case-stat"><span class="num">-42%</span><span class="desc">Tiempo de entrega</span></div>
-              <div class="case-stat"><span class="num">-30%</span><span class="desc">Costos operativos</span></div>
-            </div>
+          <div class="step-content">
+            <h4>Evaluación de Resultados</h4>
+            <p>Medimos el impacto, ajustamos lo necesario y aseguramos el éxito continuo.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
-
 
   <!-- CONTACT -->
-  <section class="contact reveal" id="contacto">
+  <section class="contact reveal" id="contacto" style="background:var(--white);">
     <div class="contact-inner">
       <div class="contact-info">
         <div class="section-label">Contacto</div>
@@ -1639,7 +2193,7 @@
 
         <div class="contact-detail">
           <div class="contact-detail-icon"><i class="fas fa-envelope"></i></div>
-          <div><a href="mailto:contacto@ratioanalytics.com">contacto@ratioanalytics.com</a></div>
+          <div><a href="mailto:ratioanalytics@outlook.com">ratioanalytics@outlook.com</a></div>
         </div>
         <div class="contact-detail">
           <div class="contact-detail-icon"><i class="fas fa-phone"></i></div>
@@ -1651,8 +2205,9 @@
         </div>
       </div>
 
-      <form class="contact-form" id="contact-form" novalidate>
+      <form class="contact-form" id="contact-form" name="contacto" method="POST" data-netlify="true" novalidate>
         <div class="form-grid">
+          <input type="hidden" name="form-name" value="contacto">
           <div class="form-field">
             <label for="name">Nombre *</label>
             <input type="text" id="name" name="name" placeholder="Tu nombre completo">
@@ -1695,6 +2250,35 @@
       </form>
     </div>
   </section>
+
+  <!-- NOSOTROS -->
+  <section class="nosotros reveal" id="nosotros" style="background:var(--bg);">
+    <div style="max-width:1100px;margin:0 auto;">
+      <div class="section-label">Nuestro Equipo</div>
+      <h2 class="section-heading">Quiénes <em>somos</em></h2>
+
+      <div class="team-grid">
+        <div class="team-member">
+          <img src="foto-jardiel.jpg" alt="Jardiel Santi">
+          <h3>Nombre Apellido</h3>
+          <p class="role">Co-fundador</p>
+          <p>Breve descripción de la persona y su rol en la empresa.</p>
+        </div>
+
+        <div class="team-member">
+          <img src="foto-julian.jpg" alt="Julian Troscé">
+          <h3>Nombre Apellido</h3>
+          <p class="role">Co-fundador</p>
+          <p>Breve descripción de la persona y su rol en la empresa.</p>
+        </div>
+
+        <!-- Duplicá estos dos si querés llenar las 4 columnas -->
+        <div class="team-member"></div>
+        <div class="team-member"></div>
+      </div>
+    </div>
+  </section>
+
 
   <!-- FOOTER -->
   <footer>
@@ -1790,46 +2374,132 @@
     const form = document.getElementById('contact-form');
     const msg = document.getElementById('form-message');
 
-    function setErr(id, txt) {
-      const el = document.getElementById(id + '-error');
-      const inp = document.getElementById(id);
-      if (!el) return;
-      el.textContent = txt;
-      if (txt) inp.classList.add('has-error');
-      else inp.classList.remove('has-error');
+    if (form && msg) {
+      function setErr(id, txt) {
+        const el = document.getElementById(id + '-error');
+        const inp = document.getElementById(id);
+        if (!el) return;
+        el.textContent = txt;
+        if (txt) inp.classList.add('has-error');
+        else inp.classList.remove('has-error');
+      }
+
+      form.addEventListener('submit', async e => {
+        e.preventDefault();
+
+        // Validaciones
+        const name = form.name.value.trim();
+        const email = form.email.value.trim();
+        const message = form.message.value.trim();
+
+        setErr('name', !name ? 'Este campo es requerido.' : '');
+        setErr('email', !email ? 'Este campo es requerido.' : !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? 'Email inválido.' : '');
+        setErr('message', !message ? 'Este campo es requerido.' : message.length < 10 ? 'Mínimo 10 caracteres.' : '');
+
+        if (!name || !email || !message || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || message.length < 10) return;
+
+        // Si pasa las validaciones, envía con Netlify
+        const btn = form.querySelector('.btn-submit');
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando…';
+
+        try {
+          const response = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(new FormData(form)).toString()
+          });
+
+          if (response.ok) {
+            msg.className = 'form-message success';
+            msg.textContent = '✓ ¡Mensaje enviado! Te respondemos en menos de 24hs hábiles.';
+            form.reset();
+          } else {
+            throw new Error('Error en el envío');
+          }
+        } catch (error) {
+          msg.className = 'form-message error';
+          msg.textContent = '✗ Hubo un error. Por favor intentá nuevamente.';
+        } finally {
+          btn.disabled = false;
+          btn.innerHTML = 'Enviar Mensaje <i class="fas fa-paper-plane"></i>';
+          setTimeout(() => msg.className = 'form-message', 6000);
+        }
+      });
+
+      // Remove error on input
+      ['name', 'email', 'message'].forEach(id => {
+        document.getElementById(id)?.addEventListener('input', () => setErr(id, ''));
+      });
     }
-
-    form.addEventListener('submit', async e => {
-      e.preventDefault();
-      let valid = true;
-      const name = form.name.value.trim();
-      const email = form.email.value.trim();
-      const message = form.message.value.trim();
-
-      setErr('name', !name ? 'Este campo es requerido.' : '');
-      setErr('email', !email ? 'Este campo es requerido.' : !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? 'Email inválido.' : '');
-      setErr('message', !message ? 'Este campo es requerido.' : message.length < 10 ? 'Mínimo 10 caracteres.' : '');
-
-      if (!name || !email || !message || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || message.length < 10) return;
-
-      const btn = form.querySelector('.btn-submit');
-      btn.disabled = true;
-      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando…';
-
-      await new Promise(r => setTimeout(r, 1500));
-
-      msg.className = 'form-message success';
-      msg.textContent = '✓ ¡Mensaje enviado! Te respondemos en menos de 24hs hábiles.';
-      form.reset();
-      btn.disabled = false;
-      btn.innerHTML = 'Enviar Mensaje <i class="fas fa-paper-plane"></i>';
-      setTimeout(() => msg.className = 'form-message', 6000);
-    });
-
     // Remove error on input
     ['name', 'email', 'message'].forEach(id => {
       document.getElementById(id)?.addEventListener('input', () => setErr(id, ''));
     });
+
+    // ============================================
+    // ANIMACIÓN AL SCROLLEAR - KEYWORDS
+    // ============================================
+    const keywordObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          keywordObserver.unobserve(entry.target); // Solo anima una vez
+        }
+      });
+    }, {
+      threshold: 0.2,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    document.querySelectorAll('.keyword-item').forEach(item => {
+      keywordObserver.observe(item);
+    });
+
+
+    // Carrusel de problemas
+    let currentSlide = 0;
+    const carousel = document.querySelector('.problemas-carousel');
+    const items = document.querySelectorAll('.problemas-carousel .problema-item-v2');
+    const dotsContainer = document.getElementById('carousel-dots');
+    const totalSlides = items.length - 2; // Mostramos 3, así que restamos 2
+
+    // Crear dots
+    for (let i = 0; i <= totalSlides; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      dot.onclick = () => goToSlide(i);
+      dotsContainer.appendChild(dot);
+    }
+
+    function moveCarousel(direction) {
+      currentSlide += direction;
+
+      if (currentSlide < 0) currentSlide = totalSlides;
+      if (currentSlide > totalSlides) currentSlide = 0;
+
+      updateCarousel();
+    }
+
+    function goToSlide(index) {
+      currentSlide = index;
+      updateCarousel();
+    }
+
+    function updateCarousel() {
+      const slideWidth = items[0].offsetWidth + 24; // ancho + gap
+      carousel.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+
+      // Actualizar dots
+      document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlide);
+      });
+    }
+
+    // Auto-play (opcional)
+    setInterval(() => {
+      moveCarousel(1);
+    }, 5000); // Cambia cada 5 segundos
   </script>
 
 </body>
