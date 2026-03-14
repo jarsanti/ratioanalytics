@@ -21,6 +21,12 @@
       box-sizing: border-box;
     }
 
+    html,
+    body {
+      width: 100%;
+      overflow-x: hidden;
+    }
+
     :root {
       --violet: #6861f0;
       --violet-dark: #6861f0;
@@ -1958,6 +1964,58 @@
 
     body {
       overflow-x: hidden;
+    }
+
+    @media (max-width: 768px) {
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+    }
+
+    @media (max-width:768px) {
+
+      section,
+      .hero {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+    }
+
+    @media (max-width:768px) {
+
+      .hero-cta-card {
+        padding: 2rem 1.5rem;
+      }
+
+    }
+
+    * {
+      max-width: 100%;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    section {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    @media (max-width:768px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
     }
   </style>
 </head>
