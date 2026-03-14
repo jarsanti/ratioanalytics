@@ -76,6 +76,11 @@
       /* ← Cambiar de -1 a 0 */
     }
 
+    section {
+      width: 100%;
+      max-width: 100%;
+    }
+
     .blur-circle-1 {
       position: fixed;
       top: 40%;
@@ -314,6 +319,15 @@
       50% {
         opacity: .2;
       }
+    }
+
+    @media (max-width:768px) {
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
     }
 
     .hero-title {
@@ -848,7 +862,7 @@
 
     .problemas-grid-v2 {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 400px));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       /* ← Ancho controlado */
       justify-content: center;
       /* ← Centra las tarjetas */
@@ -881,7 +895,7 @@
       flex: 0 0 auto;
       scroll-snap-align: start;
       max-width: 400px;
-      min-width: 320px;
+      width: 100%;
     }
 
     @media (max-width: 768px) {
@@ -1936,6 +1950,14 @@
         flex-direction: column;
         text-align: center;
       }
+    }
+
+    * {
+      max-width: 100%;
+    }
+
+    body {
+      overflow-x: hidden;
     }
   </style>
 </head>
