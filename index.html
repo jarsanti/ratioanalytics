@@ -26,10 +26,10 @@
     }
 
     :root {
-      --violet: #5865f2;
-      --violet-dark: #5865f2;
-      --violet-light: #EAECFF;
-      --violet-mid: #b8bcf8;
+      --violet: #4c43ff;
+      --violet-dark: #3a32e0;
+      --violet-light: #ecebff;
+      --violet-mid: #948fff;
       --ink: #0D0E18;
       --ink-soft: #363950;
       --muted: #7D8097;
@@ -151,7 +151,11 @@
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid rgba(88, 101, 242, 0.1);
-      transition: box-shadow .3s, background .3s;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow .3s, background .3s;
+    }
+
+    nav.nav-hidden {
+      transform: translateY(-100%);
     }
 
     nav.scrolled {
@@ -170,9 +174,9 @@
     }
 
     .nav-links a {
-      font-size: .88rem;
-      font-weight: 500;
-      color: var(--muted);
+      font-size: 1.02rem;
+      font-weight: 600;
+      color: #4a4a4e;
       padding: .25rem 0;
       position: relative;
       transition: color .25s;
@@ -199,15 +203,15 @@
     }
 
     .nav-cta {
-      background: linear-gradient(135deg, var(--violet) 0%, #8d96f7 100%);
+      background: #2e0db1;
       color: #fff;
-      padding: .6rem 1.5rem;
+      padding: .6rem 1.7rem;
       border-radius: 10px;
-      font-size: .85rem;
+      font-size: 1rem;
       font-weight: 600;
       letter-spacing: .02em;
       transition: opacity .2s, transform .2s, box-shadow .2s;
-      box-shadow: 0 2px 12px rgba(88, 101, 242, 0.22);
+      box-shadow: 0 4px 14px rgba(76, 67, 255, 0.25);
     }
 
     .nav-cta:hover {
@@ -408,27 +412,17 @@
     }
 
     .hero-cta-card {
-      background: var(--violet);
+      background: #4c43ff;
       padding: 3rem clamp(2rem, 8vw, 4rem);
-      border-radius: 10px;
+      border-radius: 12px;
       margin-bottom: 0rem;
-      border: 1px solid rgba(255, 255, 255, .12);
+      border: 1px solid rgba(255, 255, 255, .15);
       position: relative;
       overflow: hidden;
-    }
-
-    .hero-cta-card::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      right: -100px;
-      width: 300px;
-      height: 300px;
-      background: var(--violet-light);
-      border-radius: 50%;
-      transform: translateY(-70%);
-      z-index: 0;
-      opacity: 0.1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
 
     .hero-cta-card h3 {
@@ -441,36 +435,27 @@
       z-index: 1;
     }
 
-    .hero-cta-card .btn-primary,
-    .hero-cta-card .btn-ghost {
-      padding: .75rem 1.5rem;
-      font-size: .9rem;
-      font-weight: 700;
-    }
-
-    .hero-cta-card .btn-primary {
-      background: var(--white);
-      color: var(--violet);
-      box-shadow: 0 6px 20px rgba(255, 255, 255, .3);
-    }
-
-    .hero-cta-card .btn-primary:hover {
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 10px 30px rgba(255, 255, 255, .5);
-    }
-
-    .hero-cta-card .btn-ghost {
-      border: 2px solid rgba(255, 255, 255, 0.85);
-      color: #ffffff;
-      background: transparent;
+    .btn-chatea {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #69f2c4;
+      color: #000000;
+      padding: 1rem 3rem;
+      border-radius: 12px;
+      font-size: 1.1rem;
       font-weight: 600;
-      letter-spacing: .01em;
+      font-family: 'Montaser Arabic', 'Montserrat Arabic', 'Montserrat', sans-serif;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(105, 242, 196, 0.3);
+      letter-spacing: 0.05em;
     }
 
-    .hero-cta-card .btn-ghost:hover {
-      background: rgba(255, 255, 255, 0.15);
-      border-color: #ffffff;
-      color: #ffffff;
+    .btn-chatea:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(105, 242, 196, 0.4);
+      opacity: 0.95;
     }
 
     .hero-buttons {
@@ -1209,197 +1194,260 @@
    SERVICES
    ===================== */
     .services {
-      padding: 0px 5vw 80px;
+      padding: 52px 5vw;
       background: transparent;
-    }
-
-    .section-label {
-      font-size: .8rem;
-      font-weight: 700;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--violet);
-      margin-bottom: .75rem;
-    }
-
-    .section-heading {
-      font-family: var(--serif);
-      font-size: var(--fs-xl);
-      color: var(--ink);
-      line-height: 1.2;
-      margin-bottom: 1rem;
-    }
-
-    .section-heading em {
-      font-style: italic;
-      color: var(--violet);
-    }
-
-    /* En tarjetas oscuras, el em debe heredar el color o ser específico */
-    .proceso-header-card .section-heading em {
-      color: var(--violet);
-    }
-
-    .section-sub {
-      font-size: 1.05rem;
-      color: var(--muted);
-      max-width: 520px;
-      line-height: 1.7;
-      margin-bottom: 4rem;
+      position: relative;
+      z-index: 1;
     }
 
     .services-grid {
       display: grid;
-      gap: 1rem;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr));
+      gap: 1.5rem;
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 1100px;
+      margin: 0 auto;
     }
 
-    /* -------------------------- */
-    /* SERVICE CARD */
-    /* -------------------------- */
+    /* Colores accent por tarjeta */
+    .service-card:nth-child(1) {
+      --card-accent: #5865f2;
+      --card-accent2: #8d96f7;
+    }
+
+    .service-card:nth-child(2) {
+      --card-accent: #0ea5e9;
+      --card-accent2: #38bdf8;
+    }
+
+    .service-card:nth-child(3) {
+      --card-accent: #10b981;
+      --card-accent2: #34d399;
+    }
+
+    .service-card:nth-child(4) {
+      --card-accent: #f59e0b;
+      --card-accent2: #fbbf24;
+    }
 
     .service-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 2.5rem;
-      transition: all .3s;
       position: relative;
+      border-radius: 20px;
       overflow: hidden;
-      min-height: 500px;
-      background-image: none;
-      background-size: cover;
-      background-position: center;
-      z-index: 1;
+      min-height: 600px;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-
-      /* estado inicial animación */
+      cursor: pointer;
+      border: 1.5px solid rgba(255, 255, 255, 0.1);
       opacity: 0;
       transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease, box-shadow 0.4s ease, border-color 0.4s ease;
     }
-
-    /* cuando el contenedor se vuelve visible */
 
     .services-grid.visible .service-card {
       opacity: 1;
       transform: translateY(0);
-      transition: all .7s ease;
     }
 
-
-    /* animación en cascada */
-
     .service-card:nth-child(1) {
-      transition-delay: .1s;
+      transition-delay: 0.1s;
     }
 
     .service-card:nth-child(2) {
-      transition-delay: .2s;
+      transition-delay: 0.2s;
     }
 
     .service-card:nth-child(3) {
-      transition-delay: .3s;
+      transition-delay: 0.3s;
     }
 
     .service-card:nth-child(4) {
-      transition-delay: .4s;
+      transition-delay: 0.4s;
     }
 
-    .service-card:nth-child(5) {
-      transition-delay: .5s;
+    .service-card:hover {
+      box-shadow: 0 28px 60px rgba(0, 0, 0, 0.3), 0 0 0 1.5px var(--card-accent);
+      transform: translateY(-8px) !important;
     }
 
-    .service-card:nth-child(6) {
-      transition-delay: .6s;
-    }
-
-    /* -------------------------- */
-    /* BACKGROUND IMAGE */
-    /* -------------------------- */
-
+    /* Background image */
     .service-bg {
       position: absolute;
       inset: 0;
       background-size: cover;
       background-position: center;
-      filter: grayscale(100%);
-      z-index: 0;
+      filter: grayscale(100%) brightness(0.42);
+      transition: transform 0.65s cubic-bezier(0.23, 1, 0.32, 1), filter 0.5s ease;
     }
 
+    .service-card:hover .service-bg {
+      transform: scale(1.07);
+      filter: grayscale(100%) brightness(0.35);
+    }
 
-    /* -------------------------- */
-    /* NUMBER */
-    /* -------------------------- */
-
-    .service-num {
+    /* Gradient overlay con color específico por tarjeta */
+    .service-overlay {
       position: absolute;
-      top: 1.5rem;
-      right: 1.5rem;
-      font-family: var(--serif);
-      font-size: 4rem;
-      color: var(--violet-light);
-      line-height: 1;
-      font-style: italic;
-      user-select: none;
-      position: relative;
-      z-index: 1;
-      display: none;
+      inset: 0;
+      transition: opacity 0.45s ease;
     }
 
+    .service-card:nth-child(1) .service-overlay {
+      background: linear-gradient(to top, rgba(40, 46, 160, 0.95) 0%, rgba(40, 46, 160, 0.85) 10%, rgba(88, 101, 242, 0.4) 30%, transparent 60%);
+    }
 
-    /* -------------------------- */
-    /* TEXT */
-    /* -------------------------- */
+    .service-card:nth-child(2) .service-overlay {
+      background: linear-gradient(to top, rgba(3, 85, 130, 0.95) 0%, rgba(3, 85, 130, 0.85) 10%, rgba(14, 165, 233, 0.4) 30%, transparent 60%);
+    }
+
+    .service-card:nth-child(3) .service-overlay {
+      background: linear-gradient(to top, rgba(4, 100, 72, 0.95) 0%, rgba(4, 100, 72, 0.85) 10%, rgba(16, 185, 129, 0.4) 30%, transparent 60%);
+    }
+
+    .service-card:nth-child(4) .service-overlay {
+      background: linear-gradient(to top, rgba(146, 64, 14, 0.95) 0%, rgba(146, 64, 14, 0.85) 10%, rgba(245, 158, 11, 0.4) 30%, transparent 60%);
+    }
+
+    /* Brillo superior al hover */
+    .service-shine {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.15) 0%, transparent 55%);
+      opacity: 0;
+      transition: opacity 0.45s ease;
+      pointer-events: none;
+    }
+
+    .service-card:hover .service-shine {
+      opacity: 1;
+    }
+
+    /* Pill tag arriba-izquierda */
+    .service-pill {
+      position: absolute;
+      top: 1.25rem;
+      left: 1.25rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      z-index: 3;
+      transition: background 0.35s ease, border-color 0.35s ease;
+    }
+
+    .service-card:nth-child(1):hover .service-pill {
+      background: rgba(88, 101, 242, 0.75);
+      border-color: transparent;
+    }
+
+    .service-card:nth-child(2):hover .service-pill {
+      background: rgba(14, 165, 233, 0.75);
+      border-color: transparent;
+    }
+
+    .service-card:nth-child(3):hover .service-pill {
+      background: rgba(16, 185, 129, 0.75);
+      border-color: transparent;
+    }
+
+    .service-card:nth-child(4):hover .service-pill {
+      background: rgba(245, 158, 11, 0.75);
+      border-color: transparent;
+    }
+
+    /* Contenido */
+    .service-content {
+      position: relative;
+      z-index: 3;
+      padding: 1.8rem 2rem 6rem;
+    }
+
+    /* Ícono wrap */
+    .service-icon-wrap {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      transition: transform 0.35s ease, background 0.35s ease;
+    }
+
+    .service-card:nth-child(1):hover .service-icon-wrap {
+      background: rgba(88, 101, 242, 0.8);
+      transform: translateY(-4px) scale(1.1);
+    }
+
+    .service-card:nth-child(2):hover .service-icon-wrap {
+      background: rgba(14, 165, 233, 0.8);
+      transform: translateY(-4px) scale(1.1);
+    }
+
+    .service-card:nth-child(3):hover .service-icon-wrap {
+      background: rgba(16, 185, 129, 0.8);
+      transform: translateY(-4px) scale(1.1);
+    }
+
+    .service-card:nth-child(4):hover .service-icon-wrap {
+      background: rgba(245, 158, 11, 0.8);
+      transform: translateY(-4px) scale(1.1);
+    }
+
+    .service-icon-wrap i {
+      color: white;
+      font-size: 1.2rem;
+    }
 
     .service-card h3 {
-      font-size: calc(var(--fs-lg) * 0.9);
+      font-size: 1.4rem;
       font-weight: 700;
-      margin-bottom: .75rem;
-      color: #000000;
-      position: relative;
-      z-index: 1;
+      color: #ffffff;
+      margin-bottom: 0.6rem;
     }
 
     .service-card p {
       font-size: var(--fs-md);
-      line-height: 1.7;
-      color: #000000;
-      margin-bottom: 1.5rem;
-      position: relative;
-      z-index: 1;
+      line-height: 1.65;
+      color: rgba(255, 255, 255, 0.75);
+      margin-bottom: 0;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.5s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.4s ease;
     }
 
-    .service-icon {
-      color: #000000;
-      font-size: 2rem;
-      margin-bottom: 1.5rem;
-      position: relative;
-      z-index: 1;
+    .service-card:hover p {
+      max-height: 100px;
+      opacity: 1;
     }
 
+    /* Responsive */
+    @media (max-width: 768px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
 
-    /* -------------------------- */
-    /* PILLS */
-    /* -------------------------- */
+      .service-card {
+        min-height: 300px;
+      }
 
-    .service-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .4rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    .pill {
-      font-size: .7rem;
-      font-weight: 700;
-      letter-spacing: .05em;
-      padding: .25rem .7rem;
-      border-radius: 10px;
-      background: var(--violet-light);
-      color: var(--violet);
+      .service-card p {
+        max-height: none;
+        opacity: 1;
+      }
     }
 
     .nosotros {
@@ -2232,9 +2280,7 @@
         <div class="hero-cta-card">
           <h3>¿Listo para transformar tu negocio?</h3>
           <div class="hero-buttons">
-            <a href="#contacto" class="btn-primary">Solicitar diagnóstico<i class="fas fa-arrow-right"></i></a>
-            <a href="#servicios" class="btn-ghost">¿Cómo trabajamos? <i class="fas fa-chevron-right"
-                style="font-size:.75rem;"></i></a>
+            <a href="#contacto" class="btn-chatea">CHATEA</a>
           </div>
         </div>
       </div>
@@ -2307,40 +2353,72 @@
   </section>
   <!-- SERVICES -->
   <section class="services reveal" id="servicios">
-    <div style="max-width:1100px;margin:0 auto;">
+    <div class="services-grid">
 
-
-      <div class="services-grid reveal">
-
-        <div class="service-card">
-          <div class="service-bg" style="background-image: url('analisis-bi3.jpg');"></div>
-          <div class="service-icon"><i class="fas fa-chart-pie"></i></div>
+      <div class="service-card">
+        <div class="service-bg" style="background-image:url('analisis-bi3.jpg');"></div>
+        <div class="service-overlay"></div>
+        <div class="service-shine"></div>
+        <span class="service-pill">
+          <i class="fas fa-chart-pie"></i> Analytics
+        </span>
+        <div class="service-content">
+          <div class="service-icon-wrap">
+            <i class="fas fa-chart-pie"></i>
+          </div>
           <h3>Análisis BI</h3>
-          <p>Desarrollamos soluciones de Business Inteligence para todos los niveles de la organización</p>
+          <p>Desarrollamos soluciones de Business Intelligence para todos los niveles de la organización</p>
         </div>
+      </div>
 
-        <div class="service-card">
-          <div class="service-bg" style="background-image: url('dashboard operativo.jpg');"></div>
-          <div class="service-icon"><i class="fas fa-gauge-high"></i></div>
+      <div class="service-card">
+        <div class="service-bg" style="background-image:url('foto automatizacion.jpg');"></div>
+        <div class="service-overlay"></div>
+        <div class="service-shine"></div>
+        <span class="service-pill">
+          <i class="fas fa-bolt"></i> Automatización
+        </span>
+        <div class="service-content">
+          <div class="service-icon-wrap">
+            <i class="fas fa-gauge-high"></i>
+          </div>
           <h3>Automatizaciones de procesos</h3>
           <p>Generamos automatizaciones de procesos basados en datos adaptados a la medida de su necesidad</p>
         </div>
+      </div>
 
-        <div class="service-card">
-          <div class="service-bg" style="background-image: url('foto automatizacion.jpg');"></div>
-          <div class="service-icon"><i class="fas fa-robot"></i></div>
+      <div class="service-card">
+        <div class="service-bg" style="background-image:url('imagen capacitacion.jpg');"></div>
+        <div class="service-overlay"></div>
+        <div class="service-shine"></div>
+        <span class="service-pill">
+          <i class="fas fa-graduation-cap"></i> Training
+        </span>
+        <div class="service-content">
+          <div class="service-icon-wrap">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
           <h3>Capacitaciones</h3>
           <p>Mejorá la productividad y capacidad de las personas desarrollando sus habilidades</p>
-
-        </div>
-
-        <div class="service-card">
-          <div class="service-bg" style="background-image: url('imagen-clara.jpg');"></div>
-          <div class="service-icon"><i class="fas fa-robot"></i></div>
-          <h3>Asesoría general</h3>
-          <p>Ayudamos a empresas a elegir las mejoras herramientas y prácticas para su día a dia</p>
         </div>
       </div>
+
+      <div class="service-card">
+        <div class="service-bg" style="background-image:url('imagen-clara.jpg');"></div>
+        <div class="service-overlay"></div>
+        <div class="service-shine"></div>
+        <span class="service-pill">
+          <i class="fas fa-lightbulb"></i> Consultoría
+        </span>
+        <div class="service-content">
+          <div class="service-icon-wrap">
+            <i class="fas fa-lightbulb"></i>
+          </div>
+          <h3>Asesoría general</h3>
+          <p>Ayudamos a empresas a elegir las mejores herramientas y prácticas para su día a día</p>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -2534,8 +2612,20 @@
   <script>
     // Nav scroll
     const nav = document.getElementById('nav');
+    let lastScrollY = window.scrollY;
+
     window.addEventListener('scroll', () => {
+      // Efecto translúcido al scrollear
       nav.classList.toggle('scrolled', window.scrollY > 30);
+
+      // Ocultar suavemente al bajar, mostrar al subir
+      if (window.scrollY > lastScrollY && window.scrollY > 150) {
+        nav.classList.add('nav-hidden');
+      } else {
+        nav.classList.remove('nav-hidden');
+      }
+
+      lastScrollY = window.scrollY;
     });
 
     // Hamburger
@@ -2735,6 +2825,17 @@
       });
     })();
 
+    // Animación de servicios al scroll
+    const servicesGrid = document.querySelector('.services-grid');
+    if (servicesGrid) {
+      new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 }).observe(servicesGrid);
+    }
   </script>
 
 </body>
