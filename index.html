@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -293,13 +293,12 @@
     }
 
     .hero-inner {
-      max-width: 1100px;
+      max-width: 1200px !important;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
+      grid-template-columns: 0.8fr 1.2fr !important;
+      gap: 2rem;
       align-items: stretch;
-      /* ← CAMBIAR de center a stretch */
     }
 
     @keyframes slideInLeft {
@@ -370,10 +369,10 @@
       }
     }
 
-    @media (max-width:768px) {
+    @media (max-width:1024px) {
 
       .hero-inner {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
         gap: 2rem;
       }
 
@@ -412,7 +411,7 @@
     }
 
     .hero-cta-card {
-      background: #5143ff;
+      background: #675aff;
       padding: 3rem clamp(2rem, 8vw, 4rem);
       border-radius: 12px;
       margin-bottom: 0rem;
@@ -1436,12 +1435,17 @@
 
     /* Responsive */
     @media (max-width: 768px) {
+      .hero-visual {
+        min-height: 450px !important;
+        margin-top: 2rem;
+      }
+
       .services-grid {
         grid-template-columns: 1fr;
       }
 
       .service-card {
-        min-height: 300px;
+        min-height: 420px !important;
       }
 
       .service-card p {
