@@ -296,6 +296,7 @@
 
     .hero-inner {
       width: 100% !important;
+      max-width: 100% !important;
       margin: 0 auto;
       display: grid;
       grid-template-columns: 0.8fr 1.2fr !important;
@@ -459,212 +460,7 @@
       opacity: 0.95;
     }
 
-    .hero-buttons {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: nowrap;
-      align-items: center;
-      position: relative;
-      z-index: 1;
-    }
-
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: .5rem;
-      background: linear-gradient(135deg, var(--violet) 0%, #7B6FFF 100%);
-      color: #fff;
-      padding: .9rem 2rem;
-      border-radius: 10px;
-      font-size: .95rem;
-      font-weight: 600;
-      letter-spacing: .01em;
-      white-space: nowrap;
-      transition: all .25s;
-      box-shadow: 0 2px 14px rgba(88, 101, 242, 0.28);
-    }
-
-    .btn-primary:hover {
-      opacity: 0.9;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 26px rgba(88, 101, 242, 0.4);
-    }
-
-    .btn-primary i {
-      font-size: .85rem;
-      transition: transform .2s;
-    }
-
-    .btn-primary:hover i {
-      transform: translateX(4px);
-    }
-
-    .btn-ghost {
-      display: inline-flex;
-      align-items: center;
-      gap: .5rem;
-      color: var(--ink-soft);
-      padding: .9rem 2rem;
-      border-radius: 10px;
-      font-size: .95rem;
-      font-weight: 500;
-      border: 1.5px solid var(--border);
-      white-space: nowrap;
-      transition: all .25s;
-      background: rgba(255, 255, 255, 0.6);
-      backdrop-filter: blur(8px);
-    }
-
-    .btn-ghost:hover {
-      border-color: var(--violet-mid);
-      color: var(--violet);
-      background: var(--violet-light);
-    }
-
-    /* Hero visual panel */
-    .hero-visual {
-      position: relative;
-      display: flex;
-      opacity: 0;
-      animation: slideInUp 2s cubic-bezier(0.2, 0.8, 0.2, 1) 1.2s forwards;
-    }
-
-    .hero-visual img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 10px;
-    }
-
-    .hero-panel {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 2rem;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, .08);
-    }
-
-    .panel-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1.5rem;
-    }
-
-    .panel-title {
-      font-size: .75rem;
-      font-weight: 700;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .panel-badge {
-      font-size: .7rem;
-      font-weight: 700;
-      color: #16a34a;
-      background: #dcfce7;
-      padding: .2rem .6rem;
-      border-radius: 10px;
-    }
-
-    .chart-bars {
-      display: flex;
-      align-items: flex-end;
-      gap: 10px;
-      height: 130px;
-      margin-bottom: 1.5rem;
-    }
-
-    .bar {
-      flex: 1;
-      border-radius: 10px 10px 0 0;
-      background: var(--border);
-      position: relative;
-      overflow: hidden;
-      animation: growBar 1.2s ease-out forwards;
-      transform-origin: bottom;
-    }
-
-    .bar.active {
-      background: var(--violet);
-    }
-
-    .bar.active::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(255, 255, 255, .25) 0%, transparent 60%);
-    }
-
-    @keyframes growBar {
-      from {
-        transform: scaleY(0);
-      }
-
-      to {
-        transform: scaleY(1);
-      }
-    }
-
-    .bar:nth-child(1) {
-      height: 55%;
-      animation-delay: .1s;
-      transform: scaleY(0);
-    }
-
-    .bar:nth-child(2) {
-      height: 75%;
-      animation-delay: .2s;
-      transform: scaleY(0);
-    }
-
-    .bar:nth-child(3) {
-      height: 60%;
-      animation-delay: .3s;
-      transform: scaleY(0);
-    }
-
-    .bar:nth-child(4) {
-      height: 90%;
-      animation-delay: .4s;
-      transform: scaleY(0);
-    }
-
-    .bar:nth-child(5) {
-      height: 70%;
-      animation-delay: .5s;
-      transform: scaleY(0);
-    }
-
-    .metrics-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: .75rem;
-    }
-
-    .metric-box {
-      background: var(--bg);
-      border-radius: 10px;
-      padding: .75rem;
-      text-align: center;
-      border: 1px solid var(--border);
-    }
-
-    .metric-box .val {
-      display: block;
-      font-size: 1.3rem;
-      font-weight: 900;
-      color: var(--violet);
-    }
-
-    .metric-box .lbl {
-      font-size: .7rem;
-      color: var(--muted);
-      font-weight: 500;
-    }
-
-    /* Floating badges */
+    /* Floating badges (Solo si se usan en Hero Visual) */
     .float-badge {
       position: absolute;
       background: var(--white);
@@ -678,6 +474,7 @@
       font-size: .8rem;
       font-weight: 600;
       animation: float 3s ease-in-out infinite;
+      z-index: 10;
     }
 
     @keyframes float {
@@ -692,6 +489,10 @@
       }
     }
 
+    .float-badge i {
+      color: var(--violet);
+    }
+
     .float-badge.top-left {
       top: -20px;
       left: -20px;
@@ -704,113 +505,9 @@
       animation-delay: 1s;
     }
 
-    .float-badge i {
-      color: var(--violet);
-    }
-
     /* =====================
-   PROBLEMAS
-   ===================== */
-    .problemas {
-      padding: 0px 5vw 80px;
-      background: transparent;
-      position: relative;
-      z-index: 1;
-    }
-
-    .problemas-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      /* ← 5 columnas fijas */
-      gap: 1rem;
-      /* ← Gap más chico */
-      margin-top: 3rem;
-    }
-
-    .problema-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 1rem;
-      padding: 2rem 1.5rem;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      transition: all .3s;
-    }
-
-    .problema-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, .08);
-      border-color: var(--violet-mid);
-      background: var(--white);
-    }
-
-    .problema-item i {
-      font-size: 2.5rem;
-      color: var(--violet);
-      flex-shrink: 0;
-      transition: transform .3s;
-    }
-
-    .problema-item:hover i {
-      transform: scale(1.1);
-    }
-
-    .problema-item h3 {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--ink);
-      margin: 0;
-    }
-
-    .problema-item p {
-      font-size: .9rem;
-      line-height: 1.6;
-      color: var(--ink-soft);
-      margin: 0;
-    }
-
-    .problema-icon-circle {
-      width: 80px;
-      height: 80px;
-      min-width: 80px;
-      background: #3fb57a;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      backdrop-filter: blur(10px);
-    }
-
-    .problema-icon-circle i {
-      font-size: 2.5rem;
-      color: white;
-    }
-
-    .problema-content {
-      flex: 1;
-    }
-
-    .problema-item-v1 {
-      position: relative;
-      margin: 20px;
-    }
-
-    /* Rectángulo gris de atrás */
-    .problema-item-v1::before {
-      content: '';
-      position: absolute;
-      top: -8px;
-      left: -8px;
-      right: 8px;
-      bottom: 8px;
-      background: #d1d5db;
-      border-radius: 10px;
-      z-index: 0;
-    }
-
+       BENEFICIOS (PROBLEMAS)
+       ===================== */
     .problema-item-v2 {
       position: relative;
       background: #7166f0;
@@ -821,6 +518,8 @@
       overflow: hidden;
       /* Textura dividida: una parte más clara que la otra */
       background-image: linear-gradient(110deg, rgba(255, 255, 255, 0.1) 50%, transparent 50.1%);
+      opacity: 0;
+      transform: translateY(50px);
     }
 
     .problema-item-v2:hover {
@@ -864,6 +563,7 @@
       color: #31edae;
       margin: 0 0 .25rem 0;
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+
     }
 
     .problema-item-v2 p {
@@ -881,8 +581,9 @@
       gap: 1rem;
       padding: 0;
       margin-top: 2rem;
-      width: 100%;
-      margin: 0 auto;
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 auto !important;
     }
 
     .problemas-left-col {
@@ -970,12 +671,6 @@
 
 
 
-    /* Animación desde abajo para tarjetas v2 */
-    .problema-item-v2 {
-      opacity: 0;
-      transform: translateY(50px);
-    }
-
     .problema-item-v2.visible {
       opacity: 1;
       transform: translateY(0);
@@ -995,14 +690,6 @@
     }
 
     .problema-item-v2:nth-child(4).visible {
-      transition-delay: 0.15s;
-    }
-
-    .problema-item-v2:nth-child(5).visible {
-      transition-delay: 0.3s;
-    }
-
-    .problema-item-v2:nth-child(6).visible {
       transition-delay: 0.45s;
     }
 
@@ -1019,8 +706,9 @@
       gap: 3rem;
       padding: 0;
       margin-top: 4rem;
-      width: 100%;
-      margin: 0 auto;
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 auto !important;
       align-items: stretch;
     }
 
@@ -1375,7 +1063,7 @@
       }
 
       .service-card {
-        min-height: 600px !important;
+        min-height: 420px !important;
       }
 
       .service-card p {
@@ -2033,7 +1721,7 @@
 
     @media (max-width: 768px) {
       nav {
-        padding: 0 5vw;
+        padding: 0 20px;
         height: 64px;
       }
 
@@ -2047,7 +1735,7 @@
       }
 
       .hero {
-        padding: 84px 5vw 20px;
+        padding: 80px 20px 40px;
       }
 
       .hero-title {
@@ -2085,8 +1773,9 @@
       .proceso,
       .services,
       .cases,
+      .nosotros,
       .contact {
-        padding: 30px 5vw;
+        padding: 40px 20px;
       }
 
       .section-heading {
@@ -2150,9 +1839,11 @@
       }
 
       footer {
-        margin: 10px 15px 30px;
-        border-radius: 15px;
-        padding: 40px 20px 30px;
+        padding: 40px 20px;
+        margin: 40px auto 0;
+        width: 100% !important;
+        max-width: 100% !important;
+        border-radius: 0;
       }
 
       .footer-bottom {
@@ -2245,6 +1936,7 @@
   </section>
 
   <section class="problemas reveal" id="problemas">
+    <div style="max-width:1100px;margin:0 auto;padding:0 5vw;"> </div>
     <div class="problemas-grid-v2">
       <!-- HEADER METIDO DENTRO DE LA GRILLA BENTO -->
       <div class="problema-item-v2 problema-header-card reveal">
@@ -2371,9 +2063,7 @@
         <!-- STEP 1 -->
         <div class="proceso-item-bento reveal">
           <div class="proceso-item-bento-inner">
-            <div class="step-circle-bento">
-              <span class="step-number-bento">1</span>
-            </div>
+            <div class="step-circle-bento"></div>
             <div class="proceso-content-bento">
               <h4>Detección y Diagnóstico</h4>
               <p>Analizamos tu situación actual, identificamos problemas y oportunidades de mejora.</p>
@@ -2384,9 +2074,7 @@
         <!-- STEP 2 -->
         <div class="proceso-item-bento reveal">
           <div class="proceso-item-bento-inner">
-            <div class="step-circle-bento">
-              <span class="step-number-bento">2</span>
-            </div>
+            <div class="step-circle-bento"></div>
             <div class="proceso-content-bento">
               <h4>Propuesta y Evaluación</h4>
               <p>Presentamos soluciones personalizadas con roadmap claro y objetivos medibles.</p>
@@ -2397,9 +2085,7 @@
         <!-- STEP 3 -->
         <div class="proceso-item-bento reveal">
           <div class="proceso-item-bento-inner">
-            <div class="step-circle-bento">
-              <span class="step-number-bento">3</span>
-            </div>
+            <div class="step-circle-bento"></div>
             <div class="proceso-content-bento">
               <h4>Ejecución del Proyecto</h4>
               <p>Implementamos la solución con seguimiento constante y comunicación fluida.</p>
@@ -2410,9 +2096,7 @@
         <!-- STEP 4 -->
         <div class="proceso-item-bento reveal">
           <div class="proceso-item-bento-inner">
-            <div class="step-circle-bento">
-              <span class="step-number-bento">4</span>
-            </div>
+            <div class="step-circle-bento"></div>
             <div class="proceso-content-bento">
               <h4>Evaluación de Resultados</h4>
               <p>Medimos el impacto, ajustamos lo necesario y aseguramos el éxito continuo.</p>
