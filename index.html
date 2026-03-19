@@ -825,8 +825,7 @@
 
     .problema-item-v2:hover {
       transform: translateX(8px);
-      background: #847aff;
-      /* Menos oscuro que el anterior #3b32f2 */
+      background: #5a4deb;
     }
 
 
@@ -1386,7 +1385,6 @@
     }
 
     .nosotros {
-      padding: 100px 5vw;
       background: var(--white);
     }
 
@@ -1395,6 +1393,8 @@
       grid-template-columns: repeat(4, 1fr);
       gap: 2rem;
       margin-top: 3rem;
+      width: 100%;
+      margin: 0 auto;
     }
 
     .team-member {
@@ -1553,10 +1553,11 @@
    CTA BAND
    ===================== */
     .cta-band {
-      margin: 0 5vw;
+      max-width: 1200px;
+      margin: 0 auto 60px;
       background: var(--violet);
       border-radius: 10px;
-      padding: 70px 8%;
+      padding: 60px 8%;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -2051,7 +2052,8 @@
 
       .hero-title {
         font-size: 2.5rem !important;
-        margin-bottom: 1.5rem !important;
+        margin-bottom: 2.25rem !important;
+        /* Aumentado 50% desde 1.5rem */
         text-align: center;
       }
 
