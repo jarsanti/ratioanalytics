@@ -96,7 +96,7 @@
     section {
       max-width: 1200px;
       margin: auto;
-      padding: 0 40px;
+      padding: 60px 40px;
     }
 
     .blur-circle-1 {
@@ -276,7 +276,8 @@
    HERO
    ===================== */
     .hero {
-      padding: 120px 5vw 80px;
+      padding-top: 120px !important;
+      padding-bottom: 60px !important;
       background: transparent;
       position: relative;
       overflow: hidden;
@@ -811,18 +812,19 @@
 
     .problema-item-v2 {
       position: relative;
-      background: linear-gradient(135deg, #ffffff, #f5f5f5);
-      border: 1px solid var(--border);
-      border-radius: 10px;
+      background: #847aff;
+      /* Violeta base */
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
       transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-      backdrop-filter: blur(8px);
+      overflow: hidden;
+      /* Textura dividida: una parte más clara que la otra */
+      background-image: linear-gradient(110deg, rgba(255, 255, 255, 0.1) 50%, transparent 50.1%);
     }
 
     .problema-item-v2:hover {
-      background: linear-gradient(135deg, #f7f7f7, #f1f1f1);
-      border-color: var(--violet-mid);
-      transform: translateY(-4px) scale(1.02) !important;
-      box-shadow: 0 12px 30px rgba(88, 101, 242, 0.1);
+      transform: translateX(8px);
+      background: #3b32f2;
     }
 
 
@@ -831,23 +833,17 @@
       position: relative;
       z-index: 2;
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
+      flex-direction: row;
+      /* Cambiado a fila o alineado */
+      align-items: center;
       text-align: left;
       gap: 1.5rem;
-      padding: 2.2rem 2.2rem 0.9rem 2.2rem;
+      padding: 1.5rem 2rem;
       height: 100%;
     }
 
     .problema-icon-circle-v2 {
-      width: 60px;
-      height: 60px;
-      min-width: 60px;
-      background: linear-gradient(135deg, #8f87eb 0%, #7972ca 100%);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: none;
     }
 
     .problema-icon-circle-v2 i {
@@ -862,16 +858,17 @@
     }
 
     .problema-item-v2 h3 {
-      font-size: calc(var(--fs-lg) * 0.9);
+      font-size: 1.4rem;
       font-weight: 700;
-      color: var(--ink);
-      margin: 0 0 .75rem 0;
+      color: #31edae;
+      margin: 0 0 .25rem 0;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     }
 
     .problema-item-v2 p {
-      font-size: calc(var(--fs-md) * 0.9);
-      line-height: 1.6;
-      color: var(--ink-soft);
+      font-size: var(--fs-md);
+      line-height: 1.4;
+      color: #000000;
       margin: 0;
     }
 
@@ -879,9 +876,8 @@
 
     .problemas-grid-v2 {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-auto-rows: minmax(180px, auto);
-      gap: 1.5rem;
+      grid-template-columns: 1.4fr 1.6fr;
+      gap: 1rem;
       padding: 0;
       margin-top: 2rem;
       width: 100%;
@@ -889,51 +885,42 @@
       margin: 0 auto;
     }
 
-    /* Bento Box asimétrico */
-    .problemas-grid-v2 .problema-header-card {
-      grid-column: 2 / span 2;
-      grid-row: 1;
+    .problemas-left-col {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
     }
 
-    .problemas-grid-v2 .problema-item-v2:nth-child(2) {
-      grid-column: 1;
+    .problemas-grid-v2 .problema-header-card {
       grid-row: 1;
+      height: 100%;
+      overflow: visible !important;
+      /* Asegurar que no se corte el texto */
     }
 
     .problema-header-card {
-      background: linear-gradient(135deg, var(--violet) 0%, #7b6fff 100%) !important;
-      border: 1px solid rgba(255, 255, 255, 0.2) !important;
-      box-shadow: 0 20px 40px rgba(88, 101, 242, 0.25);
+      background: linear-gradient(135deg, #ffffff, #f1f1f5) !important;
+      border: 1px solid var(--border) !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
       position: relative;
-      overflow: hidden;
-    }
-
-    .problema-header-card::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
     }
 
     .problema-header-card .section-heading {
-      color: var(--white) !important;
-      font-size: clamp(1.8rem, 4vw, 2.4rem);
-      line-height: 1.1;
-      margin-top: 0;
-      position: relative;
-      z-index: 1;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      color: var(--ink) !important;
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      /* Un poco más chico para 1fr */
+      line-height: 1.25;
+      margin: 0;
+      text-shadow: none;
     }
 
     .problema-header-card .section-heading em {
-      color: var(--white) !important;
-      text-decoration: underline;
-      text-decoration-color: rgba(255, 255, 255, 0.3);
-      text-underline-offset: 4px;
+      color: var(--violet) !important;
+      text-decoration: none;
     }
 
     .problema-header-card .section-label {
@@ -961,7 +948,7 @@
       }
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
       .problemas-grid-v2 {
         grid-template-columns: 1fr;
         padding: 0;
@@ -969,21 +956,17 @@
       }
 
       .problemas-grid-v2 .problema-header-card {
+        grid-row: 1;
+        /* Poner el título arriba en móvil */
         grid-column: span 1;
-        grid-row: span 1;
+      }
+
+      .problemas-left-col {
+        grid-row: 2;
       }
     }
 
-    .problemas-grid-v2::-webkit-scrollbar {
-      display: none;
-    }
 
-    .problemas-grid-v2 .problema-item-v2 {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
 
 
 
@@ -1027,70 +1010,85 @@
    PROCESO
    ===================== */
     .proceso {
-      padding: 0px 5vw 80px;
       background: transparent;
     }
 
     .proceso-grid-bento {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-auto-rows: minmax(180px, auto);
-      gap: 1.5rem;
+      grid-template-columns: 1.8fr 1.2fr;
+      gap: 3rem;
       padding: 0;
-      margin-top: 2rem;
+      margin-top: 4rem;
       width: 100%;
       max-width: 1100px;
       margin: 0 auto;
+      align-items: stretch;
+    }
+
+    .proceso-timeline-col {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+      position: relative;
+      padding-left: 20px;
+    }
+
+    /* Rectángulo sólido vertical */
+    .proceso-timeline-col::before {
+      content: '';
+      position: absolute;
+      left: 45px;
+      top: 0;
+      bottom: 0;
+      width: 10px;
+      background: #31edae;
+      z-index: 1;
+      border-radius: 5px;
     }
 
     .proceso-item-bento {
       position: relative;
-      background: linear-gradient(135deg, #f3f3f3, #ebebeb);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+      background: transparent;
+      border: none;
       width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      backdrop-filter: blur(8px);
+      transition: none;
     }
 
     .proceso-item-bento:hover {
-      background: linear-gradient(135deg, #f3f3f3, #ebebeb);
-      border-color: var(--violet-mid);
-      transform: translateY(-4px) scale(1.01);
-      box-shadow: 0 12px 32px rgba(88, 101, 242, 0.1);
+      transform: none;
+      box-shadow: none;
     }
 
     .proceso-item-bento-inner {
       position: relative;
       z-index: 2;
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
+      flex-direction: row;
+      align-items: center;
       text-align: left;
-      gap: 1.5rem;
-      padding: 2.2rem 2.2rem 0.9rem 2.2rem;
-      height: 100%;
+      gap: 2rem;
+      padding: 0;
     }
 
     .step-circle-bento {
-      width: 60px;
-      height: 60px;
-      min-width: 60px;
-      background: linear-gradient(135deg, var(--violet), var(--violet-dark));
+      width: 14px;
+      height: 14px;
+      min-width: 14px;
+      background: #ffffff;
+      border: none;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
+      left: 23px;
+      /* Centrado sobre el bloque de 10px (45px left + 5px center) */
+      z-index: 3;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
 
     .step-number-bento {
-      font-size: 2rem;
-      font-weight: 700;
-      color: white;
-      font-family: var(--serif);
+      display: none;
     }
 
     .proceso-content-bento {
@@ -1115,18 +1113,20 @@
 
     /* Bento Box asimétrico */
     .proceso-grid-bento .proceso-header-card {
-      grid-column: 2 / span 2;
+      grid-column: 2;
       grid-row: 1;
-    }
-
-    .proceso-grid-bento .proceso-item-bento:nth-child(2) {
-      grid-column: 1;
-      grid-row: 1;
+      height: 100%;
     }
 
     .proceso-header-card {
-      background: #ebecef !important;
-      border-color: var(--border) !important;
+      background: linear-gradient(135deg, #ffffff, #f1f1f5) !important;
+      border: 1px solid var(--border) !important;
+      border-radius: 20px !important;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 4rem 3rem !important;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
     }
 
     .proceso-header-card .section-heading {
@@ -1159,19 +1159,21 @@
 
 
     /* Responsive */
-    @media (max-width: 1024px) {
+    @media (max-width: 900px) {
       .proceso-grid-bento {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
+        gap: 2rem;
       }
 
       .proceso-grid-bento .proceso-header-card {
-        grid-column: 1 / span 2;
         grid-row: 1;
+        grid-column: 1;
+        padding: 2.5rem 1.5rem !important;
       }
 
-      .proceso-grid-bento .proceso-item-bento:nth-child(2) {
-        grid-column: span 2;
-        grid-row: auto;
+      .proceso-timeline-col {
+        grid-row: 2;
+        padding-left: 10px;
       }
     }
 
@@ -1193,7 +1195,6 @@
    SERVICES
    ===================== */
     .services {
-      padding: 52px 5vw;
       background: transparent;
       position: relative;
       z-index: 1;
@@ -1437,7 +1438,8 @@
    CASES
    ===================== */
     .cases {
-      padding: 10px 5vw;
+      padding: 60px 40px;
+      /* Adjusted from 10px 5vw */
       background: transparent;
 
     }
@@ -1623,7 +1625,6 @@
    CONTACT
    ===================== */
     .contact {
-      padding: 10px 5vw 80px;
       background: transparent;
     }
 
@@ -1838,16 +1839,15 @@
    FOOTER
    ===================== */
     footer {
-      max-width: 1200px;
-      margin: 20px auto 40px;
-      background: linear-gradient(160deg, #0D0E18 0%, #15193a 100%);
-      color: rgba(255, 255, 255, .6);
-      padding: 60px 4vw 40px;
+      max-width: 1100px;
+      margin: 60px auto 40px;
+      background: #1b066d;
+      color: rgba(255, 255, 255, .8);
+      padding: 60px 40px;
       position: relative;
       overflow: hidden;
       border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     footer::before {
@@ -2228,58 +2228,48 @@
 
   <section class="problemas reveal" id="problemas">
     <div class="problemas-grid-v2">
-
       <!-- HEADER METIDO DENTRO DE LA GRILLA BENTO -->
       <div class="problema-item-v2 problema-header-card reveal">
-        <div class="problema-item-v2-inner" style="justify-content: center; align-items: flex-start; text-align: left;">
+        <div class="problema-item-v2-inner"
+          style="flex-direction: column; justify-content: center; align-items: center; text-align: center;">
           <h2 class="section-heading">Transformamos tus <em>desafíos</em> en oportunidades</h2>
         </div>
       </div>
 
-      <div class="problema-item-v2 reveal">
-        <div class="problema-item-v2-inner">
-          <div class="problema-icon-circle-v2">
-            <i class="fas fa-chart-line"></i>
-          </div>
-          <div class="problema-content-v2">
-            <h3>Datos dispersos</h3>
-            <p>Falta de visión global del negocio y estado de las operaciones</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="problema-item-v2 reveal">
-        <div class="problema-item-v2-inner">
-          <div class="problema-icon-circle-v2">
-            <i class="fas fa-clock"></i>
-          </div>
-          <div class="problema-content-v2">
-            <h3>Tiempo perdido</h3>
-            <p>Procesos manuales repetitivos de bajo valor agregado</p>
+      <div class="problemas-left-col">
+        <div class="problema-item-v2 reveal">
+          <div class="problema-item-v2-inner">
+            <div class="problema-content-v2">
+              <h3>Visión Integral</h3>
+              <p>Control estratégico y unificado de todas tus operaciones en tiempo real</p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="problema-item-v2 reveal">
-        <div class="problema-item-v2-inner">
-          <div class="problema-icon-circle-v2">
-            <i class="fas fa-bug"></i>
-          </div>
-          <div class="problema-content-v2">
-            <h3>Errores frecuentes</h3>
-            <p>Errores que afectan la calidad y generan retrabajo</p>
+        <div class="problema-item-v2 reveal">
+          <div class="problema-item-v2-inner">
+            <div class="problema-content-v2">
+              <h3>Operativa Ágil</h3>
+              <p>Automatización inteligente que libera el potencial estratégico de tu equipo</p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="problema-item-v2 reveal">
-        <div class="problema-item-v2-inner">
-          <div class="problema-icon-circle-v2">
-            <i class="fas fa-question-circle"></i>
+        <div class="problema-item-v2 reveal">
+          <div class="problema-item-v2-inner">
+            <div class="problema-content-v2">
+              <h3>Excelencia y Calidad</h3>
+              <p>Procesos optimizados para eliminar el retrabajo y garantizar resultados precisos</p>
+            </div>
           </div>
-          <div class="problema-content-v2">
-            <h3>KPIs ocultos</h3>
-            <p>Falta indicadores clave que impiden evaluar el rendimiento</p>
+        </div>
+
+        <div class="problema-item-v2 reveal">
+          <div class="problema-item-v2-inner">
+            <div class="problema-content-v2">
+              <h3>Liderazgo basado en Datos</h3>
+              <p>Indicadores clave de rendimiento para tomar decisiones con certeza absoluta</p>
+            </div>
           </div>
         </div>
       </div>
@@ -2359,6 +2349,60 @@
   <!-- PROCESO -->
   <section class="proceso reveal" id="proceso">
     <div class="proceso-grid-bento">
+      <div class="proceso-timeline-col">
+        <!-- STEP 1 -->
+        <div class="proceso-item-bento reveal">
+          <div class="proceso-item-bento-inner">
+            <div class="step-circle-bento">
+              <span class="step-number-bento">1</span>
+            </div>
+            <div class="proceso-content-bento">
+              <h4>Detección y Diagnóstico</h4>
+              <p>Analizamos tu situación actual, identificamos problemas y oportunidades de mejora.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="proceso-item-bento reveal">
+          <div class="proceso-item-bento-inner">
+            <div class="step-circle-bento">
+              <span class="step-number-bento">2</span>
+            </div>
+            <div class="proceso-content-bento">
+              <h4>Propuesta y Evaluación</h4>
+              <p>Presentamos soluciones personalizadas con roadmap claro y objetivos medibles.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="proceso-item-bento reveal">
+          <div class="proceso-item-bento-inner">
+            <div class="step-circle-bento">
+              <span class="step-number-bento">3</span>
+            </div>
+            <div class="proceso-content-bento">
+              <h4>Ejecución del Proyecto</h4>
+              <p>Implementamos la solución con seguimiento constante y comunicación fluida.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 4 -->
+        <div class="proceso-item-bento reveal">
+          <div class="proceso-item-bento-inner">
+            <div class="step-circle-bento">
+              <span class="step-number-bento">4</span>
+            </div>
+            <div class="proceso-content-bento">
+              <h4>Evaluación de Resultados</h4>
+              <p>Medimos el impacto, ajustamos lo necesario y aseguramos el éxito continuo.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- HEADER METIDO DENTRO DE LA GRILLA BENTO -->
       <div class="proceso-item-bento proceso-header-card reveal">
         <div class="proceso-item-bento-inner">
@@ -2368,59 +2412,6 @@
           </p>
         </div>
       </div>
-
-      <!-- STEP 1 -->
-      <div class="proceso-item-bento reveal">
-        <div class="proceso-item-bento-inner">
-          <div class="step-circle-bento">
-            <span class="step-number-bento">1</span>
-          </div>
-          <div class="proceso-content-bento">
-            <h4>Detección y Diagnóstico</h4>
-            <p>Analizamos tu situación actual, identificamos problemas y oportunidades de mejora.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- STEP 2 -->
-      <div class="proceso-item-bento reveal">
-        <div class="proceso-item-bento-inner">
-          <div class="step-circle-bento">
-            <span class="step-number-bento">2</span>
-          </div>
-          <div class="proceso-content-bento">
-            <h4>Propuesta y Evaluación</h4>
-            <p>Presentamos soluciones personalizadas con roadmap claro y objetivos medibles.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- STEP 3 -->
-      <div class="proceso-item-bento reveal">
-        <div class="proceso-item-bento-inner">
-          <div class="step-circle-bento">
-            <span class="step-number-bento">3</span>
-          </div>
-          <div class="proceso-content-bento">
-            <h4>Ejecución del Proyecto</h4>
-            <p>Implementamos la solución con seguimiento constante y comunicación fluida.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- STEP 4 -->
-      <div class="proceso-item-bento reveal">
-        <div class="proceso-item-bento-inner">
-          <div class="step-circle-bento">
-            <span class="step-number-bento">4</span>
-          </div>
-          <div class="proceso-content-bento">
-            <h4>Evaluación de Resultados</h4>
-            <p>Medimos el impacto, ajustamos lo necesario y aseguramos el éxito continuo.</p>
-          </div>
-        </div>
-      </div>
-
     </div>
   </section>
 
