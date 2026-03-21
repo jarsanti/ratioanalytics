@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -300,8 +300,15 @@
       margin: 0 auto;
       display: grid;
       grid-template-columns: 0.8fr 1.2fr !important;
-      gap: 2rem;
+      gap: 1rem;
       align-items: stretch;
+    }
+
+    .hero-visual {
+      position: relative;
+      display: flex;
+      opacity: 0;
+      animation: slideInUp 2.4s cubic-bezier(0.2, 0.8, 0.2, 1) 1.2s forwards;
     }
 
     @keyframes slideInLeft {
@@ -425,6 +432,14 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .hero-cta-card.visible {
+      opacity: 1;
+      transform: translateX(0);
     }
 
     .hero-cta-card h3 {
@@ -600,7 +615,7 @@
     }
 
     .problema-header-card {
-      background: linear-gradient(135deg, #ffffff, #f1f1f5) !important;
+      background: linear-gradient(145deg, #ffffff, #ebebeb) !important;
       border: 1px solid var(--border) !important;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
       position: relative;
@@ -611,12 +626,13 @@
     }
 
     .problema-header-card .section-heading {
-      color: var(--ink) !important;
+      color: var(--violet) !important;
       font-size: clamp(1.8rem, 3.5vw, 2.4rem);
       /* Un poco más chico para 1fr */
       line-height: 1.25;
       margin: 0;
       text-shadow: none;
+      text-align: center;
     }
 
     .problema-header-card .section-heading em {
@@ -703,7 +719,7 @@
     .proceso-grid-bento {
       display: grid;
       grid-template-columns: 1.8fr 1.2fr;
-      gap: 3rem;
+      gap: 1rem;
       padding: 0;
       margin-top: 4rem;
       width: 100% !important;
@@ -717,20 +733,13 @@
       flex-direction: column;
       gap: 2.5rem;
       position: relative;
-      padding-left: 20px;
+      padding-left: 120px;
+      padding-right: 35px;
     }
 
-    /* Rectángulo sólido vertical */
+    /* El rectángulo vertical ahora se gestiona desde los centros */
     .proceso-timeline-col::before {
-      content: '';
-      position: absolute;
-      left: 45px;
-      top: 0;
-      bottom: 0;
-      width: 10px;
-      background: #31edae;
-      z-index: 1;
-      border-radius: 5px;
+      display: none;
     }
 
     .proceso-item-bento {
@@ -758,20 +767,47 @@
     }
 
     .step-circle-bento {
-      width: 14px;
-      height: 14px;
-      min-width: 14px;
-      background: #ffffff;
-      border: none;
-      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      background: var(--violet);
+      border: 5px solid var(--violet);
+      border-radius: 7px;
+      position: absolute;
+      left: -90px;
+      /* Ajuste para centrar sobre el eje de la barra */
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 5;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      left: 23px;
-      /* Centrado sobre el bloque de 10px (45px left + 5px center) */
-      z-index: 3;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Línea que une los centros */
+    .step-circle-bento::before,
+    .step-circle-bento::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 5px;
+      background: var(--violet);
+      z-index: -1;
+    }
+
+    .step-circle-bento::before {
+      bottom: 50%;
+      height: 100px;
+      /* Suficiente para solapar */
+    }
+
+    .step-circle-bento::after {
+      top: 50%;
+      height: 100px;
+      /* Suficiente para solapar */
+    }
+
+    .proceso-item-bento:first-child .step-circle-bento::before,
+    .proceso-item-bento:last-child .step-circle-bento::after {
+      display: none;
     }
 
     .step-number-bento {
@@ -806,21 +842,13 @@
     }
 
     .proceso-header-card {
-      background: linear-gradient(135deg, #ffffff, #f1f1f5) !important;
+      background: linear-gradient(145deg, #ffffff, #ebebeb) !important;
       border: 1px solid var(--border) !important;
       border-radius: 20px !important;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 4rem 3rem !important;
+      padding: 5rem 3.5rem !important;
       box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
-    }
-
-    .proceso-header-card .section-heading {
-      color: var(--violet);
-      font-size: clamp(1.7rem, 3vw, 2.2rem);
-      line-height: 1.1;
-      margin-top: 1rem;
+      text-align: left;
+      display: block !important;
     }
 
     .proceso-header-card .section-label {
@@ -829,18 +857,33 @@
       padding: .4rem 1rem;
       border-radius: 10px;
       display: inline-block;
-      margin: 0;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.8rem;
+    }
+
+    .proceso-header-card .section-heading {
+      color: #000 !important;
+      display: block !important;
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      line-height: 1.1;
+      margin-bottom: 3.5rem;
+      font-weight: 900;
     }
 
     .proceso-header-card p {
-      color: var(--violet) !important;
-      opacity: 0.9;
+      display: block !important;
+      color: #000 !important;
+      opacity: 1;
       font-size: calc(var(--fs-md) * 0.85) !important;
-      /* Reducido 15% */
+      line-height: 1.6;
+      margin: 0;
     }
 
     .proceso-header-card:hover {
-      box-shadow: 0 16px 38px rgba(88, 101, 242, 0.4) !important;
+      box-shadow: none !important;
       transform: translateY(-4px) scale(1.01) !important;
     }
 
@@ -902,7 +945,7 @@
       position: relative;
       border-radius: 20px;
       overflow: hidden;
-      min-height: 600px;
+      min-height: 540px;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
@@ -913,29 +956,29 @@
       transition: opacity 0.7s ease, transform 0.7s ease, box-shadow 0.4s ease, border-color 0.4s ease;
     }
 
-    .services-grid.visible .service-card {
+    .service-card.visible {
       opacity: 1;
       transform: translateY(0);
     }
 
     .service-card:nth-child(1) {
-      transition-delay: 0.1s;
+      transition-delay: 0s;
     }
 
     .service-card:nth-child(2) {
-      transition-delay: 0.2s;
+      transition-delay: 1s;
     }
 
     .service-card:nth-child(3) {
-      transition-delay: 0.3s;
+      transition-delay: 2s;
     }
 
     .service-card:nth-child(4) {
-      transition-delay: 0.4s;
+      transition-delay: 3s;
     }
 
     .service-card:hover {
-      box-shadow: 0 28px 60px rgba(0, 0, 0, 0.3), 0 0 0 1.5px var(--card-accent);
+      box-shadow: 0 0 0 1.5px var(--card-accent);
       transform: translateY(-8px) !important;
     }
 
@@ -1055,7 +1098,8 @@
     @media (max-width: 768px) {
       .hero-visual {
         min-height: 450px !important;
-        margin-top: 1rem;
+        margin-top: 0;
+        /* Eliminado para usar el gap de la grilla */
       }
 
       .services-grid {
@@ -1320,15 +1364,22 @@
     .contact-inner {
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 1.5rem;
+      grid-template-columns: 1fr 1.2fr;
+      /* Columna izquierda un poco más ancha */
+      gap: 1rem;
+      /* Igual que el hero */
       align-items: start;
       width: 100%;
     }
 
     .contact-info-box .section-heading {
       font-size: var(--fs-xl);
-      margin-bottom: .75rem;
+      font-family: var(--serif);
+      font-weight: 700;
+      line-height: .95;
+      letter-spacing: -0.02em;
+      margin-bottom: 3rem;
+      /* Separación aumentada */
     }
 
     .contact-info-box p {
@@ -1375,7 +1426,7 @@
     /* Form & Info Boxes */
     .contact-info-box,
     .contact-form {
-      background: rgba(255, 255, 255, 0.7);
+      background: linear-gradient(145deg, #ffffff 0%, #f1f1f6 100%);
       backdrop-filter: blur(12px);
       border: 1px solid rgba(88, 101, 242, 0.1);
       border-radius: 10px;
@@ -1465,7 +1516,7 @@
       display: inline-flex;
       align-items: center;
       gap: .6rem;
-      background: linear-gradient(135deg, var(--violet) 0%, #7B6FFF 100%);
+      background: var(--violet);
       color: #fff;
       border: none;
       cursor: pointer;
@@ -1553,7 +1604,7 @@
       max-width: 1100px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
       gap: 3rem;
       margin-bottom: 3rem;
     }
@@ -1706,7 +1757,8 @@
       .contact-inner,
       .form-grid {
         grid-template-columns: 1fr !important;
-        gap: 2rem;
+        gap: 1rem;
+        /* Reducido para consistencia */
       }
 
       .hero-visual {
@@ -1740,21 +1792,27 @@
 
       .hero-title {
         font-size: 2.5rem !important;
-        margin-bottom: 2.25rem !important;
-        /* Aumentado 50% desde 1.5rem */
+        margin-bottom: 3.15rem !important;
+        /* Aumentado 40% desde 2.25rem */
         text-align: center;
       }
 
       .hero-desc {
-        font-size: calc(var(--fs-md) * 0.8) !important;
-        /* 10% menos que el 0.9 actual aprox */
+        font-size: calc(var(--fs-md) * 0.88) !important;
+        /* Aumentado 10% */
         text-align: center;
         margin: 0 auto;
         max-width: 90%;
       }
 
       .problema-item-v2 p {
-        font-size: calc(var(--fs-md) * 0.8) !important;
+        font-size: calc(var(--fs-md) * 0.88) !important;
+        /* Aumentado 10% */
+      }
+
+      .service-card p {
+        font-size: calc(var(--fs-md) * 0.88) !important;
+        /* Igualado a Hero y Problemas */
       }
 
       .hero-text-container {
@@ -1796,6 +1854,8 @@
       .proceso-header-card {
         width: 100% !important;
         padding: 1.25rem !important;
+        order: -1;
+        /* Poner el título arriba en móvil */
       }
 
       .form-grid {
@@ -1836,6 +1896,16 @@
         grid-template-columns: 1fr;
         gap: 2.5rem;
         text-align: center;
+      }
+
+      .footer-brand img {
+        margin: 0 auto 1rem;
+        /* Centrar logo */
+      }
+
+      .footer-brand p {
+        margin: 0 auto;
+        /* Centrar texto descriptivo */
       }
 
       footer {
@@ -1913,14 +1983,14 @@
       <div class="hero-text">
         <div class="hero-text-container">
           <h1 class="hero-title">
-            Transformamos <em>datos</em> en acciones
+            Transformamos datos en acciones
           </h1>
           <p class="hero-desc">
             Accionamos sobre los datos y procesos para la optimización y mejora de decisiones.
             Reducción de costos, optimización de tiempos y aumento de calidad.
           </p>
         </div>
-        <div class="hero-cta-card">
+        <div class="hero-cta-card reveal">
           <h3>¿Listo para transformar tu negocio?</h3>
           <div class="hero-buttons">
             <a href="#contacto" class="btn-chatea">CHATEA</a>
@@ -1942,7 +2012,7 @@
       <div class="problema-item-v2 problema-header-card reveal">
         <div class="problema-item-v2-inner"
           style="flex-direction: column; justify-content: center; align-items: center; text-align: center;">
-          <h2 class="section-heading">Transformamos tus <em>desafíos</em> en oportunidades</h2>
+          <h2 class="section-heading">Transformamos tus desafíos en oportunidades</h2>
         </div>
       </div>
 
@@ -1989,7 +2059,7 @@
   <section class="services reveal" id="servicios">
     <div class="services-grid">
 
-      <div class="service-card">
+      <div class="service-card reveal">
         <div class="service-bg" style="background-image:url('analisis-bi3.jpg');"></div>
         <div class="service-overlay"></div>
         <div class="service-shine"></div>
@@ -2005,7 +2075,7 @@
         </div>
       </div>
 
-      <div class="service-card">
+      <div class="service-card reveal">
         <div class="service-bg" style="background-image:url('foto automatizacion.jpg');"></div>
         <div class="service-overlay"></div>
         <div class="service-shine"></div>
@@ -2021,7 +2091,7 @@
         </div>
       </div>
 
-      <div class="service-card">
+      <div class="service-card reveal" style="transition-delay: 2s;">
         <div class="service-bg" style="background-image:url('imagen capacitacion.jpg');"></div>
         <div class="service-overlay"></div>
         <div class="service-shine"></div>
@@ -2037,7 +2107,7 @@
         </div>
       </div>
 
-      <div class="service-card">
+      <div class="service-card reveal" style="transition-delay: 3s;">
         <div class="service-bg" style="background-image:url('imagen-clara.jpg');"></div>
         <div class="service-overlay"></div>
         <div class="service-shine"></div>
@@ -2107,12 +2177,10 @@
 
       <!-- HEADER METIDO DENTRO DE LA GRILLA BENTO -->
       <div class="proceso-item-bento proceso-header-card reveal">
-        <div class="proceso-item-bento-inner">
-          <h2 class="section-heading">Cómo <em>trabajamos</em></h2>
-          <p style="max-width:600px; margin-top:1rem; line-height: 1.6;">
-            Trabajamos en 4 etapas claras para garantizar resultados medibles.
-          </p>
-        </div>
+        <h1 class="section-heading">Cómo trabajamos</h1>
+        <p style="max-width:600px; margin-top:1rem; line-height: 1.6;">
+          Trabajamos en 4 etapas claras para garantizar resultados medibles.
+        </p>
       </div>
     </div>
   </section>
@@ -2122,11 +2190,9 @@
     <div class="contact-inner">
       <!-- INFO BOX -->
       <div class="contact-info-box" style="display: flex; flex-direction: column;">
-        <div class="section-label">Contacto</div>
-        <h2 class="section-heading">¿Tenés un <em>proyecto</em> en mente?</h2>
+        <h2 class="section-heading">¿Tenés un proyecto en mente?</h2>
         <p style="color: var(--ink-soft); font-size: var(--fs-md); line-height: 1.75; margin-bottom: 2.5rem;">
-          Contanos sobre tu negocio y descubrí cómo podemos ayudarte a alcanzar tus objetivos a través del análisis de
-          datos y la automatización.
+          Contanos sobre tu negocio y rediseña tus operaciones
         </p>
 
         <div class="contact-detail">
@@ -2137,10 +2203,7 @@
           <div class="contact-detail-icon"><i class="fas fa-phone"></i></div>
           <div><a href="tel:+1234567890">+1 (234) 567-890</a></div>
         </div>
-        <div class="contact-detail">
-          <div class="contact-detail-icon"><i class="fas fa-clock"></i></div>
-          <div>Lunes a Viernes · 9:00 – 18:00</div>
-        </div>
+
       </div>
 
       <!-- FORM BOX -->
@@ -2204,34 +2267,27 @@
         <h4>Sitio</h4>
         <ul>
           <li><a href="#">Inicio</a></li>
-          <li><a href="#servicios">Soluciones</a></li>
-          <li><a href="#casos">Nosotros</a></li>
+          <li><a href="#problemas">Problemas</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#proceso">Proceso</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Servicios</h4>
         <ul>
-          <li><a href="#servicios">Dashboards Ejecutivos</a></li>
-          <li><a href="#servicios">Dashboards Operativos</a></li>
+          <li><a href="#servicios">Analytics</a></li>
           <li><a href="#servicios">Automatización</a></li>
+          <li><a href="#servicios">Capacitaciones</a></li>
+          <li><a href="#servicios">Consultoría</a></li>
         </ul>
       </div>
-      <div class="footer-newsletter">
-        <h4>Newsletter</h4>
-        <p>Insights y novedades sobre análisis de datos.</p>
-        <div class="newsletter-input">
-          <input type="email" placeholder="tu@email.com">
-          <button><i class="fas fa-arrow-right"></i></button>
+      <div class="footer-col">
+        <h4>Social</h4>
+        <div class="footer-socials">
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
         </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2024 Ratio Analytics · Todos los derechos reservados</span>
-      <div class="footer-socials">
-        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
       </div>
     </div>
   </footer>
@@ -2452,17 +2508,7 @@
       });
     })();
 
-    // Animación de servicios al scroll
-    const servicesGrid = document.querySelector('.services-grid');
-    if (servicesGrid) {
-      new IntersectionObserver(entries => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            e.target.classList.add('visible');
-          }
-        });
-      }, { threshold: 0.1 }).observe(servicesGrid);
-    }
+
   </script>
 
 </body>
