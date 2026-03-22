@@ -232,7 +232,7 @@
     .hamburger span {
       width: 24px;
       height: 2px;
-      background: var(--ink);
+      background: var(--violet);
       transition: all .3s;
     }
 
@@ -767,9 +767,30 @@
       padding: 0;
       /* Padding moved to inner */
       transition: all 0.3s ease;
-      cursor: default;
+      cursor: pointer;
+      /* Permite que el hover se active con un "tap" en celulares (Safari/Chrome) */
       display: block;
       overflow: visible;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .proceso-item-bento::before {
+      content: '';
+      position: absolute;
+      top: -1.5rem;
+      bottom: -1.5rem;
+      left: -2rem;
+      right: -2rem;
+      background: transparent;
+      border-radius: 16px;
+      z-index: 1;
+      /* Se posiciona detrás del texto que tiene z-index: 2 */
+      transition: background 0.3s ease;
+      pointer-events: none;
+    }
+
+    .proceso-item-bento:hover::before {
+      background: var(--violet);
     }
 
     .proceso-item-bento:hover {
@@ -792,10 +813,7 @@
       transition: opacity 0.3s ease;
     }
 
-    /* Opcional: un ligero destaque al pasar el cursor por el item */
-    .proceso-item-bento:hover .proceso-item-bento-inner {
-      opacity: 0.8;
-    }
+    /* Sin destaque con opacidad */
 
 
     .step-circle-bento {
@@ -817,11 +835,11 @@
     }
 
     /* Línea que une los centros */
-    .step-circle-bento::before,
-    .step-circle-bento::after {
+    .proceso-item-bento-inner::before,
+    .proceso-item-bento-inner::after {
       content: '';
       position: absolute;
-      left: 50%;
+      left: -65px;
       transform: translateX(-50%);
       width: 5px;
       background: var(--ink-soft);
@@ -834,27 +852,29 @@
       background: var(--violet);
       border-color: var(--violet);
     }
-    
-    .proceso-item-bento:hover .step-circle-bento::before,
-    .proceso-item-bento:hover .step-circle-bento::after {
+
+    .proceso-item-bento:hover .proceso-item-bento-inner::before,
+    .proceso-item-bento:hover .proceso-item-bento-inner::after {
       background: var(--violet);
+      width: 5px;
+      /* Apenas más gruesa para tapar la línea gris inferior y dar efecto de luz */
     }
 
-    .step-circle-bento::before {
+    .proceso-item-bento-inner::before {
       bottom: 50%;
-      height: 100px;
-      /* Reducido para evitar picos */
+      height: calc(50% + 1.25rem);
+      /* 50% de la tarjeta + la mitad del gap exacto (2.5rem/2) */
     }
 
-    .step-circle-bento::after {
+    .proceso-item-bento-inner::after {
       top: 50%;
-      height: 100px;
-      /* Reducido para evitar picos */
+      height: calc(50% + 1.25rem);
+      /* 50% de la tarjeta + la mitad del gap exacto (2.5rem/2) */
     }
 
     /* Ocultar extremos exteriores (Deben ir al final) */
-    .proceso-timeline-col .proceso-item-bento:first-child .step-circle-bento::before,
-    .proceso-timeline-col .proceso-item-bento:last-child .step-circle-bento::after {
+    .proceso-timeline-col .proceso-item-bento:first-child .proceso-item-bento-inner::before,
+    .proceso-timeline-col .proceso-item-bento:last-child .proceso-item-bento-inner::after {
       display: none !important;
       content: none !important;
       height: 0 !important;
@@ -876,6 +896,7 @@
       font-weight: 700;
       color: var(--ink);
       margin: 0 0 .75rem 0;
+      transition: color 0.3s ease;
     }
 
     .proceso-content-bento p {
@@ -883,6 +904,12 @@
       line-height: 1.6;
       color: var(--ink-soft);
       margin: 0;
+      transition: color 0.3s ease;
+    }
+
+    .proceso-item-bento:hover .proceso-content-bento h4,
+    .proceso-item-bento:hover .proceso-content-bento p {
+      color: #ffffff;
     }
 
     /* Bento Box asimétrico */
@@ -896,7 +923,7 @@
       border: none !important;
       background: transparent !important;
       border-radius: 20px !important;
-      padding: 5rem 3.5rem !important;
+      padding: 5rem 2rem 5rem 3rem !important;
       box-shadow: none !important;
       text-align: left;
       display: block !important;
@@ -918,9 +945,9 @@
     .proceso-header-card .section-heading {
       color: #31edae !important;
       display: block !important;
-      font-size: var(--fs-h2);
+      font-size: calc(var(--fs-h2) * 1.2);
       line-height: 1.1;
-      margin-bottom: 3.5rem;
+      margin-bottom: 6.5rem;
       font-weight: 900;
     }
 
@@ -938,6 +965,16 @@
 
     /* Responsive */
     @media (max-width: 900px) {
+      :root {
+        --fs-h2: var(--fs-h1);
+        /* Los h2 adoptan el tamaño del hero title en mobile */
+      }
+
+      .proceso-header-card .section-heading {
+        font-size: var(--fs-h1) !important;
+        /* Limpia el calc(1.2) en mobile */
+      }
+
       .proceso-grid-bento {
         grid-template-columns: 1fr;
         gap: 2rem;
@@ -946,12 +983,46 @@
       .proceso-grid-bento .proceso-header-card {
         grid-row: 1;
         grid-column: 1;
-        padding: 2.5rem 1.5rem !important;
+        padding: 1.5rem !important;
+        /* Padding ideal en móviles */
       }
 
       .proceso-timeline-col {
         grid-row: 2;
-        padding-left: 10px;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        padding-left: 60px;
+        /* Espacio para que el círculo no se salga de la pantalla */
+        padding-right: 30px;
+      }
+
+      .step-circle-bento {
+        left: -50px;
+        /* Acercamos el círculo al texto */
+      }
+
+      .proceso-item-bento-inner::before,
+      .proceso-item-bento-inner::after {
+        left: -35px;
+        /* Calculado al centro (50-15) del círculo */
+      }
+
+      .proceso-item-bento::before {
+        top: -1rem;
+        bottom: -1rem;
+        left: -1rem;
+        /* El fondo oscuro no se abre tanto hacia los bordes en mobile */
+        right: -1rem;
+      }
+
+      .proceso-item-bento-inner {
+        gap: 1.5rem;
+        /* Ajuste visual más compacto */
+      }
+
+      .proceso-content-bento h4 {
+        margin-bottom: 0.5rem;
+        /* Un 30% menos de espacio interno entre título y texto */
       }
     }
 
@@ -1162,6 +1233,11 @@
       .service-card p {
         max-height: none;
         opacity: 1;
+      }
+
+      .service-content {
+        padding-bottom: 2rem;
+        /* La mitad del padding inferior de escritorio */
       }
     }
 
@@ -1970,6 +2046,8 @@
 
       .btn-submit {
         width: 100% !important;
+        justify-content: center;
+        /* Centra el texto dentro del botón en móvil */
       }
 
       .footer-inner {
@@ -2292,7 +2370,7 @@
         </span>
         <div class="service-content">
           <div class="service-icon-wrap">
-            <i class="fas fa-gauge-high"></i>
+            <i class="fas fa-bolt"></i>
           </div>
           <h3>Automatizaciones de procesos</h3>
           <p>Generamos automatizaciones de procesos basados en datos adaptados a la medida de su necesidad</p>
@@ -2341,7 +2419,7 @@
         <!-- STEP 1 -->
         <div class="proceso-item-bento reveal">
           <div class="proceso-item-bento-inner">
-            <div class="step-circle-bento"></div>
+            <div class="step-circle-bento"><i class="fas fa-flag" style="color: white; font-size: 12px;"></i></div>
             <div class="proceso-content-bento">
               <h4>Detección y Diagnóstico</h4>
               <p>Analizamos tu situación actual, identificamos problemas y oportunidades de mejora.</p>
@@ -2352,7 +2430,7 @@
         <!-- STEP 2 -->
         <div class="proceso-item-bento reveal">
           <div class="proceso-item-bento-inner">
-            <div class="step-circle-bento"></div>
+            <div class="step-circle-bento"><i class="fas fa-flag" style="color: white; font-size: 12px;"></i></div>
             <div class="proceso-content-bento">
               <h4>Propuesta y Evaluación</h4>
               <p>Presentamos soluciones personalizadas con roadmap claro y objetivos medibles.</p>
@@ -2363,7 +2441,7 @@
         <!-- STEP 3 -->
         <div class="proceso-item-bento reveal">
           <div class="proceso-item-bento-inner">
-            <div class="step-circle-bento"></div>
+            <div class="step-circle-bento"><i class="fas fa-flag" style="color: white; font-size: 12px;"></i></div>
             <div class="proceso-content-bento">
               <h4>Ejecución del Proyecto</h4>
               <p>Implementamos la solución con seguimiento constante y comunicación fluida.</p>
@@ -2374,7 +2452,7 @@
         <!-- STEP 4 -->
         <div class="proceso-item-bento reveal">
           <div class="proceso-item-bento-inner">
-            <div class="step-circle-bento"></div>
+            <div class="step-circle-bento"><i class="fas fa-flag" style="color: white; font-size: 12px;"></i></div>
             <div class="proceso-content-bento">
               <h4>Evaluación de Resultados</h4>
               <p>Medimos el impacto, ajustamos lo necesario y aseguramos el éxito continuo.</p>
@@ -2384,21 +2462,20 @@
       </div>
 
       <!-- HEADER METIDO DENTRO DE LA GRILLA BENTO -->
-      <div class="proceso-item-bento proceso-header-card reveal" style="display: flex; flex-direction: column;">
-        <h1 class="section-heading" style="margin-bottom: 0 !important;">
+      <!-- HEADER METIDO DENTRO DE LA GRILLA BENTO -->
+      <div class="proceso-header-card reveal" style="display: flex; flex-direction: column;">
+        <h1 class="section-heading">
           <span
             style="background-color: #7166f0; padding: 0 0.3em; box-decoration-break: clone; -webkit-box-decoration-break: clone; border-radius: 4px;">El
             camino hacia tu cultura de datos</span>
         </h1>
 
-        <!-- Espacio aumentado (~3x el original) con ícono gris suave -->
-        <div
-          style="flex-grow: 1; display: flex; align-items: center; justify-content: flex-start; margin: 4.5rem 0; opacity: 0.6;">
-          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#a0a0a0" stroke-width="1"
+        <!-- Espacio ajustado, ícono centrado -->
+        <div style="display: flex; align-items: center; justify-content: center; margin: 1.5rem 0; opacity: 0.6;">
+          <svg width="77" height="77" viewBox="0 0 24 24" fill="none" stroke="#a0a0a0" stroke-width="1.2"
             stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"></circle>
-            <polyline points="12 16 16 12 12 8"></polyline>
-            <line x1="8" y1="12" x2="16" y2="12"></line>
+            <path d="M3 19q5-10 9-3t9-11"></path>
+            <polyline points="16 5 21 5 21 10"></polyline>
           </svg>
         </div>
 
