@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 280" width="440" height="280" font-family="'DM Sans', Arial, sans-serif">
+  <defs>
+    <filter id="shadow" x="-8%" y="-8%" width="120%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="10" flood-color="#00000018"/>
+    </filter>
+    <clipPath id="clip1"><rect x="20" y="12" width="400" height="256" rx="14"/></clipPath>
+    <linearGradient id="grad1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#888888" stop-opacity="0.30"/>
+      <stop offset="100%" stop-color="#888888" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="85%" cy="0%" r="55%">
+      <stop offset="0%" stop-color="#bbbbbb" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#bbbbbb" stop-opacity="0"/>
+    </radialGradient>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&amp;family=DM+Mono:wght@400;500&amp;display=swap');
+      .line-main {
+        stroke-dasharray: 900;
+        stroke-dashoffset: 900;
+        animation: draw 3.2s cubic-bezier(.4,0,.2,1) .6s forwards;
+      }
+      .area-fill {
+        opacity: 0;
+        animation: fadeIn 2s ease 2.2s forwards;
+      }
+      .card-root {
+        opacity: 0;
+        animation: slideUp 1.2s cubic-bezier(.22,.68,0,1.1) forwards;
+      }
+      @keyframes draw    { to { stroke-dashoffset: 0; } }
+      @keyframes fadeIn  { to { opacity: 1; } }
+      @keyframes slideUp {
+        from { opacity: 0; transform: translateY(14px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+    </style>
+  </defs>
+
+  <!-- Background -->
+
+
+  <g class="card-root">
+    <!-- Card surface -->
+    <rect x="20" y="12" width="400" height="256" rx="14" fill="#fafafa" stroke="#00000014" stroke-width="1" filter="url(#shadow)"/>
+    <!-- Accent glow -->
+    <rect x="20" y="12" width="400" height="256" rx="14" fill="url(#glow1)" clip-path="url(#clip1)"/>
+
+    <!-- Header -->
+    <text x="44" y="40" font-size="11" font-weight="600" letter-spacing="1.3" fill="#666666" font-family="'DM Sans',Arial,sans-serif">INGRESOS TOTALES</text>
+    <rect x="350" y="24" width="50" height="20" rx="10" fill="#88888822" stroke="#88888855" stroke-width="1"/>
+    <text x="375" y="38" font-size="10" font-weight="600" fill="#888888" text-anchor="middle" font-family="'DM Sans',Arial,sans-serif">MXN</text>
+
+    <!-- KPI Value -->
+    <text x="44" y="82" font-size="34" font-weight="500" letter-spacing="-0.5" fill="#1a1a1a" font-family="'DM Mono','Courier New',monospace">$4.82M</text>
+    <!-- Delta UP -->
+    <rect x="192" y="62" width="72" height="24" rx="7" fill="#55555518"/>
+    <text x="208" y="78" font-size="10" fill="#555555" font-family="'DM Sans',Arial,sans-serif">▲</text>
+    <text x="220" y="78" font-size="12" font-weight="600" fill="#555555" font-family="'DM Sans',Arial,sans-serif">+12.4%</text>
+
+    <!-- Subtitle -->
+    <text x="44" y="100" font-size="11" fill="#666666" font-family="'DM Sans',Arial,sans-serif">vs. $4.29M período anterior</text>
+
+    <!-- Divider -->
+    <line x1="44" y1="114" x2="396" y2="114" stroke="#00000012" stroke-width="1"/>
+
+    <!-- Chart meta + legend -->
+    <text x="44" y="130" font-size="10" font-weight="600" letter-spacing="1" fill="#aaaaaa" font-family="'DM Sans',Arial,sans-serif">SERIE DE TIEMPO · 12 MESES</text>
+    <circle cx="298" cy="127" r="3.5" fill="#888888"/>
+    <text x="305" y="131" font-size="10" fill="#666666" font-family="'DM Sans',Arial,sans-serif">Actual</text>
+    <circle cx="345" cy="127" r="3.5" fill="#cccccc"/>
+    <text x="352" y="131" font-size="10" fill="#666666" font-family="'DM Sans',Arial,sans-serif">Ant.</text>
+
+    <!-- Grid lines (chart y: 138–196) -->
+    <line x1="44" y1="138" x2="396" y2="138" stroke="#00000009" stroke-width="1"/>
+    <line x1="44" y1="157" x2="396" y2="157" stroke="#00000009" stroke-width="1"/>
+    <line x1="44" y1="177" x2="396" y2="177" stroke="#00000009" stroke-width="1"/>
+    <line x1="44" y1="196" x2="396" y2="196" stroke="#00000009" stroke-width="1"/>
+
+    <!-- Previous period area + dashed line -->
+    <path class="area-fill" d="M44,196 L44,194 L76,189 L108,195 L140,179 L172,184 L204,176 L236,181 L268,166 L300,171 L332,161 L364,151 L396,146 L396,196 Z" fill="rgba(180,180,180,.18)"/>
+    <polyline points="44,194 76,189 108,195 140,179 172,184 204,176 236,181 268,166 300,171 332,161 364,151 396,146" fill="none" stroke="#cccccc" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+    <!-- Current period area + line -->
+    <path class="area-fill" d="M44,196 L44,188 L76,183 L108,191 L140,171 L172,176 L204,166 L236,174 L268,156 L300,164 L332,143 L364,143 L396,138 L396,196 Z" fill="url(#grad1)"/>
+    <polyline class="line-main" points="44,188 76,183 108,191 140,171 172,176 204,166 236,174 268,156 300,164 332,143 364,143 396,138" fill="none" stroke="#888888" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- X-axis labels -->
+    <text x="44"  y="209" font-size="8.5" fill="#aaaaaa" text-anchor="middle" font-family="'DM Mono','Courier New',monospace">Ene</text>
+    <text x="76"  y="209" font-size="8.5" fill="#aaaaaa" text-anchor="middle" font-family="'DM Mono','Courier New',monospace">Feb</text>
+    <text x="108" y="209" font-size="8.5" fill="#aaaaaa" text-anchor="middle" font-family="'DM Mono','Courier New',monospace">Mar</text>
+    <text x="140" y="209" font-size="8.5" fill="#aaaaaa" text-anchor="middle" font-family="'DM Mono','Courier New',monospace">Abr</text>
+    <text x="172" y="209" font-size="8.5" fill="#aaaaaa" text-anchor="middle" font-family="'DM Mono','Courier New',monospace">May</text>
+    <text x="204" y="209" font-size="8.5" fill="#aaaaaa" text-anchor="middle" font-family="'DM Mono','Courier New',monospace">Jun</text>
+    <text x="236" y="209" font-size="8.5" fill="#aaaaaa" text-anchor="middle" font-family="'DM Mono','Courier New',monospace">Jul</text>
+    <text x="268" y="209" font-size="8.5" fill="#aaaaaa" text-anchor="middle" font-family="'DM Mono','Courier New',monospace">Ago</text>
+    <text x="300" y="209" font-size="8.5" fill="#aaaaaa" text-anchor="middle" font-family="'DM Mono','Courier New',monospace">Sep</text>
+    <text x="332" y="209" font-size="8.5" fill="#aaaaaa" text-anchor="middle" font-family="'DM Mono','Courier New',monospace">Oct</text>
+    <text x="364" y="209" font-size="8.5" fill="#aaaaaa" text-anchor="middle" font-family="'DM Mono','Courier New',monospace">Nov</text>
+    <text x="396" y="209" font-size="8.5" fill="#aaaaaa" text-anchor="middle" font-family="'DM Mono','Courier New',monospace">Dic</text>
+
+    <!-- Footer divider -->
+    <line x1="44" y1="222" x2="396" y2="222" stroke="#00000012" stroke-width="1"/>
+
+    <!-- Footer metrics — equal thirds: centers at 161, 220 divider, 278 divider, 337 -->
+    <!-- Third 1: x 44–161  center=103 -->
+    <text x="103" y="243" font-size="14" font-weight="500" fill="#1a1a1a" text-anchor="middle" font-family="'DM Mono','Courier New',monospace">$401K</text>
+    <text x="103" y="258" font-size="8.5" font-weight="600" fill="#aaaaaa" text-anchor="middle" letter-spacing="0.8" font-family="'DM Sans',Arial,sans-serif">PROMEDIO MENS.</text>
+
+    <line x1="161" y1="226" x2="161" y2="263" stroke="#00000012" stroke-width="1"/>
+
+    <!-- Third 2: x 161–278  center=220 -->
+    <text x="220" y="243" font-size="14" font-weight="500" fill="#1a1a1a" text-anchor="middle" font-family="'DM Mono','Courier New',monospace">$612K</text>
+    <text x="220" y="258" font-size="8.5" font-weight="600" fill="#aaaaaa" text-anchor="middle" letter-spacing="0.8" font-family="'DM Sans',Arial,sans-serif">PICO MÁXIMO</text>
+
+    <line x1="278" y1="226" x2="278" y2="263" stroke="#00000012" stroke-width="1"/>
+
+    <!-- Third 3: x 278–396  center=337 -->
+    <text x="337" y="243" font-size="14" font-weight="500" fill="#1a1a1a" text-anchor="middle" font-family="'DM Mono','Courier New',monospace">$298K</text>
+    <text x="337" y="258" font-size="8.5" font-weight="600" fill="#aaaaaa" text-anchor="middle" letter-spacing="0.8" font-family="'DM Sans',Arial,sans-serif">PICO MÍNIMO</text>
+  </g>
+
+</svg>

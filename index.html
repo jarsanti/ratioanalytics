@@ -41,13 +41,14 @@
       /* Nuevo fondo sutilmente más oscuro */
       --serif: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
       --sans: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      /* Tipografía unificada */
-      --fs-xl: clamp(2.6rem, 8vw, 4.2rem);
-      /* Escalado proporcional */
-      --fs-lg: 1.7rem;
-      /* Escalado proporcional */
-      --fs-md: 1.25rem;
-      /* Incremento del ~30% solicitado */
+      /* Unificación de Tipografía en 4 niveles */
+      --fs-h1: clamp(2.6rem, 8vw, 4.2rem);
+      /* Títulos principales (Hero, Form) */
+      --fs-h2: clamp(1.8rem, 3.5vw, 2.4rem);
+      /* Títulos de tarjetas principales */
+      --fs-h3: 1.4rem;
+      /* Subtítulos, ítems y cards secundarias */
+      --fs-p: 1.125rem;
       /* Texto de cuerpo */
     }
 
@@ -56,7 +57,7 @@
     }
 
     p {
-      font-size: calc(var(--fs-md) * 0.9);
+      font-size: var(--fs-p);
     }
 
     body {
@@ -389,7 +390,7 @@
     }
 
     .hero-title {
-      font-size: var(--fs-xl);
+      font-size: var(--fs-h1);
       font-family: var(--serif);
       font-weight: 700;
       line-height: .95;
@@ -413,7 +414,7 @@
     }
 
     .hero-desc {
-      font-size: var(--fs-md) !important;
+      font-size: var(--fs-p) !important;
       line-height: 1.75;
       color: var(--ink-soft);
       margin-bottom: 0;
@@ -458,9 +459,9 @@
       justify-content: center;
       background: #69f2c4;
       color: #000000;
-      padding: 1rem 3rem;
+      padding: 1rem 2rem;
       border-radius: 12px;
-      font-size: 1.1rem;
+      font-size: 0.88rem;
       font-weight: 600;
       font-family: 'Montaser Arabic', 'Montserrat Arabic', 'Montserrat', sans-serif;
       text-decoration: none;
@@ -573,7 +574,7 @@
     }
 
     .problema-item-v2 h3 {
-      font-size: 1.4rem;
+      font-size: var(--fs-h3);
       font-weight: 700;
       color: #31edae;
       margin: 0 0 .25rem 0;
@@ -582,7 +583,7 @@
     }
 
     .problema-item-v2 p {
-      font-size: var(--fs-md) !important;
+      font-size: var(--fs-p) !important;
       line-height: 1.4;
       color: #ffffff;
       margin: 0;
@@ -620,14 +621,24 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
       position: relative;
       display: flex;
+      flex-direction: column;
+      /* Cambiado a columna para el icono abajo */
       align-items: center;
       justify-content: center;
-      padding: 1.5rem;
+      padding: 2.5rem 1.5rem;
+    }
+
+    .kpi-icon-svg {
+      width: 100%;
+      max-width: 280px;
+      opacity: 0.8;
+      margin-top: 2rem;
+      pointer-events: none;
     }
 
     .problema-header-card .section-heading {
-      color: var(--violet) !important;
-      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      color: #000 !important;
+      font-size: var(--fs-h2);
       /* Un poco más chico para 1fr */
       line-height: 1.25;
       margin: 0;
@@ -733,8 +744,14 @@
       flex-direction: column;
       gap: 2.5rem;
       position: relative;
-      padding-left: 120px;
-      padding-right: 35px;
+      padding: 2.5rem 3.5rem 2.5rem 130px;
+      /* Padding similar a la card de la derecha */
+      background:
+        linear-gradient(145deg, #ffffff, #ebebeb) padding-box,
+        linear-gradient(135deg, #a69fff, #b51cc9) border-box !important;
+      border: 1px solid transparent !important;
+      border-radius: 20px !important;
+      height: 100%;
     }
 
     /* El rectángulo vertical ahora se gestiona desde los centros */
@@ -744,15 +761,20 @@
 
     .proceso-item-bento {
       position: relative;
-      background: transparent;
-      border: none;
+      background: transparent !important;
+      border: none !important;
       width: 100%;
-      transition: none;
+      padding: 0;
+      /* Padding moved to inner */
+      transition: all 0.3s ease;
+      cursor: default;
+      display: block;
+      overflow: visible;
     }
 
     .proceso-item-bento:hover {
-      transform: none;
-      box-shadow: none;
+      background: transparent !important;
+      border: none !important;
     }
 
     .proceso-item-bento-inner {
@@ -763,22 +785,35 @@
       align-items: center;
       text-align: left;
       gap: 2rem;
+      width: 100%;
+      background: transparent !important;
+      border: none !important;
       padding: 0;
+      transition: opacity 0.3s ease;
     }
 
+    /* Opcional: un ligero destaque al pasar el cursor por el item */
+    .proceso-item-bento:hover .proceso-item-bento-inner {
+      opacity: 0.8;
+    }
+
+
     .step-circle-bento {
-      width: 40px;
-      height: 40px;
-      background: var(--violet);
-      border: 5px solid var(--violet);
-      border-radius: 7px;
+      width: 30px;
+      height: 30px;
+      background: var(--ink-soft);
+      border: 5px solid var(--ink-soft);
+      border-radius: 50%;
       position: absolute;
-      left: -90px;
-      /* Ajuste para centrar sobre el eje de la barra */
+      left: -80px;
+      /* Posicionado fuera a la izquierda */
       top: 50%;
       transform: translateY(-50%);
       z-index: 5;
       display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
     }
 
     /* Línea que une los centros */
@@ -789,25 +824,41 @@
       left: 50%;
       transform: translateX(-50%);
       width: 5px;
-      background: var(--violet);
+      background: var(--ink-soft);
       z-index: -1;
+      transition: all 0.3s ease;
+    }
+
+    /* Al hacer hover en la tarjeta, el círculo y las líneas cambian a violeta */
+    .proceso-item-bento:hover .step-circle-bento {
+      background: var(--violet);
+      border-color: var(--violet);
+    }
+    
+    .proceso-item-bento:hover .step-circle-bento::before,
+    .proceso-item-bento:hover .step-circle-bento::after {
+      background: var(--violet);
     }
 
     .step-circle-bento::before {
       bottom: 50%;
       height: 100px;
-      /* Suficiente para solapar */
+      /* Reducido para evitar picos */
     }
 
     .step-circle-bento::after {
       top: 50%;
       height: 100px;
-      /* Suficiente para solapar */
+      /* Reducido para evitar picos */
     }
 
-    .proceso-item-bento:first-child .step-circle-bento::before,
-    .proceso-item-bento:last-child .step-circle-bento::after {
-      display: none;
+    /* Ocultar extremos exteriores (Deben ir al final) */
+    .proceso-timeline-col .proceso-item-bento:first-child .step-circle-bento::before,
+    .proceso-timeline-col .proceso-item-bento:last-child .step-circle-bento::after {
+      display: none !important;
+      content: none !important;
+      height: 0 !important;
+      visibility: hidden !important;
     }
 
     .step-number-bento {
@@ -821,14 +872,14 @@
     }
 
     .proceso-content-bento h4 {
-      font-size: calc(var(--fs-lg) * 0.9);
+      font-size: var(--fs-h3);
       font-weight: 700;
       color: var(--ink);
       margin: 0 0 .75rem 0;
     }
 
     .proceso-content-bento p {
-      font-size: calc(var(--fs-md) * 0.9);
+      font-size: var(--fs-p);
       line-height: 1.6;
       color: var(--ink-soft);
       margin: 0;
@@ -842,11 +893,11 @@
     }
 
     .proceso-header-card {
-      background: linear-gradient(145deg, #ffffff, #ebebeb) !important;
-      border: 1px solid var(--border) !important;
+      border: none !important;
+      background: transparent !important;
       border-radius: 20px !important;
       padding: 5rem 3.5rem !important;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+      box-shadow: none !important;
       text-align: left;
       display: block !important;
     }
@@ -865,9 +916,9 @@
     }
 
     .proceso-header-card .section-heading {
-      color: #000 !important;
+      color: #31edae !important;
       display: block !important;
-      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      font-size: var(--fs-h2);
       line-height: 1.1;
       margin-bottom: 3.5rem;
       font-weight: 900;
@@ -877,15 +928,12 @@
       display: block !important;
       color: #000 !important;
       opacity: 1;
-      font-size: calc(var(--fs-md) * 0.85) !important;
+      font-size: var(--fs-p) !important;
       line-height: 1.6;
       margin: 0;
     }
 
-    .proceso-header-card:hover {
-      box-shadow: none !important;
-      transform: translateY(-4px) scale(1.01) !important;
-    }
+
 
 
     /* Responsive */
@@ -932,7 +980,8 @@
 
     .services-grid {
       display: grid;
-      gap: 1.5rem;
+      gap: 1rem;
+      /* Unificado con el resto de secciones */
       grid-template-columns: repeat(2, 1fr);
       width: 100%;
       margin: 0 auto;
@@ -1078,14 +1127,14 @@
     }
 
     .service-card h3 {
-      font-size: 1.4rem;
+      font-size: var(--fs-h3);
       font-weight: 700;
       color: #ffffff;
       margin-bottom: 0.2rem;
     }
 
     .service-card p {
-      font-size: var(--fs-md);
+      font-size: var(--fs-p);
       line-height: 1.65;
       color: rgba(255, 255, 255, 0.9);
       margin-bottom: 0;
@@ -1142,13 +1191,13 @@
     }
 
     .team-member h3 {
-      font-size: 1.2rem;
+      font-size: var(--fs-h3);
       font-weight: 700;
       margin-bottom: .5rem;
     }
 
     .team-member .role {
-      font-size: .85rem;
+      font-size: var(--fs-p);
       color: var(--violet);
       font-weight: 600;
       margin-bottom: .75rem;
@@ -1244,14 +1293,14 @@
     }
 
     .case-body h3 {
-      font-size: 1.2rem;
+      font-size: var(--fs-h3);
       font-weight: 700;
       color: var(--ink);
       margin-bottom: .75rem;
     }
 
     .case-body p {
-      font-size: .9rem;
+      font-size: var(--fs-p);
       line-height: 1.65;
       color: var(--ink-soft);
       margin-bottom: 1.5rem;
@@ -1267,14 +1316,14 @@
 
     .case-stat .num {
       display: block;
-      font-size: 2rem;
+      font-size: var(--fs-h2);
       font-weight: 900;
       color: var(--violet);
       line-height: 1;
     }
 
     .case-stat .desc {
-      font-size: .78rem;
+      font-size: var(--fs-p);
       color: var(--muted);
       font-weight: 500;
       margin-top: .2rem;
@@ -1314,7 +1363,7 @@
     }
 
     .cta-band-text p {
-      font-size: var(--fs-md);
+      font-size: var(--fs-h3);
       font-weight: 700;
       letter-spacing: .1em;
       text-transform: uppercase;
@@ -1324,7 +1373,7 @@
 
     .cta-band-text h2 {
       font-family: var(--serif);
-      font-size: var(--fs-xl);
+      font-size: var(--fs-h1);
       color: var(--white);
       line-height: 1.2;
     }
@@ -1373,7 +1422,7 @@
     }
 
     .contact-info-box .section-heading {
-      font-size: var(--fs-xl);
+      font-size: var(--fs-h1);
       font-family: var(--serif);
       font-weight: 700;
       line-height: .95;
@@ -1729,6 +1778,37 @@
       transform: translateY(-2px);
     }
 
+    /* =====================
+       WHATSAPP STICKY
+       ===================== */
+    .whatsapp-sticky {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background-color: #25d366;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .whatsapp-sticky:hover {
+      transform: scale(1.1);
+      background-color: #128c7e;
+      color: #fff;
+    }
+
+
+
+
+
 
     /* =====================
    SCROLL REVEAL
@@ -1791,14 +1871,14 @@
       }
 
       .hero-title {
-        font-size: 2.5rem !important;
+        font-size: var(--fs-h1) !important;
         margin-bottom: 3.15rem !important;
         /* Aumentado 40% desde 2.25rem */
         text-align: center;
       }
 
       .hero-desc {
-        font-size: calc(var(--fs-md) * 0.88) !important;
+        font-size: var(--fs-p) !important;
         /* Aumentado 10% */
         text-align: center;
         margin: 0 auto;
@@ -1806,12 +1886,12 @@
       }
 
       .problema-item-v2 p {
-        font-size: calc(var(--fs-md) * 0.88) !important;
+        font-size: var(--fs-p) !important;
         /* Aumentado 10% */
       }
 
       .service-card p {
-        font-size: calc(var(--fs-md) * 0.88) !important;
+        font-size: var(--fs-p) !important;
         /* Igualado a Hero y Problemas */
       }
 
@@ -1837,7 +1917,7 @@
       }
 
       .section-heading {
-        font-size: 1.8rem;
+        font-size: var(--fs-h2);
       }
 
       /* Stack items using Flex for safety on mobile */
@@ -1993,7 +2073,7 @@
         <div class="hero-cta-card reveal">
           <h3>¿Listo para transformar tu negocio?</h3>
           <div class="hero-buttons">
-            <a href="#contacto" class="btn-chatea">CHATEA</a>
+            <a href="#contacto" class="btn-chatea">DIAGNOSTICA</a>
           </div>
         </div>
       </div>
@@ -2013,6 +2093,134 @@
         <div class="problema-item-v2-inner"
           style="flex-direction: column; justify-content: center; align-items: center; text-align: center;">
           <h2 class="section-heading">Transformamos tus desafíos en oportunidades</h2>
+
+          <svg class="kpi-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 280"
+            font-family="'DM Sans', Arial, sans-serif">
+            <defs>
+              <filter id="shadow-kpi" x="-8%" y="-8%" width="120%" height="140%">
+                <feDropShadow dx="0" dy="4" stdDeviation="10" flood-color="#625aff18" />
+              </filter>
+              <clipPath id="clip1-kpi">
+                <rect x="20" y="12" width="400" height="256" rx="14" />
+              </clipPath>
+              <linearGradient id="grad1-kpi" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#625aff" stop-opacity="0.30" />
+                <stop offset="100%" stop-color="#625aff" stop-opacity="0" />
+              </linearGradient>
+              <radialGradient id="glow1-kpi" cx="85%" cy="0%" r="55%">
+                <stop offset="0%" stop-color="#8d81ff" stop-opacity="0.18" />
+                <stop offset="100%" stop-color="#8d81ff" stop-opacity="0" />
+              </radialGradient>
+              <style>
+                .line-main {
+                  stroke-dasharray: 900;
+                  stroke-dashoffset: 900;
+                }
+
+                .area-fill {
+                  opacity: 0;
+                }
+
+                .card-root {
+                  opacity: 0;
+                }
+
+                .visible .line-main {
+                  animation: draw-kpi 3.2s cubic-bezier(.4, 0, .2, 1) 1.6s forwards;
+                }
+
+                .visible .area-fill {
+                  animation: fadeIn-kpi 2s ease 3.2s forwards;
+                }
+
+                .visible .card-root {
+                  animation: slideUp-kpi 1.2s cubic-bezier(.22, .68, 0, 1.1) 1s forwards;
+                }
+
+                @keyframes draw-kpi {
+                  to {
+                    stroke-dashoffset: 0;
+                  }
+                }
+
+                @keyframes fadeIn-kpi {
+                  to {
+                    opacity: 1;
+                  }
+                }
+
+                @keyframes slideUp-kpi {
+                  from {
+                    opacity: 0;
+                    transform: translateY(14px);
+                  }
+
+                  to {
+                    opacity: 1;
+                    transform: translateY(0);
+                  }
+                }
+              </style>
+            </defs>
+            <g class="card-root">
+              <rect x="20" y="12" width="400" height="256" rx="14" fill="#fafafa" stroke="#625aff14" stroke-width="1"
+                filter="url(#shadow-kpi)" />
+              <rect x="20" y="12" width="400" height="256" rx="14" fill="url(#glow1-kpi)" clip-path="url(#clip1-kpi)" />
+              <text x="44" y="40" font-size="11" font-weight="600" letter-spacing="1.3" fill="#8178ff">INGRESOS
+                TOTALES</text>
+              <rect x="350" y="24" width="50" height="20" rx="10" fill="#625aff22" stroke="#625aff55"
+                stroke-width="1" />
+              <text x="375" y="38" font-size="10" font-weight="600" fill="#625aff" text-anchor="middle">MXN</text>
+              <text x="44" y="82" font-size="34" font-weight="500" letter-spacing="-0.5" fill="#1a1a1a"
+                font-family="'DM Mono',monospace">$4.82M</text>
+              <rect x="192" y="62" width="72" height="24" rx="7" fill="#625aff18" />
+              <text x="208" y="78" font-size="10" fill="#625aff">▲</text>
+              <text x="220" y="78" font-size="12" font-weight="600" fill="#625aff">+12.4%</text>
+              <text x="44" y="100" font-size="11" fill="#8178ff">vs. $4.29M período anterior</text>
+              <line x1="44" y1="114" x2="396" y2="114" stroke="#625aff12" stroke-width="1" />
+              <text x="44" y="130" font-size="10" font-weight="600" letter-spacing="1" fill="#a69fff">SERIE DE TIEMPO ·
+                12 MESES</text>
+              <circle cx="298" cy="127" r="3.5" fill="#625aff" />
+              <text x="305" y="131" font-size="10" fill="#8178ff">Actual</text>
+              <circle cx="345" cy="127" r="3.5" fill="#a69fff" />
+              <text x="352" y="131" font-size="10" fill="#8178ff">Ant.</text>
+              <line x1="44" y1="138" x2="396" y2="138" stroke="#625aff08" stroke-width="1" />
+              <line x1="44" y1="157" x2="396" y2="157" stroke="#625aff08" stroke-width="1" />
+              <line x1="44" y1="177" x2="396" y2="177" stroke="#625aff08" stroke-width="1" />
+              <line x1="44" y1="196" x2="396" y2="196" stroke="#625aff08" stroke-width="1" />
+              <path class="area-fill"
+                d="M44,196 L44,194 L76,189 L108,195 L140,179 L172,184 L204,176 L236,181 L268,166 L300,171 L332,161 L364,151 L396,146 L396,196 Z"
+                fill="rgba(98,90,255,.08)" />
+              <polyline
+                points="44,194 76,189 108,195 140,179 172,184 204,176 236,181 268,166 300,171 332,161 364,151 396,146"
+                fill="none" stroke="#a69fff" stroke-width="1.5" stroke-dasharray="4 3" />
+              <path class="area-fill"
+                d="M44,196 L44,188 L76,183 L108,191 L140,171 L172,176 L204,166 L236,174 L268,156 L300,164 L332,143 L364,143 L396,138 L396,196 Z"
+                fill="url(#grad1-kpi)" />
+              <polyline class="line-main"
+                points="44,188 76,183 108,191 140,171 172,176 204,166 236,174 268,156 300,164 332,143 364,143 396,138"
+                fill="none" stroke="#625aff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+              <text x="44" y="209" font-size="8.5" fill="#a69fff" text-anchor="middle"
+                font-family="'DM Mono',monospace">Ene</text>
+              <text x="396" y="209" font-size="8.5" fill="#a69fff" text-anchor="middle"
+                font-family="'DM Mono',monospace">Dic</text>
+              <line x1="44" y1="222" x2="396" y2="222" stroke="#625aff12" stroke-width="1" />
+              <text x="103" y="243" font-size="14" font-weight="500" fill="#1a1a1a" text-anchor="middle"
+                font-family="'DM Mono',monospace">$401K</text>
+              <text x="103" y="258" font-size="8.5" font-weight="600" fill="#a69fff" text-anchor="middle"
+                letter-spacing="0.8">PROMEDIO</text>
+              <line x1="161" y1="226" x2="161" y2="263" stroke="#625aff12" stroke-width="1" />
+              <text x="220" y="243" font-size="14" font-weight="500" fill="#1a1a1a" text-anchor="middle"
+                font-family="'DM Mono',monospace">$612K</text>
+              <text x="220" y="258" font-size="8.5" font-weight="600" fill="#a69fff" text-anchor="middle"
+                letter-spacing="0.8">MÁXIMO</text>
+              <line x1="278" y1="226" x2="278" y2="263" stroke="#625aff12" stroke-width="1" />
+              <text x="337" y="243" font-size="14" font-weight="500" fill="#1a1a1a" text-anchor="middle"
+                font-family="'DM Mono',monospace">$298K</text>
+              <text x="337" y="258" font-size="8.5" font-weight="600" fill="#a69fff" text-anchor="middle"
+                letter-spacing="0.8">MÍNIMO</text>
+            </g>
+          </svg>
         </div>
       </div>
 
@@ -2176,10 +2384,27 @@
       </div>
 
       <!-- HEADER METIDO DENTRO DE LA GRILLA BENTO -->
-      <div class="proceso-item-bento proceso-header-card reveal">
-        <h1 class="section-heading">Cómo trabajamos</h1>
-        <p style="max-width:600px; margin-top:1rem; line-height: 1.6;">
-          Trabajamos en 4 etapas claras para garantizar resultados medibles.
+      <div class="proceso-item-bento proceso-header-card reveal" style="display: flex; flex-direction: column;">
+        <h1 class="section-heading" style="margin-bottom: 0 !important;">
+          <span
+            style="background-color: #7166f0; padding: 0 0.3em; box-decoration-break: clone; -webkit-box-decoration-break: clone; border-radius: 4px;">El
+            camino hacia tu cultura de datos</span>
+        </h1>
+
+        <!-- Espacio aumentado (~3x el original) con ícono gris suave -->
+        <div
+          style="flex-grow: 1; display: flex; align-items: center; justify-content: flex-start; margin: 4.5rem 0; opacity: 0.6;">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#a0a0a0" stroke-width="1"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 16 16 12 12 8"></polyline>
+            <line x1="8" y1="12" x2="16" y2="12"></line>
+          </svg>
+        </div>
+
+        <p style="max-width:600px; margin-bottom: 0; line-height: 1.6;">
+          Implementamos una metodología clara de 4 etapas diseñada para transformar tu información en decisiones
+          inteligentes.
         </p>
       </div>
     </div>
@@ -2510,6 +2735,10 @@
 
 
   </script>
+
+  <a href="https://wa.me/543413564528" class="whatsapp-sticky" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-whatsapp"></i>
+  </a>
 
 </body>
 
