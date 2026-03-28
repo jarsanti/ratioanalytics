@@ -639,9 +639,9 @@
     .problema-header-card .section-heading {
       color: #000 !important;
       font-size: var(--fs-h2);
-      /* Un poco más chico para 1fr */
       line-height: 1.25;
       margin: 0;
+      font-weight: 700 !important;
       text-shadow: none;
       text-align: center;
     }
@@ -691,6 +691,17 @@
 
       .problemas-left-col {
         grid-row: 2;
+      }
+
+      .problema-check-svg {
+        width: 100px !important;
+        height: 100px !important;
+        margin: -1rem 0 !important;
+      }
+
+      .problema-header-card .problema-item-v2-inner p {
+        max-width: 100% !important;
+        width: 100%;
       }
     }
 
@@ -868,7 +879,7 @@
     .proceso-content-bento h4 {
       font-size: var(--fs-h3);
       font-weight: 700;
-      color: #31edae;
+      color: var(--violet);
       margin: 0 0 .75rem 0;
       transition: color 0.3s ease;
     }
@@ -898,11 +909,9 @@
       border: 1px solid var(--border) !important;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
       border-radius: 20px !important;
-      padding: 6rem 4.5rem 5rem 5rem !important;
-      display: flex !important;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      padding: 0;
+      position: relative;
+      overflow: hidden;
     }
 
     .proceso-header-card .section-label {
@@ -922,9 +931,12 @@
       color: #000 !important;
       display: block !important;
       font-size: var(--fs-h2);
-      line-height: 1.1;
+      line-height: 1.25;
       margin-bottom: 6.5rem;
-      font-weight: 900;
+      font-weight: 700 !important;
+      font-family: inherit !important;
+      margin-top: 0;
+      text-shadow: none;
     }
 
     .proceso-header-card p {
@@ -946,9 +958,13 @@
         /* Los h2 adoptan el tamaño del hero title en mobile */
       }
 
+      .proceso-header-card .section-heading,
+      .problema-header-card .section-heading {
+        font-size: clamp(2.34rem, 7.2vw, 3.78rem) !important;
+      }
+
       .proceso-header-card .section-heading {
-        font-size: var(--fs-h1) !important;
-        /* Limpia el calc(1.2) en mobile */
+        margin-bottom: 0 !important;
       }
 
       .proceso-grid-bento {
@@ -2001,10 +2017,46 @@
       .problema-header-card,
       .proceso-header-card {
         width: 100% !important;
-        padding: 1.25rem !important;
+        padding: 0 !important;
         order: -1;
-        /* Poner el título arriba en móvil */
       }
+
+      .problema-header-card .problema-item-v2-inner {
+        padding: 0rem 1.5rem 1.5rem 1.5rem !important;
+      }
+
+      .problema-header-card .section-heading {
+        margin-top: 1.5rem !important;
+        margin-bottom: 6rem !important;
+      }
+
+      .proceso-grid-bento .proceso-header-card {
+        padding: 1.5rem !important;
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+        align-items: stretch !important;
+      }
+
+      .proceso-grid-bento .proceso-header-card .section-heading,
+      .proceso-grid-bento .proceso-header-card p {
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+
+      .proceso-header-card-inner {
+        padding: 2.5rem 1.5rem 0rem 1.5rem !important;
+      }
+
+      .proceso-header-card>svg {
+        width: 98px !important;
+        height: 98px !important;
+      }
+
+      .proceso-header-card-inner p {
+        margin-top: 8rem !important;
+        margin-bottom: -2.5rem !important;
+      }
+
 
       .form-grid {
         gap: 0.75rem !important;
@@ -2165,16 +2217,19 @@
     <div class="problemas-grid-v2">
       <!-- HEADER METIDO DENTRO DE LA GRILLA BENTO -->
       <div class="problema-item-v2 problema-header-card reveal">
+        <!-- SVG decorativo en el fondo -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="156" height="156"
+          style="position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%); z-index: 0; opacity: 0.15; pointer-events: none;">
+          <polyline points="22,42 34,54 58,28" fill="none" stroke="#a0a0a0" stroke-width="4" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        <!-- Contenido -->
         <div class="problema-item-v2-inner"
-          style="flex-direction: column; justify-content: center; align-items: center; text-align: center;">
-          <h2 class="section-heading">Transformamos tus desafíos en oportunidades</h2>
-
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="156" height="156" style="margin: 0 0;">
-            <polyline points="22,42 34,54 58,28" fill="none" stroke="#a0a0a0" stroke-width="4" stroke-linecap="round"
-              stroke-linejoin="round" />
-          </svg>
+          style="flex-direction: column; justify-content: flex-start; align-items: center; text-align: center; position: relative; z-index: 1;">
+          <h2 class="section-heading" style="margin-top: 3rem; margin-bottom: 8rem;">Transformamos tus desafíos en
+            oportunidades</h2>
           <p
-            style="color: var(--ink-soft); font-size: var(--fs-p); line-height: 1.6; text-align: center; margin-top: 0; max-width: 360px;">
+            style="color: var(--ink-soft); font-size: var(--fs-p); line-height: 1.6; text-align: center; margin-top: 2rem; max-width: 360px;">
             Identificamos los puntos de fricción en tu organización y los convertimos en ventajas competitivas medibles.
           </p>
         </div>
@@ -2224,7 +2279,7 @@
     <div class="services-grid">
 
       <div class="service-card reveal">
-        <div class="service-bg" style="background-image:url('analisis-bi3.jpg');"></div>
+        <div class="service-bg" style="background-image:url('analisis-bi4.jpeg');"></div>
         <div class="service-overlay"></div>
         <div class="service-shine"></div>
         <span class="service-pill">
@@ -2240,7 +2295,7 @@
       </div>
 
       <div class="service-card reveal">
-        <div class="service-bg" style="background-image:url('foto automatizacion.jpg');"></div>
+        <div class="service-bg" style="background-image:url('foto automatizacion.jpeg');"></div>
         <div class="service-overlay"></div>
         <div class="service-shine"></div>
         <span class="service-pill">
@@ -2256,7 +2311,7 @@
       </div>
 
       <div class="service-card reveal" style="transition-delay: 2s;">
-        <div class="service-bg" style="background-image:url('imagen capacitacion.jpg');"></div>
+        <div class="service-bg" style="background-image:url('capacitaciones.jpeg');"></div>
         <div class="service-overlay"></div>
         <div class="service-shine"></div>
         <span class="service-pill">
@@ -2341,25 +2396,25 @@
 
       <!-- HEADER METIDO DENTRO DE LA GRILLA BENTO -->
       <!-- HEADER METIDO DENTRO DE LA GRILLA BENTO -->
-      <div class="proceso-header-card reveal" style="display: flex; flex-direction: column;">
-        <h1 class="section-heading" style="color: #000; text-align: center;">
-          El camino hacia tu cultura de datos
-        </h1>
-
-        <!-- Espacio ajustado, ícono centrado -->
-        <div
-          style="display: flex; align-items: center; justify-content: center; width: 100%; margin: -2.5rem 0 0rem 0; opacity: 0.6;">
-          <svg width="123" height="123" viewBox="0 0 24 24" fill="none" stroke="#a0a0a0" stroke-width="1.2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="2,20 8,13 13,16 22,4"></polyline>
-            <polyline points="16,4 22,4 22,10"></polyline>
-          </svg>
+      <div class="proceso-header-card reveal">
+        <!-- SVG decorativo en el fondo -->
+        <svg width="123" height="123" viewBox="0 0 24 24" fill="none" stroke="#a0a0a0" stroke-width="1.2"
+          stroke-linecap="round" stroke-linejoin="round"
+          style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 0; opacity: 0.15; pointer-events: none;">
+          <polyline points="2,20 8,13 13,16 22,4"></polyline>
+          <polyline points="16,4 22,4 22,10"></polyline>
+        </svg>
+        <!-- Contenido -->
+        <div class="proceso-header-card-inner"
+          style="height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; padding: 8rem 4.5rem 5rem 5rem; position: relative; z-index: 1;">
+          <h2 class="section-heading" style="color: #000; text-align: center;">
+            El camino hacia tu cultura de datos
+          </h2>
+          <p style="max-width:600px; margin-top: 7rem; margin-bottom: 0; line-height: 1.6; text-align: center;">
+            Implementamos una metodología clara diseñada para transformar tu información en decisiones
+            inteligentes.
+          </p>
         </div>
-
-        <p style="max-width:600px; margin-top: 4rem; margin-bottom: 0; line-height: 1.6; text-align: center;">
-          Implementamos una metodología clara de 4 etapas diseñada para transformar tu información en decisiones
-          inteligentes.
-        </p>
       </div>
     </div>
   </section>
