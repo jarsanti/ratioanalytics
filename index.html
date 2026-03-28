@@ -729,7 +729,7 @@
 
     .proceso-grid-bento {
       display: grid;
-      grid-template-columns: 1.8fr 1.2fr;
+      grid-template-columns: 1.6fr 1.4fr;
       gap: 1rem;
       padding: 0;
       margin-top: 4rem;
@@ -742,19 +742,28 @@
     .proceso-timeline-col {
       display: flex;
       flex-direction: column;
-      gap: 2.5rem;
+      gap: 4rem;
       position: relative;
-      padding: 2.5rem 3.5rem 2.5rem 130px;
+      padding: 1.5rem 3.5rem 1.5rem 110px;
       /* Padding similar a la card de la derecha */
-      background: linear-gradient(145deg, #ffffff, #ebebeb) !important;
-      border: 1px solid #625aff !important;
+      background: transparent !important;
+      border: none !important;
       border-radius: 20px !important;
       height: 100%;
     }
 
-    /* El rectángulo vertical ahora se gestiona desde los centros */
+    /* Línea punteada continua que une todos los círculos */
     .proceso-timeline-col::before {
-      display: none;
+      display: block;
+      content: '';
+      position: absolute;
+      left: 25px;
+      top: var(--timeline-line-top, 3rem);
+      bottom: var(--timeline-line-bottom, 3rem);
+      width: 0;
+      border-left: 2px dashed var(--ink-soft);
+      opacity: 0.5;
+      z-index: 0;
     }
 
     .proceso-item-bento {
@@ -777,8 +786,8 @@
       position: absolute;
       top: -1.5rem;
       bottom: -1.5rem;
-      left: -2rem;
-      right: -2rem;
+      left: -3rem;
+      right: -3.5rem;
       background: transparent;
       border-radius: 16px;
       z-index: 1;
@@ -807,7 +816,7 @@
       width: 100%;
       background: transparent !important;
       border: none !important;
-      padding: 0;
+      padding: 0rem;
       transition: opacity 0.3s ease;
     }
 
@@ -821,7 +830,7 @@
       border: 5px solid var(--ink-soft);
       border-radius: 50%;
       position: absolute;
-      left: -80px;
+      left: -100px;
       /* Posicionado fuera a la izquierda */
       top: 50%;
       transform: translateY(-50%);
@@ -832,51 +841,16 @@
       transition: all 0.3s ease;
     }
 
-    /* Línea que une los centros */
+    /* Líneas por-item desactivadas — reemplazadas por línea continua en el contenedor */
     .proceso-item-bento-inner::before,
     .proceso-item-bento-inner::after {
-      content: '';
-      position: absolute;
-      left: -65px;
-      transform: translateX(-50%);
-      width: 5px;
-      background: var(--ink-soft);
-      z-index: -1;
-      transition: all 0.3s ease;
+      display: none;
     }
 
-    /* Al hacer hover en la tarjeta, el círculo y las líneas cambian a violeta */
+    /* Al hacer hover en la tarjeta, el círculo cambia a violeta */
     .proceso-item-bento:hover .step-circle-bento {
       background: var(--violet);
       border-color: var(--violet);
-    }
-
-    .proceso-item-bento:hover .proceso-item-bento-inner::before,
-    .proceso-item-bento:hover .proceso-item-bento-inner::after {
-      background: var(--violet);
-      width: 5px;
-      /* Apenas más gruesa para tapar la línea gris inferior y dar efecto de luz */
-    }
-
-    .proceso-item-bento-inner::before {
-      bottom: 50%;
-      height: calc(50% + 1.25rem);
-      /* 50% de la tarjeta + la mitad del gap exacto (2.5rem/2) */
-    }
-
-    .proceso-item-bento-inner::after {
-      top: 50%;
-      height: calc(50% + 1.25rem);
-      /* 50% de la tarjeta + la mitad del gap exacto (2.5rem/2) */
-    }
-
-    /* Ocultar extremos exteriores (Deben ir al final) */
-    .proceso-timeline-col .proceso-item-bento:first-child .proceso-item-bento-inner::before,
-    .proceso-timeline-col .proceso-item-bento:last-child .proceso-item-bento-inner::after {
-      display: none !important;
-      content: none !important;
-      height: 0 !important;
-      visibility: hidden !important;
     }
 
     .step-number-bento {
@@ -886,7 +860,9 @@
     .proceso-content-bento {
       position: relative;
       z-index: 1;
-      max-width: 100%;
+      width: calc(100% + 1rem);
+      margin-left: -1rem;
+
     }
 
     .proceso-content-bento h4 {
@@ -918,14 +894,15 @@
     }
 
     .proceso-header-card {
-      border: none !important;
-      background: transparent !important;
+      background: linear-gradient(145deg, #ffffff, #ebebeb) !important;
+      border: 1px solid var(--border) !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
       border-radius: 20px !important;
-      padding: 5rem 2rem 5rem 3rem !important;
-      box-shadow: none !important;
-      text-align: left;
+      padding: 6rem 4.5rem 5rem 5rem !important;
       display: flex !important;
       flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
     .proceso-header-card .section-label {
@@ -942,9 +919,9 @@
     }
 
     .proceso-header-card .section-heading {
-      color: #31edae !important;
+      color: #000 !important;
       display: block !important;
-      font-size: calc(var(--fs-h2) * 1.2);
+      font-size: var(--fs-h2);
       line-height: 1.1;
       margin-bottom: 6.5rem;
       font-weight: 900;
@@ -1013,7 +990,7 @@
       }
 
       .proceso-item-bento::before {
-        top: -1rem;
+        top: 1rem;
         bottom: -1rem;
         left: -1rem;
         /* El fondo oscuro no se abre tanto hacia los bordes en mobile */
@@ -2046,6 +2023,11 @@
         box-sizing: border-box;
       }
 
+      .contact-info-box {
+        text-align: center;
+        align-items: center;
+      }
+
       .contact-inner {
         display: flex !important;
         flex-direction: column !important;
@@ -2187,8 +2169,7 @@
           style="flex-direction: column; justify-content: center; align-items: center; text-align: center;">
           <h2 class="section-heading">Transformamos tus desafíos en oportunidades</h2>
 
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="156" height="156"
-            style="margin: 0 0;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="156" height="156" style="margin: 0 0;">
             <polyline points="22,42 34,54 58,28" fill="none" stroke="#a0a0a0" stroke-width="4" stroke-linecap="round"
               stroke-linejoin="round" />
           </svg>
@@ -2361,15 +2342,13 @@
       <!-- HEADER METIDO DENTRO DE LA GRILLA BENTO -->
       <!-- HEADER METIDO DENTRO DE LA GRILLA BENTO -->
       <div class="proceso-header-card reveal" style="display: flex; flex-direction: column;">
-        <h1 class="section-heading">
-          <span
-            style="background-color: #7166f0; padding: 0 0.3em; box-decoration-break: clone; -webkit-box-decoration-break: clone; border-radius: 4px;">El
-            camino hacia tu cultura de datos</span>
+        <h1 class="section-heading" style="color: #000; text-align: center;">
+          El camino hacia tu cultura de datos
         </h1>
 
         <!-- Espacio ajustado, ícono centrado -->
         <div
-          style="display: flex; align-items: center; justify-content: center; margin: -4rem 0 2.5rem 0; opacity: 0.6;">
+          style="display: flex; align-items: center; justify-content: center; width: 100%; margin: -2.5rem 0 0rem 0; opacity: 0.6;">
           <svg width="123" height="123" viewBox="0 0 24 24" fill="none" stroke="#a0a0a0" stroke-width="1.2"
             stroke-linecap="round" stroke-linejoin="round">
             <polyline points="2,20 8,13 13,16 22,4"></polyline>
@@ -2377,7 +2356,7 @@
           </svg>
         </div>
 
-        <p style="max-width:600px; margin-bottom: 0; line-height: 1.6;">
+        <p style="max-width:600px; margin-top: 4rem; margin-bottom: 0; line-height: 1.6; text-align: center;">
           Implementamos una metodología clara de 4 etapas diseñada para transformar tu información en decisiones
           inteligentes.
         </p>
@@ -2714,6 +2693,29 @@
   <a href="https://wa.me/543413564528" class="whatsapp-sticky" target="_blank" rel="noopener noreferrer">
     <i class="fab fa-whatsapp"></i>
   </a>
+
+  <script>
+    function updateTimelineLine() {
+      const col = document.querySelector('.proceso-timeline-col');
+      if (!col) return;
+      const items = col.querySelectorAll('.proceso-item-bento');
+      if (items.length < 2) return;
+
+      // offsetTop es relativo al contenedor posicionado (col), sin depender del scroll
+      const first = items[0];
+      const last = items[items.length - 1];
+
+      // El círculo está al top:50% del item, así que el centro = offsetTop + altura/2
+      const firstCenterY = first.offsetTop + first.offsetHeight / 2;
+      const lastCenterY = last.offsetTop + last.offsetHeight / 2;
+
+      col.style.setProperty('--timeline-line-top', firstCenterY + 'px');
+      col.style.setProperty('--timeline-line-bottom', (col.offsetHeight - lastCenterY) + 'px');
+    }
+
+    window.addEventListener('load', updateTimelineLine);
+    window.addEventListener('resize', updateTimelineLine);
+  </script>
 
 </body>
 
