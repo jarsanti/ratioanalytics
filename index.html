@@ -1031,6 +1031,18 @@
         margin-top: 2rem;
       }
 
+      .proceso-item-bento-inner .proceso-content-bento {
+        padding-left: 2.5rem;
+        padding-right: 1rem;
+      }
+
+      .proceso-item-bento::before {
+        top: -1rem;
+        bottom: -1rem;
+        left: 0.5rem;
+        right: -2rem;
+      }
+
       .proceso-grid-bento .proceso-header-card,
       .proceso-grid-bento .proceso-item-bento:nth-child(2) {
         grid-column: span 1;
@@ -2080,6 +2092,10 @@
         align-items: center;
       }
 
+      .contact-info-box .contact-detail {
+        align-self: flex-start;
+      }
+
       .contact-inner {
         display: flex !important;
         flex-direction: column !important;
@@ -2219,9 +2235,9 @@
       <div class="problema-item-v2 problema-header-card reveal">
         <!-- SVG decorativo en el fondo -->
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="156" height="156"
-          style="position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%); z-index: 0; opacity: 0.15; pointer-events: none;">
-          <polyline points="22,42 34,54 58,28" fill="none" stroke="#a0a0a0" stroke-width="4" stroke-linecap="round"
-            stroke-linejoin="round" />
+          style="position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%); z-index: 0; opacity: 1; pointer-events: none;">
+          <polyline points="22,42 34,54 58,28" fill="none" stroke="var(--violet)" stroke-width="4"
+            stroke-linecap="round" stroke-linejoin="round" />
         </svg>
         <!-- Contenido -->
         <div class="problema-item-v2-inner"
@@ -2398,9 +2414,9 @@
       <!-- HEADER METIDO DENTRO DE LA GRILLA BENTO -->
       <div class="proceso-header-card reveal">
         <!-- SVG decorativo en el fondo -->
-        <svg width="123" height="123" viewBox="0 0 24 24" fill="none" stroke="#a0a0a0" stroke-width="1.2"
+        <svg width="123" height="123" viewBox="0 0 24 24" fill="none" stroke="var(--violet)" stroke-width="1.2"
           stroke-linecap="round" stroke-linejoin="round"
-          style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 0; opacity: 0.15; pointer-events: none;">
+          style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 0; opacity: 1; pointer-events: none;">
           <polyline points="2,20 8,13 13,16 22,4"></polyline>
           <polyline points="16,4 22,4 22,10"></polyline>
         </svg>
