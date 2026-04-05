@@ -915,7 +915,7 @@
     }
 
     .proceso-header-card-inner {
-      padding: 8rem 4.5rem 5rem 5rem;
+      padding: 4rem 3rem;
     }
 
     .proceso-header-card .section-label {
@@ -936,7 +936,6 @@
       display: block !important;
       font-size: var(--fs-h2);
       line-height: 1.25;
-      margin-bottom: 6.5rem;
       font-weight: 700 !important;
       font-family: inherit !important;
       margin-top: 0;
@@ -967,10 +966,6 @@
         font-size: clamp(2.34rem, 7.2vw, 3.78rem) !important;
       }
 
-      .proceso-header-card .section-heading {
-        margin-bottom: 0 !important;
-      }
-
       .proceso-grid-bento {
         grid-template-columns: 1fr;
         gap: 2rem;
@@ -986,7 +981,6 @@
       }
 
       .proceso-grid-bento .proceso-header-card .proceso-header-card-inner {
-        margin: 0 0 2.5rem 0 !important;
         padding: 0 !important;
       }
 
@@ -2044,7 +2038,7 @@
 
       .problema-header-card .section-heading {
         margin-top: 1.5rem !important;
-        margin-bottom: 6rem !important;
+        margin-bottom: 2rem !important;
       }
 
       .proceso-grid-bento .proceso-header-card {
@@ -2061,10 +2055,7 @@
         height: 98px !important;
       }
 
-      .proceso-header-card-inner p {
-        margin-top: 11.5rem !important;
-        margin-bottom: -2.5rem !important;
-      }
+
 
 
       .form-grid {
@@ -2182,7 +2173,6 @@
       <li><a href="#servicios">Servicios</a></li>
       <li><a href="#proceso">Proceso</a></li>
       <li><a href="#contacto">Contacto</a></li>
-      <li><a href="#nosotros">Nosotros</a></li>
     </ul>
     <a href="#contacto" class="nav-cta">Solicitar Diagnóstico</a>
     <div class="hamburger" id="hamburger">
@@ -2197,7 +2187,6 @@
     <a href="#servicios">Servicios</a>
     <a href="#proceso">Proceso</a>
     <a href="#contacto">Contacto</a>
-    <a href="#nosotros">Nosotros</a>
     <a href="#contacto" class="nav-cta">Solicitar Consulta</a>
   </div>
 
@@ -2234,16 +2223,14 @@
     <div class="problemas-grid-v2">
       <!-- HEADER METIDO DENTRO DE LA GRILLA BENTO -->
       <div class="problema-item-v2 problema-header-card reveal">
-        <!-- Imagen decorativa en el fondo -->
-        <img src="img/icono-problemas.png" alt=""
-          style="position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%); z-index: 0; width: 120px; height: 120px; object-fit: contain; opacity: 1; pointer-events: none;">
-        <!-- Contenido -->
         <div class="problema-item-v2-inner"
-          style="flex-direction: column; justify-content: flex-start; align-items: center; text-align: center; position: relative; z-index: 1;">
-          <h2 class="section-heading" style="margin-top: 3rem; margin-bottom: 8rem;">Transformamos tus desafíos en
+          style="flex-direction: column; justify-content: flex-start; align-items: center; text-align: center; position: relative; z-index: 1; height: 100%; display: flex; gap: 2rem;">
+          <h2 class="section-heading" style="margin-top: 2rem;">Transformamos tus desafíos en
             oportunidades</h2>
+          <img src="img/icono-problemas.png" alt=""
+            style="width: 120px; height: 120px; object-fit: contain; margin: auto 0;">
           <p
-            style="color: var(--ink-soft); font-size: var(--fs-p); line-height: 1.6; text-align: center; margin-top: 2rem; max-width: 360px;">
+            style="color: var(--ink-soft); font-size: var(--fs-p); line-height: 1.6; text-align: center; margin-bottom: 2rem; max-width: 360px;">
             Identificamos los puntos de fricción en tu organización y los convertimos en ventajas competitivas medibles.
           </p>
         </div>
@@ -2303,7 +2290,7 @@
           <div class="service-icon-wrap">
             <i class="fas fa-chart-column"></i>
           </div>
-          <h3>Análisis BI</h3>
+          <h3>Analítica avanzada</h3>
           <p>Desarrollamos soluciones de Business Intelligence para todos los niveles de la organización</p>
         </div>
       </div>
@@ -2411,16 +2398,14 @@
       <!-- HEADER METIDO DENTRO DE LA GRILLA BENTO -->
       <!-- HEADER METIDO DENTRO DE LA GRILLA BENTO -->
       <div class="proceso-header-card reveal">
-        <!-- Imagen decorativa en el fondo -->
-        <img src="img/icono-proceso.png" alt=""
-          style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 0; width: 156px; height: 156px; object-fit: contain; opacity: 1; pointer-events: none;">
-        <!-- Contenido -->
         <div class="proceso-header-card-inner"
-          style="height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; position: relative; z-index: 1;">
+          style="height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; position: relative; z-index: 1; gap: 2rem;">
           <h2 class="section-heading" style="color: #000; text-align: center;">
             Camino hacia la mejora continua
           </h2>
-          <p style="max-width:600px; margin-top: 7rem; margin-bottom: 0; line-height: 1.6; text-align: center;">
+          <img src="img/icono-proceso.png" alt=""
+            style="width: 156px; height: 156px; object-fit: contain; margin: auto 0;">
+          <p style="max-width:600px; margin-bottom: 0; line-height: 1.6; text-align: center;">
             Implementamos una metodología clara diseñada para transformar tu negocio con decisiones
             inteligentes.
           </p>
